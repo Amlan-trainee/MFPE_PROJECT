@@ -5,10 +5,10 @@ using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookEntities
 {
-    public class MedicalReportBookModel : DbContext
+    public class MedicalReportBookContext : DbContext
     {
         
-        public MedicalReportBookModel()
+        public MedicalReportBookContext()
             : base("name=MedicalReportBookModel")
         {
         }

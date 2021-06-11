@@ -68,6 +68,10 @@
       <Project>{79f899a2-b3f6-4052-b3b5-d7b9867d323d}</Project>
       <Name>MedicalReportBookBLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MedicalReportBookEntities\MedicalReportBookEntities.csproj">
+      <Project>{42ee417f-c0c1-4ad8-ad3e-f47af2b57e56}</Project>
+      <Name>MedicalReportBookEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

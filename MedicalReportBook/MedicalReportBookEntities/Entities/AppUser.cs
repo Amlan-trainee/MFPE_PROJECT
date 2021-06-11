@@ -22,22 +22,21 @@ namespace MedicalReportBookEntities.Entities
         [Required(ErrorMessage = "Pleasse enter your gender")]
         public string Gender { get; set; }
         [Required(ErrorMessage ="Pleasse enter the phone number")]
-        [RegularExpression("^[\\d]{10}",ErrorMessage ="Please put a valid phone number")]
-        public long PhoneNumber { get; set; }
-        
+        [RegularExpression("^[\\d]{10}",ErrorMessage ="Please put a valid phone number")]        
+        public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
+        [Required(ErrorMessage ="EmaiId feild is mandatory")]        
         public string EmailId { get; set; }
-        
+        [Required]
         public string UserType { get; set; }
-
         [Required(ErrorMessage = "Password is required")]
-        [Range(8,30,ErrorMessage ="Password should be minimum 8 characters and maximum 30 characters")]
+        [StringLength(30,ErrorMessage ="Min Length should be 8 and Maximum should be 30",MinimumLength =8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
        
         [Required(ErrorMessage = "Confirm Password is required")]
-        [Range(8, 30)]
+        [StringLength(30, ErrorMessage = "Min Length should be 8 and Maximum should be 30", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Compare("Password",ErrorMessage ="This must match the Password")]
         [NotMapped]

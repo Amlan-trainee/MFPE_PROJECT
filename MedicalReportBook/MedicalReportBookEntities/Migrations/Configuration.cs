@@ -5,14 +5,14 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<MedicalReportBookEntities.MedicalReportBookModel>
+    internal sealed class Configuration : DbMigrationsConfiguration<MedicalReportBookEntities.MedicalReportBookContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(MedicalReportBookEntities.MedicalReportBookModel context)
+        protected override void Seed(MedicalReportBookEntities.MedicalReportBookContext context)
         {
             //  This method will be called after migrating to the latest version.
 

@@ -54,10 +54,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AppUser.cs" />
-    <Compile Include="MedicalReportBookModel.cs" />
+    <Compile Include="MedicalReportBookContext.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.designer.cs">
       <DependentUpon>202106111152219_NewDatabase Created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106111451576_database changed.cs" />
+    <Compile Include="Migrations\202106111451576_database changed.designer.cs">
+      <DependentUpon>202106111451576_database changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106111453233_database changed again.cs" />
+    <Compile Include="Migrations\202106111453233_database changed again.designer.cs">
+      <DependentUpon>202106111453233_database changed again.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106111542434_new.cs" />
+    <Compile Include="Migrations\202106111542434_new.designer.cs">
+      <DependentUpon>202106111542434_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106111750374_database restored.cs" />
+    <Compile Include="Migrations\202106111750374_database restored.designer.cs">
+      <DependentUpon>202106111750374_database restored.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +85,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202106111152219_NewDatabase Created.resx">
       <DependentUpon>202106111152219_NewDatabase Created.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106111451576_database changed.resx">
+      <DependentUpon>202106111451576_database changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106111453233_database changed again.resx">
+      <DependentUpon>202106111453233_database changed again.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106111542434_new.resx">
+      <DependentUpon>202106111542434_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106111750374_database restored.resx">
+      <DependentUpon>202106111750374_database restored.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

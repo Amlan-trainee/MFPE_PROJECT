@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AppUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -125,7 +126,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MedicalReportBookBLL\MedicalReportBookBLL.csproj">
+      <Project>{79f899a2-b3f6-4052-b3b5-d7b9867d323d}</Project>
+      <Name>MedicalReportBookBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MedicalReportBookEntities\MedicalReportBookEntities.csproj">
+      <Project>{42EE417F-C0C1-4AD8-AD3E-F47AF2B57E56}</Project>
+      <Name>MedicalReportBookEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

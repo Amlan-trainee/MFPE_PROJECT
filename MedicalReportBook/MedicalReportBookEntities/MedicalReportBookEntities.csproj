@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,13 +54,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\AppUser.cs" />
+    <Compile Include="MedicalReportBookModel.cs" />
+    <Compile Include="Migrations\202106111152219_NewDatabase Created.cs" />
+    <Compile Include="Migrations\202106111152219_NewDatabase Created.designer.cs">
+      <DependentUpon>202106111152219_NewDatabase Created.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106111152219_NewDatabase Created.resx">
+      <DependentUpon>202106111152219_NewDatabase Created.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

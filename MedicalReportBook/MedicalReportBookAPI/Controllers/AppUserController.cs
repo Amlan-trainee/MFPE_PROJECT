@@ -29,7 +29,7 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/AppUser/Registration")]
         public IHttpActionResult Post(AppUser obj)
         {
-            
+
             if (ModelState.IsValid == false)
             {
                 return BadRequest(ModelState);
@@ -39,7 +39,7 @@ namespace MedicalReportBookAPI.Controllers
                 bool result = appUserService.AddUser(obj);
                 if (result)
                 {
-                    return Ok("Registration Sucessful");
+                    return Ok(HttpStatusCode.Created);
 
                 }
                 else
@@ -51,7 +51,8 @@ namespace MedicalReportBookAPI.Controllers
 
         }
         [HttpPost]
-        public IHttpActionResult Post(string EmialId, string Password)
+        [Route("api/AppUser/Login")]
+        public IHttpActionResult Login(UserLoginDto userLoginDto)
         {
             if (ModelState.IsValid == false)
             {
@@ -59,15 +60,22 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                bool result = appUserService.Login(EmialId, Password);
+                var appUser = new AppUser();
+                if (userLoginDto == null)
+                {
+                    return BadRequest("Invalid email/password");
+                }
+                appUser.EmailId = userLoginDto.EmailId;
+                appUser.Password = userLoginDto.Password;
+                bool result = appUserService.Login(appUser.EmailId,appUser.Password);
                 if (result)
                 {
-                    return Ok();
+                    return Ok("Login Sucessful");
 
                 }
                 else
                 {
-                    return BadRequest("cannt add");
+                    return BadRequest("Login Failed");
                 }
 
             }

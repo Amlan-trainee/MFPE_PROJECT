@@ -41,8 +41,10 @@ namespace MedicalReportBookBLL
         }
         public bool Login(string EmailId,string Password)
         {
-            try {
+            try
+            {
                 return context.appUsers.Any(user => user.EmailId.Equals(EmailId) && user.Password.Equals(Password));
+               
             }
             catch (DbException e)
             {

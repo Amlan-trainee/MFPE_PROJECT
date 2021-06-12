@@ -1,4 +1,8 @@
 export class Register {
-    constructor(public UserName:string ,public LoginName:string,public Password:string ,
-    public Email:string ,public ContactNo:string,public Address:string ){}
+    constructor(public UserId:number,public FirstName:string ,public MiddleName:string ,public LastName:string,
+                public Gender:string,public PhoneNumber:number,public Address:string,public UserType:string,
+                public Password:string ,public EmailId:string  ){}
 }
+
+              
+       

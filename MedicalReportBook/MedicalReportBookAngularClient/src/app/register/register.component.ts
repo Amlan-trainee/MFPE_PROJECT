@@ -19,12 +19,17 @@ export class RegisterComponent implements OnInit {
     
   ngOnInit() {    
     this.UserForm = this.formbulider.group({    
-      UserName: ['', [Validators.required]],    
-      LoginName: ['', [Validators.required]],    
+      UserId: ['', [Validators.required]],    
+      FirstName: ['', [Validators.required]],
+      MiddleName: ['', [Validators.required]],
+      LastName: ['', [Validators.required]],
+      Gender: ['', [Validators.required]], 
+      PhoneNumber: ['', [Validators.required]],    
+      Address: ['', [Validators.required]],
+      UserType: ['', [Validators.required]],     
       Password: ['', [Validators.required]],    
       Email: ['', [Validators.required]],    
-      ContactNo: ['', [Validators.required]],    
-      Address: ['', [Validators.required]],    
+          
     });    
   }    
    onFormSubmit()    

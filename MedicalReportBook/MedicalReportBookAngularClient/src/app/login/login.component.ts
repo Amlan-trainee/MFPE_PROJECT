@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';    
 import { LoginService } from '../login.service';      
+import { AuthService } from '../Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,15 @@ export class LoginComponent {
   public model : any={};    
     
   errorMessage: string = "";    
-  constructor(private router:Router,private LoginService:LoginService) { }    
+  constructor(private router:Router,private LoginService:LoginService,private as:AuthService) { }   
+  
+  get f(){
+    return this.model.controls;
+  }
     
     
   ngOnInit() {    
-    sessionStorage.removeItem('UserName');    
+    sessionStorage.removeItem('EmailId');    
     sessionStorage.clear();    
   }    
   login(){    
@@ -26,11 +31,14 @@ export class LoginComponent {
         debugger;    
         if(data.Status=="Success")    
         {       
-          this.router.navigate(['/Landing']);    
+          // this.router.navigate(['/Landing']);
+          this.as.doLogin(true);
+              
           debugger;    
         }    
         else{    
-          this.errorMessage = data.Message;    
+          this.errorMessage = data.Message;
+          this.as.doLogin(false);    
         }    
       },    
       error => {    

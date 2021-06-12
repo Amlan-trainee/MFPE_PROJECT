@@ -9,13 +9,15 @@ import { LandingComponent } from './landing/landing.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    LandingComponent
+    LandingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
 
   ],
   providers: [LoginService],
-  bootstrap: [RegisterComponent]
+  bootstrap: [DashboardComponent]
 })
 export class AppModule { }

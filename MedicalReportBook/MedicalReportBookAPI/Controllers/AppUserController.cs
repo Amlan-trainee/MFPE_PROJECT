@@ -27,7 +27,7 @@ namespace MedicalReportBookAPI.Controllers
 
         [HttpPost]
         [Route("api/AppUser/Registration")]
-        public IHttpActionResult Post(AppUser obj)
+        public IHttpActionResult Post(AppUserDto obj)
         {
 
             if (ModelState.IsValid == false)
@@ -35,8 +35,19 @@ namespace MedicalReportBookAPI.Controllers
                 return BadRequest(ModelState);
             }
             else
-            {
-                bool result = appUserService.AddUser(obj);
+            { 
+                var appUser = new AppUser();
+                appUser.FirstName = obj.FirstName;
+                appUser.MiddleName = obj.MiddleName;
+                appUser.LastName = obj.LastName;
+                appUser.Gender = obj.Gender;
+                appUser.PhoneNumber = obj.PhoneNumber;
+                appUser.Address = obj.Address;
+                appUser.EmailId = obj.EmailId;
+                appUser.UserType = obj.UserType;
+                appUser.Password = obj.Password;
+                appUser.ConfirmPassword = obj.ConfirmPassword;
+                bool result = appUserService.AddUser(appUser);
                 if (result)
                 {
                     return Ok(HttpStatusCode.Created);

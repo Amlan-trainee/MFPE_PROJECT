@@ -11,6 +11,7 @@ import { LoginService } from './login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     LoginComponent,
     RegisterComponent,
     LandingComponent,
-    DashboardComponent
+    DashboardComponent,
+    PconsultancyReportComponent
   ],
   imports: [
     BrowserModule,

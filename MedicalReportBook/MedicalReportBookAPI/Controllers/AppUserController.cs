@@ -79,7 +79,7 @@ namespace MedicalReportBookAPI.Controllers
                 appUser.EmailId = userLoginDto.EmailId;
                 appUser.Password = userLoginDto.Password;
                 var result = appUserService.Login(appUser.EmailId,appUser.Password);
-                if (result!=null)
+                if (result==true)
                 {
                     return Ok();
 

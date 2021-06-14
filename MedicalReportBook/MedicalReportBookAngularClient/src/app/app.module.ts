@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
+import { AuthService } from './Services/auth.service';
+import { PtestReportComponent } from './ptest-report/ptest-report.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
     RegisterComponent,
     LandingComponent,
     DashboardComponent,
-    PconsultancyReportComponent
+    PconsultancyReportComponent,
+    PtestReportComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
     HttpClientModule
 
   ],
-  providers: [LoginService],
+  providers: [AuthService],
   bootstrap: [DashboardComponent]
 })
 export class AppModule { }

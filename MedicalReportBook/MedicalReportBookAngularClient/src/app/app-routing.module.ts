@@ -8,7 +8,7 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: '',redirectTo:'Dashboard' ,pathMatch:'full'},
+  
   {path: 'Dashboard',component: DashboardComponent},
   {path: 'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
@@ -19,6 +19,7 @@ const routes: Routes = [
   // },
   {path:'consultancy-report',component:PconsultancyReportComponent},
   {path:'after-login',component:AfterLoginComponent},
+  {path: '',redirectTo:'Dashboard' ,pathMatch:'full'}
 ];
 
 @NgModule({

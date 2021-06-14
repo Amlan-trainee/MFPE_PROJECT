@@ -1,20 +1,20 @@
-﻿using System;
+﻿using MedicalReportBookEntities.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace MedicalReportBookEntities.Entities
+namespace MedicalReportBookAPI.Models
 {
-    public class ConsultancyReport
+    public class ConsultancyReportDto
     {
         [Key]
         public int CR_Id { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string DoctorName { get; set; }
-       
+
         [Required]
         [DataType(DataType.Date)]
         public DateTime DateofConsultancy { get; set; }
@@ -23,15 +23,12 @@ namespace MedicalReportBookEntities.Entities
         [Required, MaxLength(30), MinLength(3)]
         public string DiseaseName { get; set; }
         [Required]
-        [Column(TypeName="varchar(Max)")]
+        [Column(TypeName = "varchar(Max)")]
         public string Prescription { get; set; }
+        [ForeignKey("User")]
+        public int UserID { get; set; }
         [Required]
         public bool IsActive { get; set; }
-        [ForeignKey("User")]
-        public int? UserID { get; set; }
-        
-       
         public virtual AppUser User { get; set; }
-
     }
 }

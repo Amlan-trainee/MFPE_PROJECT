@@ -1,0 +1,26 @@
+#heading{
+
+  display: block;
+  width: 100vw;
+  height: 60vh;
+  object-fit: cover;
+  background-size: cover;
+
+}
+.navig{
+margin: 0;
+}
+body{
+background-color: black;
+}
+hell{
+margin-left: 95px;
+}
+.hell{
+margin-left: 10px;;
+margin-right: 10px;
+
+}
+h1{
+margin-left: 5px;
+}

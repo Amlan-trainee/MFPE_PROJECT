@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
+import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
   {path:'Landing',component: LandingComponent},
+  {path:'test-report',component:PtestReportComponent},
   // {
   //   path:'logout',
   //   component:LandingComponent

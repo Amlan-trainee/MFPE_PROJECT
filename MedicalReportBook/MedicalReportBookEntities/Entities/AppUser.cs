@@ -11,6 +11,10 @@ namespace MedicalReportBookEntities.Entities
 {
     public class AppUser
     {
+        public AppUser()
+        {
+            ConsultancyReports = new HashSet<ConsultancyReport>();
+        }
         [Key]
         public int UserId { get; set; }
         [Required,MaxLength(30),MinLength(3)]
@@ -19,28 +23,32 @@ namespace MedicalReportBookEntities.Entities
         public string MiddleName { get; set; }
         [MinLength(3), MaxLength(30)]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Pleasse enter your gender")]
+        [Required]
         public string Gender { get; set; }
-        [Required(ErrorMessage ="Pleasse enter the phone number")]
-        [RegularExpression("^[\\d]{10}",ErrorMessage ="Please put a valid phone number")]        
+        [Required]
+        
         public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
-        [Required(ErrorMessage ="EmaiId feild is mandatory")]        
+        [Required]        
         public string EmailId { get; set; }
         [Required]
         public string UserType { get; set; }
-        [Required(ErrorMessage = "Password is required")]
-        [StringLength(30,ErrorMessage ="Min Length should be 8 and Maximum should be 30",MinimumLength =8)]
+        [Required]
+        [StringLength(30,MinimumLength =8)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
        
-        [Required(ErrorMessage = "Confirm Password is required")]
-        [StringLength(30, ErrorMessage = "Min Length should be 8 and Maximum should be 30", MinimumLength = 8)]
+        [Required]
+        [StringLength(30, MinimumLength = 8)]
         [DataType(DataType.Password)]
-        [Compare("Password",ErrorMessage ="This must match the Password")]
+        [Compare("Password")]
         [NotMapped]
         public string ConfirmPassword { get; set; }
+
+
+        public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
+
        
     }
 }

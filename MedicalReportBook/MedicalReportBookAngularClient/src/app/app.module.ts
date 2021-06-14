@@ -31,6 +31,6 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
 
   ],
   providers: [LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [DashboardComponent]
 })
 export class AppModule { }

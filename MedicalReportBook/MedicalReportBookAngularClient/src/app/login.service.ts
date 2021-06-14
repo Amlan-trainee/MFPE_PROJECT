@@ -13,19 +13,19 @@ export class LoginService {
   header : any;  
   constructor(private http : HttpClient) {   
   
-    this.Url = 'http://localhost:57071/api/AppUser/';  
+    this.Url = 'http://localhost:57071';  
   
     const headerSettings: {[name: string]: string | string[]; } = {};  
     this.header = new HttpHeaders(headerSettings);  
   }  
   Login(model : any){  
     debugger;  
-     var a =this.Url+'UserLogin';  
-   return this.http.post<any>(this.Url+'Login',model,{ headers: this.header});  
+     var a =this.Url+'/api/AppUser/Login';  
+   return this.http.post<any>(this.Url+'/api/AppUser/Login',model,{ headers: this.header});  
   }  
    CreateUser(register:Register)  
    {  
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };  
-    return this.http.post<Register[]>(this.Url + '/Registration/', register, httpOptions)  
+    return this.http.post<Register[]>(this.Url + '/api/AppUser/Registration', register, httpOptions)  
    }  
 }

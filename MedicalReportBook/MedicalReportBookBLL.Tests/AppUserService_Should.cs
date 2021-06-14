@@ -51,7 +51,7 @@ namespace MedicalReportBookBLL.Tests
             var EmailId = "abc@gmil.com";
             var Password = "jojojose";
             var result = service.Login(EmailId, Password);
-            var expected = true;
+            var expected = "User";
             Assert.AreEqual(expected, result);
         }
        

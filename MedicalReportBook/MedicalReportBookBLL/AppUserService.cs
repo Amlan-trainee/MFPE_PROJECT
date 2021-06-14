@@ -39,16 +39,16 @@ namespace MedicalReportBookBLL
             }
             
         }
-        public bool Login(string EmailId,string Password)
+        public string Login(string EmailId,string Password)
         {
             try
             {
-                //var query = from user in context.appUsers
-                //            where user.EmailId == EmailId && user.Password == Password
-                //            select user.UserType.FirstOrDefault();
-                //return query;
-                var obj= context.appUsers.Any(user => user.EmailId.Equals(EmailId) && user.Password.Equals(Password));
-                return obj;
+                var query = (from user in context.appUsers
+                             where user.EmailId == EmailId && user.Password == Password
+                             select user.UserType).FirstOrDefault(); 
+                return query;
+                // var obj= context.appUsers.Any(user => user.EmailId.Equals(EmailId) && user.Password.Equals(Password));
+               // return obj;
 
             }
             catch (DbException e)

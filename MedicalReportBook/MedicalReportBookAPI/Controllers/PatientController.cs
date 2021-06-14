@@ -55,9 +55,9 @@ namespace MedicalReportBookAPI.Controllers
         }
         [HttpGet]
         [Route("api/Patient/ViewConsultancyReport")]
-        public IHttpActionResult ViewConsultancyReportByDiseaseName([FromBody]string Name)
+        public IHttpActionResult ViewConsultancyReportByDiseaseName([FromBody]string DiseaseName)
         {
-           var result= patientService.ViewConsultancyReportByDiseaseName(Name);
+           var result= patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
             if(result==null)
             {
                 return NotFound();

@@ -54,18 +54,27 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
         [HttpGet]
-        [Route("api/Patient/ViewConsultancyReport")]
-        public IHttpActionResult ViewConsultancyReportByDiseaseName([FromBody]string DiseaseName)
+        [Route("api/Patient/ViewConsultancyReport/{DiseaseName}")]
+        public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri]string DiseaseName)
         {
-           var result= patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
-            if(result==null)
+            //var result = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
+            //if (result == null)
+            //{
+            //    return NotFound();
+            //}
+            //else
+            //{
+            //    return Ok(result);
+            //}
+            var objs = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
+
+            List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+            foreach (var obj in objs)
             {
-                return NotFound();
+                dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive });
             }
-            else
-            {
-                return Ok(result);
-            }
+            return Request.CreateResponse(HttpStatusCode.OK, dtos);
+
         }
     }
 }

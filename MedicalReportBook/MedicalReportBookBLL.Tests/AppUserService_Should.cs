@@ -29,20 +29,30 @@ namespace MedicalReportBookBLL.Tests
         public void AddUser()
         {
             var obj = new AppUser();
-            obj.FirstName = "jojo";
-            obj.MiddleName = "blitz";
-            obj.LastName = "jose";
+            obj.FirstName = "jojo1";
+            obj.MiddleName = "blitz2";
+            obj.LastName = "jose2";
             obj.Gender = "Male";
-            obj.PhoneNumber = 1234567890;
-            obj.Address = "123st";
-            obj.EmailId = "abc@gmail.com";
+            obj.PhoneNumber = 1234444890;
+            obj.Address = "123333st";
+            obj.EmailId = "abcdef@gmail.com";
             obj.UserType = "User";
             obj.Password = "jojojose";
             obj.ConfirmPassword = "jojojose";
-            bool result=service.AddUser(obj);
-            
-            Assert.AreEqual(true,result);
+            bool result = service.AddUser(obj);
 
+            Assert.AreEqual(true, result);
+
+        }
+        [Test]
+        public void CheckCredentialsForLogin()
+        {
+            
+            var EmailId = "abc@gmil.com";
+            var Password = "jojojose";
+            var result = service.Login(EmailId, Password);
+            var expected = true;
+            Assert.AreEqual(expected, result);
         }
        
     }

@@ -78,15 +78,15 @@ namespace MedicalReportBookAPI.Controllers
                 }
                 appUser.EmailId = userLoginDto.EmailId;
                 appUser.Password = userLoginDto.Password;
-                bool result = appUserService.Login(appUser.EmailId,appUser.Password);
-                if (result)
+                var result = appUserService.Login(appUser.EmailId,appUser.Password);
+                if (result!=null)
                 {
-                    return Ok("Login Sucessful");
+                    return Ok();
 
                 }
                 else
                 {
-                    return BadRequest("Login Failed");
+                    return BadRequest("Login Failed,wrong EmailId or Password");
                 }
 
             }

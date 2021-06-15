@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
 import { AuthService } from './Services/auth.service';
 import { PtestReportComponent } from './ptest-report/ptest-report.component';
+import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PtestReportComponent } from './ptest-report/ptest-report.component';
     LandingComponent,
     DashboardComponent,
     PconsultancyReportComponent,
-    PtestReportComponent
+    PtestReportComponent,
+    AddpconsultancyReportComponent
   ],
   imports: [
     BrowserModule,

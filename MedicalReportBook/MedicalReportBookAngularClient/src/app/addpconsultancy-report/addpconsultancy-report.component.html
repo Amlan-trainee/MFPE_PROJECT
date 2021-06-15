@@ -1,0 +1,55 @@
+<h1>
+  Add-Product
+</h1>
+<div id="container">
+<form novalidate [formGroup]="frmCReport" (ngSubmit) ="SaveReport()">
+  <div>
+    <label>Enter Doctor Name</label><br/>
+    <input type="string" name="doctor_name" formControlName="DoctorName"><br/>
+    <div *ngIf= "f.DoctorName.invalid">
+      <span *ngIf="f.DoctorName.errors?.required">Name is required</span>
+      <span *ngIf="f.DoctorName.errors?.minLength">Minimum Length is required</span>
+    </div>
+  </div>
+  <div>
+    <label>Enter Date Of Consultancy</label><br/>
+    <input type="date" name="consultancy_date" formControlName="DateofConsultancy"><br/>
+
+  </div>
+  <div>
+    <label>Enter Clinic Name</label><br/>
+    <input type="string" name="clinic_name" formControlName="ClinicName"><br/>
+    <div *ngIf= "f.ClinicName.invalid">
+      <span *ngIf="f.ClinicName.errors?.required">Name is required</span>
+      <span *ngIf="f.ClinicName.errors?.minLength">Minimum Length is required</span>
+    </div>
+  </div>
+  <div>
+    <label>Enter Disease Name</label><br/>
+    <input type="string" name="disease_name" formControlName="DiseaseName"><br/>
+    <div *ngIf= "f.DiseaseName.invalid">
+      <span *ngIf="f.DiseaseName.errors?.required">Name is required</span>
+      <span *ngIf="f.DiseaseName.errors?.minLength">Minimum Length is required</span>
+    </div>
+  </div>
+  <div>
+    <label>Enter Prescription</label><br/>
+    <input type="string" name="prescription" formControlName="Prescription"><br/>
+
+  </div>
+  <div>
+    <label>Enter IsActive</label><br/>
+    <input type="checkbox" name="active_state" formControlName="IsActive"><br/>
+
+  </div>
+  <div>
+    <label>Enter User Id</label><br/>
+    <input type="string" name="user_id" formControlName="UserId"><br/>
+
+  </div><br/>
+  <div>
+    <input type="submit" [disabled]="frmCReport.invalid" value="save report">
+  </div>
+
+</form>
+</div>

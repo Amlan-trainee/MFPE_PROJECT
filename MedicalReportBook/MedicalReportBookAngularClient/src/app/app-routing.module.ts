@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
 import { AfterLoginComponent } from './after-login/after-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingComponent } from './landing/landing.component';
@@ -9,7 +10,7 @@ import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  
+
   {path: 'Dashboard',component: DashboardComponent},
   {path: 'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   // },
   {path:'consultancy-report',component:PconsultancyReportComponent},
   {path:'after-login',component:AfterLoginComponent},
-  {path: '',redirectTo:'Dashboard' ,pathMatch:'full'}
+  {path: '',redirectTo:'Dashboard' ,pathMatch:'full'},
+  {path:'add-consultancy-report',component:AddpconsultancyReportComponent}
 ];
 
 @NgModule({

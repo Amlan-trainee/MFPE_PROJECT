@@ -15,6 +15,7 @@ namespace MedicalReportBookEntities
         public DbSet<AppUser> appUsers { get; set; }
 
       public DbSet<ConsultancyReport> ConsultancyReports { get; set; }
+        public DbSet<LabReportEntity> LabReportEntities { get; set; }
     }
 
    

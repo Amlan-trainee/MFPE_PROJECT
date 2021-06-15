@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,74 +29,15 @@ namespace MedicalReportBookBLL
         {
             try
             {
-                //string sPath = "";
-                //sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
-                //System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
-                //System.Web.HttpPostedFile hpf = hfc[iCnt];
-                //if (hpf.ContentLength > 0)
-                //{
-                //    string FileName = (Path.GetFileName(hpf.FileName));
-                //    if (!File.Exists(sPath + FileName))
-                //    {
-                //        // SAVE THE FILES IN THE FOLDER.  
-                //        hpf.SaveAs(sPath + FileName);
-                        
-                //        consultancyReport.Prescription = FileName;
-                //        context.ConsultancyReports.Add();
-                //        int rows = context.SaveChanges();
-                //        if (rows == 1)
-                //            return Ok();
-
-                //    }
-                //}
-
+               
                 context.ConsultancyReports.Add(consultancyReport);
                 int RowsAffected = context.SaveChanges();
                 return RowsAffected == 1;
-
-
-                //-------------------------------------------using System;
-                //using System.Collections.Generic;
-                //using System.IO;
-                //using System.Linq;
-                //using System.Net;
-                //using System.Net.Http;
-                //using System.Web.Http;
-
-                //string sPath = "";
-                //sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
-
-
-                //System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
-
-                //for (int iCnt = 0; iCnt <= hfc.Count - 1; iCnt++)
-                //{
-                //    System.Web.HttpPostedFile hpf = hfc[iCnt];
-                //    if (hpf.ContentLength > 0)
-                //    {
-                //        string FileName = (Path.GetFileName(hpf.FileName));
-                //        if (!File.Exists(sPath + FileName))
-                //        {
-                //            // SAVE THE FILES IN THE FOLDER.  
-                //            hpf.SaveAs(sPath + FileName);
-                //            Image obj = new Image();
-                //            obj.ImageUp = FileName;
-                //            context.images.Add(obj);
-                //            int rows = context.SaveChanges();
-                //            if (rows == 1)
-                //                return Ok();
-
-                //        }
-                //    }
-                //}
-
-                //return BadRequest("Upload Failed");
-                //---------------------------------------------------
-
+        
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Registration failed", e);
+                throw new MedicalReportBookExceptions("Uploading prescription... failed", e);
 
             }
 
@@ -114,7 +54,42 @@ namespace MedicalReportBookBLL
 
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Registration failed", e);
+                throw new MedicalReportBookExceptions("Not Found", e);
+
+            }
+
+
+        }
+        public bool AddLabReport(LabReportEntity labReportEntity)
+        {
+            try
+            {
+
+                context.LabReportEntities.Add(labReportEntity);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Uploading labreport... failed", e);
+
+            }
+
+        }
+        public List<LabReportEntity> ViewLabReportByTestName(int id, string TestName) //give id (input it) include ,,image 
+        {
+            try
+            {
+                var query = (from obj in context.LabReportEntities
+                             where obj.TestName == TestName && obj.UID == id
+                             select obj).Include(user => user.User);
+                return query.ToList();
+            }
+
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("not found", e);
 
             }
 

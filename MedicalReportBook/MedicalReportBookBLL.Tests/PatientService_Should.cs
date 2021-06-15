@@ -48,6 +48,30 @@ namespace MedicalReportBookBLL.Tests
             var result = service.ViewConsultancyReportByDiseaseName(id,DiseaseName);        
             CollectionAssert.IsNotEmpty(result);
         }
+        [Test]
+        public void AddLabReport()
+        {
+            var obj = new LabReportEntity();
+            obj.LabName = "apolo labs";
+            obj.DoctorName = "Dr.miraj";
+            obj.DateofTest = new DateTime(2021, 04, 04);
+            obj.TestName = "xray";
+            obj.LabReport = "need to put pics";
+            obj.IsActive = false;
+            obj.UID = 1;
+            var result = service.AddLabReport(obj);
+            var expected = true;
+            Assert.AreEqual(expected, result);
+
+        }
+        [Test]
+        public void ViewLabReportByTestName()
+        {
+            var TestName = "xray";
+            var id = 1;
+            var result = service.ViewLabReportByTestName(id, TestName);
+            CollectionAssert.IsNotEmpty(result);
+        }
 
     }
 }

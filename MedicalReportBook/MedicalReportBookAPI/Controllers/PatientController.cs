@@ -92,5 +92,80 @@ namespace MedicalReportBookAPI.Controllers
 
 
         }
+
+
+
+
+        [HttpPost]
+        [Route("api/Patient/AddTestReport")]
+        public IHttpActionResult AddTestReport(LabReportEntityDto labReportEntityDto)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var labReportEntity = new LabReportEntity();
+                labReportEntity.LabName = labReportEntityDto.LabName;
+                labReportEntity.DoctorName = labReportEntityDto.DoctorName;
+                labReportEntity.DateofTest = labReportEntityDto.DateofTest;
+                labReportEntity.TestName = labReportEntityDto.TestName;
+                labReportEntity.LabReport = labReportEntityDto.LabReport;
+                labReportEntity.IsActive = labReportEntityDto.IsActive;
+                labReportEntity.UID = labReportEntityDto.UID;
+
+                var result = patientService.AddLabReport(labReportEntity);
+                if (result)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Adding LabReport Failed");
+                }
+
+            }
+        }
+        [HttpGet]
+        [Route("api/Patient/ViewLabReport/{id}/{TestName}")]
+        public HttpResponseMessage ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)
+        {
+            //var result = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
+            //if (result == null)
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            //}
+            //else
+            //{
+            //    return Request.CreateResponse(HttpStatusCode.OK, result);
+            //}
+            if (ModelState.IsValid == false)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+
+
+                var objs = patientService.ViewLabReportByTestName(id, TestName);
+                if (objs != null)
+                {
+                    List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
+                    foreach (var obj in objs)
+                    {
+                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest, LabName = obj.LabName, LabReport = obj.LabReport, IsActive = obj.IsActive, UID = obj.UID});
+                    }
+                    return Request.CreateResponse(HttpStatusCode.OK, dtos);
+
+                }
+
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+
+        }
+
     }
 }

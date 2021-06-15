@@ -10,6 +10,7 @@ namespace MedicalReportBookAPI.Models
 {
     public class AppUserDto
     {
+        
         [Key]
         public int UserId { get; set; }
         [Required, MaxLength(30), MinLength(3)]
@@ -41,5 +42,6 @@ namespace MedicalReportBookAPI.Models
         [NotMapped]
         public string ConfirmPassword { get; set; }
         public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
+        public virtual ICollection<LabReportEntity> LabReports { get; set; }
     }
 }

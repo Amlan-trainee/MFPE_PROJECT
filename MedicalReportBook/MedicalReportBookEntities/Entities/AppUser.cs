@@ -14,6 +14,7 @@ namespace MedicalReportBookEntities.Entities
         public AppUser()
         {
             ConsultancyReports = new HashSet<ConsultancyReport>();
+            LabReports = new HashSet<LabReportEntity>();
         }
         [Key]
         public int UserId { get; set; }
@@ -48,6 +49,7 @@ namespace MedicalReportBookEntities.Entities
 
 
         public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
+        public virtual ICollection<LabReportEntity> LabReports { get; set; }
 
        
     }

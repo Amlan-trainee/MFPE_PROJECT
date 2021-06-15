@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   data = false;
   UserForm: any;
   massage: string = "";
- userSubmitted:boolean | undefined;
+  userSubmitted: boolean = false;
 
   constructor(private formbulider: FormBuilder,private loginService:LoginService) { }
 

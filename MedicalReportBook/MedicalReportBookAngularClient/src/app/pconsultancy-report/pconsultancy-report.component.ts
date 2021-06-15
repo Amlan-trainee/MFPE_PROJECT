@@ -14,7 +14,7 @@ export class PconsultancyReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('#').subscribe(
+    this.http.get('').subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},
       (err)=>{
         if(err.status===404){

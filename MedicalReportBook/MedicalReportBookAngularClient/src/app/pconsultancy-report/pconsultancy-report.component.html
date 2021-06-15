@@ -32,3 +32,31 @@
 
   </nav>
 </div> -->
+<h1>Report</h1>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table ">
+            <tr>
+                <th>Report Id</th>
+                <th>Doctor Name</th>
+                <th>Date of Consultancy</th>
+                <th>Clinic Name</th>
+                <th>Disease Name</th>
+                <th>Prescription</th>
+                <th>Lock</th>
+                <th>UserId</th>
+            </tr>
+
+            <tr *ngFor="let r of reports">
+                <td>{{r.CR_Id}}</td>
+                <td>{{r.DoctorName}}</td>
+                <td>{{r.DateofConsultancy}}</td>
+                <td>{{r.ClinicName}}</td>
+                <td>{{r.DiseaseName}}</td>
+                <td>{{r.Prescription}}</td>
+                <td>{{r.IsActive}}</td>
+                <td>{{r.UserId}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

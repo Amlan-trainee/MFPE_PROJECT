@@ -1,3 +1,4 @@
 export class ConsultancyReport {
-    constructor(){}
+    constructor(public CR_Id:number,public DoctorName: string, public DateofConsultancy:Date,public ClinicName : string,
+        public DiseaseName:string,public Prescription:string,public IsActive:boolean,public UserId:number){}
 }

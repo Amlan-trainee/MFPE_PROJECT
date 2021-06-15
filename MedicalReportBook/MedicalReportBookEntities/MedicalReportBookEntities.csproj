@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Entities\AppUser.cs" />
     <Compile Include="Entities\ConsultancyReport.cs" />
+    <Compile Include="Entities\LabReportEntity.cs" />
     <Compile Include="MedicalReportBookContext.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.designer.cs">
@@ -104,6 +105,10 @@
     <Compile Include="Migrations\202106150622124_User Id foreign key 2.designer.cs">
       <DependentUpon>202106150622124_User Id foreign key 2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106151346354_added labreport table.cs" />
+    <Compile Include="Migrations\202106151346354_added labreport table.designer.cs">
+      <DependentUpon>202106151346354_added labreport table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106150622124_User Id foreign key 2.resx">
       <DependentUpon>202106150622124_User Id foreign key 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106151346354_added labreport table.resx">
+      <DependentUpon>202106151346354_added labreport table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

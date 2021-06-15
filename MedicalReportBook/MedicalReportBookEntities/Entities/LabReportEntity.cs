@@ -8,30 +8,25 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookEntities.Entities
 {
-    public class ConsultancyReport
+    public class LabReportEntity
     {
-        
-
         [Key]
-        public int CR_Id { get; set; }
+        public int Lr_Id { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string DoctorName { get; set; }
-       
-        [Required]
+        [Required, MaxLength(30), MinLength(3)]
+        public string LabName { get; set; }
         [DataType(DataType.Date)]
-        public DateTime DateofConsultancy { get; set; }
+        public DateTime DateofTest { get; set; }
         [Required, MaxLength(30), MinLength(3)]
-        public string ClinicName { get; set; }
-        [Required, MaxLength(30), MinLength(3)]
-        public string DiseaseName { get; set; }
+        public string TestName { get; set; }
         [Required]
-        [Column(TypeName="varchar(Max)")]
-        public string Prescription { get; set; }
+        [Column(TypeName = "varchar(Max)")]
+        public string LabReport { get; set; }
         [Required]
         public bool IsActive { get; set; }
-
         [ForeignKey("User")]
-        public int UId { get; set; }
+        public int UID { get; set; }
         public virtual AppUser User { get; set; }
 
     }

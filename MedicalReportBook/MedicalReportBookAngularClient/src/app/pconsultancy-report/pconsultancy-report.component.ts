@@ -17,7 +17,7 @@ export class PconsultancyReportComponent implements OnInit {
   }
 
 
-  public url:string="";
+  public url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
 
   public urlt:string="";
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedicalReportBookEntities.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -39,5 +40,6 @@ namespace MedicalReportBookAPI.Models
         [Compare("Password", ErrorMessage = "This must match the Password")]
         [NotMapped]
         public string ConfirmPassword { get; set; }
+        public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
     }
 }

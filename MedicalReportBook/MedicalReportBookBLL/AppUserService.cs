@@ -39,14 +39,15 @@ namespace MedicalReportBookBLL
             }
             
         }
-        public string Login(string EmailId,string Password)
+        public string Login(string EmailId,string Password,out int id)
         {
             try
             {
                 var query = (from user in context.appUsers
                              where user.EmailId == EmailId && user.Password == Password
-                             select user.UserType).FirstOrDefault(); 
-                return query;
+                             select user).FirstOrDefault();
+                id = query.UserId;
+                return query.UserType;
                 // var obj= context.appUsers.Any(user => user.EmailId.Equals(EmailId) && user.Password.Equals(Password));
                // return obj;
 

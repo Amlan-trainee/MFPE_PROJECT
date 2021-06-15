@@ -14,7 +14,7 @@ export class PconsultancyReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('').subscribe(
+    this.http.get('http://localhost:57071/api/Patient/ViewConsultancyReport/Cold').subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},
       (err)=>{
         if(err.status===404){

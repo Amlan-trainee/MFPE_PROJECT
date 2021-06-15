@@ -7,13 +7,13 @@ namespace MedicalReportBookEntities.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ChangeduserIdtonullable : IMigrationMetadata
+    public sealed partial class UserIdforeignkey2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangeduserIdtonullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UserIdforeignkey2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106141014190_Changed userId to nullable"; }
+            get { return "202106150622124_User Id foreign key 2"; }
         }
         
         string IMigrationMetadata.Source

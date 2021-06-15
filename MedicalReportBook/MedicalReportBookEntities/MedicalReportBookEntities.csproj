@@ -92,9 +92,13 @@
     <Compile Include="Migrations\202106141005211_Changed type of dateofconsultancy.designer.cs">
       <DependentUpon>202106141005211_Changed type of dateofconsultancy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202106141014190_Changed userId to nullable.cs" />
-    <Compile Include="Migrations\202106141014190_Changed userId to nullable.designer.cs">
-      <DependentUpon>202106141014190_Changed userId to nullable.cs</DependentUpon>
+    <Compile Include="Migrations\202106150606253_User Id foreign key.cs" />
+    <Compile Include="Migrations\202106150606253_User Id foreign key.designer.cs">
+      <DependentUpon>202106150606253_User Id foreign key.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106150622124_User Id foreign key 2.cs" />
+    <Compile Include="Migrations\202106150622124_User Id foreign key 2.designer.cs">
+      <DependentUpon>202106150622124_User Id foreign key 2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,8 +135,11 @@
     <EmbeddedResource Include="Migrations\202106141005211_Changed type of dateofconsultancy.resx">
       <DependentUpon>202106141005211_Changed type of dateofconsultancy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202106141014190_Changed userId to nullable.resx">
-      <DependentUpon>202106141014190_Changed userId to nullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106150606253_User Id foreign key.resx">
+      <DependentUpon>202106150606253_User Id foreign key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106150622124_User Id foreign key 2.resx">
+      <DependentUpon>202106150622124_User Id foreign key 2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

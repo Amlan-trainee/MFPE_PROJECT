@@ -39,7 +39,7 @@ namespace MedicalReportBookAPI.Controllers
                 consultancyReport.DiseaseName = consultancyReportDto.DiseaseName;
                 consultancyReport.Prescription = consultancyReportDto.Prescription;
                 consultancyReport.IsActive = consultancyReportDto.IsActive;
-                consultancyReportDto.UserID = consultancyReportDto.UserID;
+                consultancyReportDto.UId = consultancyReportDto.UId;
 
                 var result=  patientService.AddConsultancyReport(consultancyReport);
                 if(result)
@@ -66,14 +66,21 @@ namespace MedicalReportBookAPI.Controllers
             //{
             //    return Ok(result);
             //}
-            var objs = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
-
-            List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
-            foreach (var obj in objs)
+            if(ModelState.IsValid==false)
             {
-                dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive });
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
-            return Request.CreateResponse(HttpStatusCode.OK, dtos);
+            else {
+                var objs = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
+
+                List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+                foreach (var obj in objs)
+                {
+                    dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive });
+                }
+                return Request.CreateResponse(HttpStatusCode.OK, dtos);
+            }
+           
 
         }
     }

@@ -49,10 +49,12 @@ namespace MedicalReportBookBLL.Tests
         {
             
             var EmailId = "abc@gmil.com";
-            var Password = "jojojose";
-            var result = service.Login(EmailId, Password);
-            var expected = "User";
-            Assert.AreEqual(expected, result);
+            var Password = "jojojose";           
+            var result = service.Login(EmailId, Password,out int id);
+            var expectedUserType = "User";
+            var expectedUserId = 1;
+            Assert.AreEqual(expectedUserType, result);
+            Assert.AreEqual(expectedUserId, id);
         }
        
     }

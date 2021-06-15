@@ -25,10 +25,13 @@ namespace MedicalReportBookAPI.Models
         [Required]
         [Column(TypeName = "varchar(Max)")]
         public string Prescription { get; set; }
-        [ForeignKey("User")]
-        public int UserID { get; set; }
         [Required]
         public bool IsActive { get; set; }
+
+        [ForeignKey("User")]
+        public int UId { get; set; }
         public virtual AppUser User { get; set; }
+      
+        
     }
 }

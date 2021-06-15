@@ -28,7 +28,24 @@ namespace MedicalReportBookBLL.Tests
         public void AddConsultancyReport()
         {
             var obj = new ConsultancyReport();
-            obj.
+            obj.ClinicName = "aiims";
+            obj.DoctorName = "Dr.miraj";
+            obj.DateofConsultancy = new DateTime(2021,04,04);
+            obj.DiseaseName = "Stomach Ache";
+            obj.Prescription = "need to put pics";
+            obj.IsActive = false;
+            obj.UId = 1;
+            var result = service.AddConsultancyReport(obj);
+            var expected = true;
+            Assert.AreEqual(expected, result);
+
+        }
+        [Test]
+        public void ViewConsultancyReportByDiseaseName()
+        {
+            var DiseaseName = "Cold";
+            var result = service.ViewConsultancyReportByDiseaseName(DiseaseName);        
+            CollectionAssert.IsNotEmpty(result);
         }
 
     }

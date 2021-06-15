@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   data = false;
   UserForm: any;
   massage: string = "";
-  userSubmitted:boolean | undefined;
+ // userSubmitted:boolean | undefined;
 
   constructor(private formbulider: FormBuilder,private loginService:LoginService) { }
 
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
   }
    onFormSubmit()
   {
-    this.userSubmitted=true;
+    //this.userSubmitted=true;
     const user = this.UserForm.value;
     this.Createemployee(user);
   }

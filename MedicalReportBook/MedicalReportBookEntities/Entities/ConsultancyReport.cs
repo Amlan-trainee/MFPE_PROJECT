@@ -27,8 +27,9 @@ namespace MedicalReportBookEntities.Entities
         public string Prescription { get; set; }
         [Required]
         public bool IsActive { get; set; }
+
         [ForeignKey("User")]
-        public int? UserID { get; set; }
+        public int UId { get; set; }
         public virtual AppUser User { get; set; }
 
     }

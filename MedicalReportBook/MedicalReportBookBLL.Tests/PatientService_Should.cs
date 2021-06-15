@@ -44,7 +44,8 @@ namespace MedicalReportBookBLL.Tests
         public void ViewConsultancyReportByDiseaseName()
         {
             var DiseaseName = "Cold";
-            var result = service.ViewConsultancyReportByDiseaseName(DiseaseName);        
+            var id = 3;
+            var result = service.ViewConsultancyReportByDiseaseName(id,DiseaseName);        
             CollectionAssert.IsNotEmpty(result);
         }
 

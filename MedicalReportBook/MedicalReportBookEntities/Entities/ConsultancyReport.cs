@@ -10,6 +10,8 @@ namespace MedicalReportBookEntities.Entities
 {
     public class ConsultancyReport
     {
+        
+
         [Key]
         public int CR_Id { get; set; }
         [Required, MaxLength(30), MinLength(3)]

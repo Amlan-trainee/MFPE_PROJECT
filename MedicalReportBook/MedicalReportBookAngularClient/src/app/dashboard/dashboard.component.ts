@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../Services/auth.service';
 
@@ -7,7 +7,7 @@ import { AuthService } from '../Services/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit , OnDestroy {
   subs: Subscription = new Subscription;
   userLoggedIn: boolean = false;
   constructor(private as:AuthService) { }

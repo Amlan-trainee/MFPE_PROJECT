@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultancyReport } from '../Source/consultancy-report';
 import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-pconsultancy-report',
@@ -9,12 +10,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PconsultancyReportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
+  formData: any;
+  
   constructor(private http :HttpClient) {
   
   }
 
+
+  public url:string="";
+
+  public urlt:string="";
+
+
   ngOnInit(): void {
-    this.http.get('http://localhost:57071/api/Patient/ViewConsultancyReport/Cold').subscribe(
+    this.http.get('').subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},
       (err)=>{
         if(err.status===404){
@@ -26,5 +35,9 @@ export class PconsultancyReportComponent implements OnInit {
       }
 
     );
+  }
+
+  onSubmit(data: { DiseaseName: string; }){ 
+     this.urlt= this.url+data.DiseaseName   ;
   }
 }

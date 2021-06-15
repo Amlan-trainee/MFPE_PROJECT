@@ -23,7 +23,10 @@ export class PconsultancyReportComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get('').subscribe(
+    this.formData = new FormGroup({
+      name    : new FormControl()
+  });
+    this.http.get(this.urlt).subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},
       (err)=>{
         if(err.status===404){

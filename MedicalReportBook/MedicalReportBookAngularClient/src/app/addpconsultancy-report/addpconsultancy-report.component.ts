@@ -28,7 +28,7 @@ frmCReport:FormGroup;
    SaveReport(){
     if(this.frmCReport.valid){
       let p:ConsultancyReport=this.frmCReport.value as ConsultancyReport;
-      this.http.post('yaha p api daalna h',p).subscribe(data=>{
+      this.http.post('http://localhost:57071/api/Patient/AddConsultancyReport',p).subscribe(data=>{
         alert('product saved');
       },error=>{
         alert('not saved');

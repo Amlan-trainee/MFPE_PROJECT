@@ -14,9 +14,9 @@ export class RegisterComponent implements OnInit {
   data = false;
   UserForm: any;
   massage: string = "";
-  userSubmitted: boolean = false;
+  // userSubmitted: boolean = false;
 
-  constructor(private formbulider: FormBuilder,private loginService:LoginService) { }
+  constructor(private formbulider: FormBuilder,private loginService:LoginService,private formBuilder:FormBuilder) { }
 
   ngOnInit() {
     this.UserForm = this.formbulider.group({
@@ -32,25 +32,30 @@ export class RegisterComponent implements OnInit {
       ConfirmPassword:['', [Validators.required,Validators.minLength(8)]],
       Email: ['', [Validators.required,Validators.email]],
 
-    }, this.passwordMatchValidator);
+    });
   }
-  passwordMatchValidator(frm: FormGroup) {
-    return frm.controls['Password'].value === frm.controls['ConfirmPassword'].value ? null : {'mismatch': true};
-  }
+  // passwordMatchValidator(frm: FormGroup) {
+  //   return frm.controls['Password'].value === frm.controls['ConfirmPassword'].value ? null : {'mismatch': true};
+  // }
    onFormSubmit()
   {
-    this.userSubmitted=true;
+    // this.userSubmitted=true;
     const user = this.UserForm.value;
     this.Createemployee(user);
   }
   Createemployee(register:Register)
-  {
-  this.loginService.CreateUser(register).subscribe(
-    ()=>
+  { this.loginService.CreateUser(register).subscribe(
+    (data=>
     {
       this.data = true;
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
+      alert('product saved');
+    }),
+    error=>{
+      alert('not saved');
     });
   }
+  
+ 
 }

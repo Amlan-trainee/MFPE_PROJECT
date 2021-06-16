@@ -84,15 +84,7 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/ViewConsultancyReport/{id}/{DiseaseName}")]
         public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri]int id,[FromUri]string DiseaseName) 
         {
-            //var result = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
-            //if (result == null)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
-            //}
-            //else
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.OK, result);
-            //}
+           
             if (ModelState.IsValid == false)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -158,15 +150,7 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/ViewLabReport/{id}/{TestName}")]
         public HttpResponseMessage ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)
         {
-            //var result = patientService.ViewConsultancyReportByDiseaseName(DiseaseName);
-            //if (result == null)
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.BadRequest);
-            //}
-            //else
-            //{
-            //    return Request.CreateResponse(HttpStatusCode.OK, result);
-            //}
+            
             if (ModelState.IsValid == false)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);

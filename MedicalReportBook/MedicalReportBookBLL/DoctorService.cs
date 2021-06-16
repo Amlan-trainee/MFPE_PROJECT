@@ -34,7 +34,9 @@ namespace MedicalReportBookBLL
                     var query = from obj in context.ConsultancyReports
                                 where obj.DiseaseName == DiseaseName && obj.IsActive == true && obj.UId==check
                                 select obj;
+                    if(query!=null)
                     return query.ToList();
+                    return null;
 
                 }
                 else
@@ -66,7 +68,9 @@ namespace MedicalReportBookBLL
                     var query = from obj in context.LabReportEntities
                                 where obj.TestName == TestName && obj.IsActive == true && obj.UID == check
                                 select obj;
+                    if(query!=null)
                     return query.ToList();
+                    return null;
 
                 }
                 else

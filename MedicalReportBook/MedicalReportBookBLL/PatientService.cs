@@ -49,7 +49,9 @@ namespace MedicalReportBookBLL
                 var query = from obj in context.ConsultancyReports.Include(user => user.User)
                              where obj.DiseaseName == DiseaseName && obj.UId==id
                             select obj;
+                if(query!=null)
                 return query.ToList();
+                return null;
             }
 
             catch (DbException e)
@@ -84,7 +86,9 @@ namespace MedicalReportBookBLL
                 var query = from obj in context.LabReportEntities.Include(user => user.User)
                             where obj.TestName == TestName && obj.UID == id
                             select obj;
+                if(query!=null)
                 return query.ToList();
+                return null;
             }
 
             catch (DbException e)

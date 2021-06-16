@@ -24,7 +24,7 @@ namespace MedicalReportBookAPI.Controllers
         }
 
         [HttpGet]
-        [Route("api/Doctor/ViewConsultancyReport/{EmailId}/{DiseaseName}")]
+        [Route("api/Doctor/ViewConsultancyReportOfPatient/{EmailId}/{DiseaseName}")]
         public HttpResponseMessage ViewConsultancyReportOfPatient([FromUri] string EmailId, [FromUri] string DiseaseName)
         {
 

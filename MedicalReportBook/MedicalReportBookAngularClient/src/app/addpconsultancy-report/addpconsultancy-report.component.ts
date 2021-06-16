@@ -12,14 +12,14 @@ export class AddpconsultancyReportComponent implements OnInit {
 frmCReport:FormGroup;
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
     this.frmCReport=this.formBuilder.group({ 
-     CR_Id:new FormControl('',Validators.required) ,
+    //  CR_Id:new FormControl('',Validators.required) ,
      DoctorName :new FormControl('',[Validators.required,Validators.minLength(3)]),
      DateofConsultancy:new FormControl('',Validators.required),
      ClinicName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      DiseaseName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      Prescription:new FormControl('',Validators.required),
      IsActive:new FormControl('',Validators.required),
-    UserId:new FormControl('',Validators.required)
+    UId:new FormControl('',Validators.required)
 
     });
    }

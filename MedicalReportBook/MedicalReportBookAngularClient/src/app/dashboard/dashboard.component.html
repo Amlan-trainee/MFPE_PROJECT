@@ -121,11 +121,11 @@
       <a class="nav-link" [routerLink]="['/test-report']">Test Report</a>
   </li>
 
-  <li class="nav-item active" *ngIf='userLoggedIn'>
+  <li class="nav-item active" *ngIf='!userLoggedIn'>
     <a class="nav-link" [routerLink]="['/add-consultancy-report']">Add Consultancy Report</a>
 </li>
 <li class="nav-item active" *ngIf='userLoggedIn'>
-  <a class="nav-link" [routerLink]="['/add-test-report']">Add Consultancy Report</a>
+  <a class="nav-link" [routerLink]="['/add-test-report']">Add Test Report</a>
 </li>
 
       <li class="nav-item active" *ngIf='userLoggedIn'>

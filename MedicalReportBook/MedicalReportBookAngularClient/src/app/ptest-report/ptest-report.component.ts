@@ -14,7 +14,7 @@ export class PtestReportComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:57071/api/Patient/AddConsultancyReport').subscribe(
+    this.http.get('#').subscribe(
       (data)=>{this.treports= data as TestReport[];},
       (err)=>{
         if(err.status===404){

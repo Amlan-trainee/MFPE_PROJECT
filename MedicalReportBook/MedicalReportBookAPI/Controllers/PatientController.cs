@@ -34,28 +34,28 @@ namespace MedicalReportBookAPI.Controllers
             else
             {
                 var consultancyReport = new ConsultancyReport();
-                string sPath = "";
-                sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
+                //string sPath = "";
+                //sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
 
 
-                System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
+                //System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
 
-                for (int iCnt = 0; iCnt <= hfc.Count - 1; iCnt++)
-                {
-                    System.Web.HttpPostedFile hpf = hfc[iCnt];
-                    if (hpf.ContentLength > 0)
-                    {
-                        string FileName = (Path.GetFileName(hpf.FileName));
-                        if (!File.Exists(sPath + FileName))
-                        {
-                            // SAVE THE FILES IN THE FOLDER.  
+                //for (int iCnt = 0; iCnt <= hfc.Count - 1; iCnt++)
+                //{
+                //    System.Web.HttpPostedFile hpf = hfc[iCnt];
+                //    if (hpf.ContentLength > 0)
+                //    {
+                //        string FileName = (Path.GetFileName(hpf.FileName));
+                //        if (!File.Exists(sPath + FileName))
+                //        {
+                //            // SAVE THE FILES IN THE FOLDER.  
 
-                            hpf.SaveAs(sPath + FileName);
-                            consultancyReportDto.Prescription = FileName;
+                //            hpf.SaveAs(sPath + FileName);
+                //            consultancyReportDto.Prescription = FileName;
 
-                        }
-                    }
-                }
+                //        }
+                //    }
+                //}
 
                
 

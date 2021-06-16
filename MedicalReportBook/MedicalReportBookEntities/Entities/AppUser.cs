@@ -27,12 +27,12 @@ namespace MedicalReportBookEntities.Entities
         [Required]
         public string Gender { get; set; }
         [Required]
-        [Index(IsUnique = true)]
+      //  [Index(IsUnique = true)]
         public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
         [Required]
-        [Index(IsUnique = true)]
+       // [Index(IsUnique = true)]
         public string EmailId { get; set; }//data anotation for making feild unique
         [Required]
         public string UserType { get; set; }

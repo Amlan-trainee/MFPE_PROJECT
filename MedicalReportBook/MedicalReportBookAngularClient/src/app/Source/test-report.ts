@@ -1,3 +1,4 @@
 export class TestReport {
-    constructor(){}
+    constructor(public  Lr_Id:number,public DoctorName:string,public LabName:string,public DateofTest:Date,public TestName:string,
+      public LabReport:string, public  IsActive:boolean,public UID:number){}
 }

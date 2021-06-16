@@ -1,0 +1,61 @@
+<h1>
+  Add-Test-Report
+</h1>
+<div id="container">
+<form novalidate [formGroup]="frmCReport" (ngSubmit) ="SaveReport()">
+  <div>
+    <label>Enter Test Report Id</label><br/>
+    <input type="string" name="cr_id" formControlName="Lr_Id"><br/>
+
+  </div><br/>
+  <div>
+    <label>Enter Doctor Name</label><br/>
+    <input type="string" name="doctor_name" formControlName="DoctorName"><br/>
+    <div *ngIf= "f.DoctorName.invalid">
+      <span *ngIf="f.DoctorName.errors?.required">Name is required</span>
+      <span *ngIf="f.DoctorName.errors?.minLength">Minimum Length is required</span>
+    </div>
+  </div>
+  <div>
+    <label>Enter Lab Name</label><br/>
+    <input type="string" name="consultancy_date" formControlName="LabName"><br/>
+    <div *ngIf= "f.LabName.invalid">
+      <span *ngIf="f.LabName.errors?.required">Name is required</span>
+      <span *ngIf="f.LabName.errors?.minLength">Minimum Length is required</span>
+    </div>
+
+  </div>
+  <div>
+    <label>Enter Date of Test</label><br/>
+    <input type="date" name="dateoftest" formControlName="DateofTest"><br/>
+
+  </div>
+  <div>
+    <label>Enter Test Name</label><br/>
+    <input type="string" name="disease_name" formControlName="TestName"><br/>
+    <div *ngIf= "f.TestName.invalid">
+      <span *ngIf="f.TestName.errors?.required">Name is required</span>
+      <span *ngIf="f.TestName.errors?.minLength">Minimum Length is required</span>
+    </div>
+  </div>
+  <div>
+    <label>Enter Lab Report</label><br/>
+    <input type="string" name="prescription" formControlName="LabReport"><br/>
+
+  </div>
+  <div>
+    <label>Enter IsActive</label><br/>
+    <input type="checkbox" name="active_state" formControlName="IsActive"><br/>
+
+  </div>
+  <div>
+    <label>Enter User Id</label><br/>
+    <input type="string" name="user_id" formControlName="UID"><br/>
+
+  </div><br/>
+  <div>
+    <input type="submit" [disabled]="frmCReport.invalid" value="save report">
+  </div>
+
+</form>
+</div>

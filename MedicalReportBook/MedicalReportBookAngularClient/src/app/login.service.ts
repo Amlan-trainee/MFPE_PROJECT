@@ -19,7 +19,7 @@ export class LoginService {
     this.header = new HttpHeaders(headerSettings);
   }
   Login(model : any){
-    debugger;
+    // debugger;
      var a =this.Url+'Login';
    return this.http.post<any>(a,model,{ headers: this.header});
   }

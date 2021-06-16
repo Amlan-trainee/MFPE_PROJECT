@@ -10,7 +10,7 @@ import { Register } from "../app/register";
 export class LoginService {
   Url :string;
   token: string='';
-  header : any;
+  header ;
   constructor(private http : HttpClient) {
 
     this.Url = 'http://localhost:57071/api/AppUser/';
@@ -26,6 +26,6 @@ export class LoginService {
    CreateUser(register:Register)
    {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.post<Register[]>(this.Url + 'Registration', register, httpOptions)
+    return this.http.post<Register[]>(this.Url +'Registration', register,httpOptions)
    }
 }

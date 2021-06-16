@@ -11,7 +11,8 @@ import { ConsultancyReport } from '../Source/consultancy-report';
 export class AddpconsultancyReportComponent implements OnInit {
 frmCReport:FormGroup;
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
-    this.frmCReport=this.formBuilder.group({
+    this.frmCReport=this.formBuilder.group({ 
+     CR_Id:new FormControl('',Validators.required) ,
      DoctorName :new FormControl('',[Validators.required,Validators.minLength(3)]),
      DateofConsultancy:new FormControl('',Validators.required),
      ClinicName:new FormControl('',[Validators.required,Validators.minLength(3)]),

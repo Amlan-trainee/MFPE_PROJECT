@@ -41,7 +41,6 @@ namespace MedicalReportBookAPI.Models
         [Compare("Password", ErrorMessage = "This must match the Password")]
         [NotMapped]
         public string ConfirmPassword { get; set; }
-        public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
-        public virtual ICollection<LabReportEntity> LabReports { get; set; }
+       
     }
 }

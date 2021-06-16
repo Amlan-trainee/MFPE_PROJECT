@@ -46,9 +46,9 @@ namespace MedicalReportBookBLL
         {
             try 
             {
-                var query = (from obj in context.ConsultancyReports
-                            where obj.DiseaseName == DiseaseName && obj.UId==id
-                            select obj).Include(user=>user.User);
+                var query = from obj in context.ConsultancyReports.Include(user => user.User)
+                             where obj.DiseaseName == DiseaseName && obj.UId==id
+                            select obj;
                 return query.ToList();
             }
 
@@ -81,9 +81,9 @@ namespace MedicalReportBookBLL
         {
             try
             {
-                var query = (from obj in context.LabReportEntities
-                             where obj.TestName == TestName && obj.UID == id
-                             select obj).Include(user => user.User);
+                var query = from obj in context.LabReportEntities.Include(user => user.User)
+                            where obj.TestName == TestName && obj.UID == id
+                            select obj;
                 return query.ToList();
             }
 

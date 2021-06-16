@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppUserService.cs" />
+    <Compile Include="DoctorService.cs" />
     <Compile Include="MedicalReportBookExceptions.cs" />
     <Compile Include="PatientService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

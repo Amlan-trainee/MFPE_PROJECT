@@ -25,8 +25,9 @@ namespace MedicalReportBookAPI.Models
         public string LabReport { get; set; }
         [Required]
         public bool IsActive { get; set; }
-        [ForeignKey("User")]
+        
         public int UID { get; set; }
-        public virtual AppUser User { get; set; }
+        
+
     }
 }

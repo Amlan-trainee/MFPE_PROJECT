@@ -3,6 +3,7 @@ using MedicalReportBookBLL;
 using MedicalReportBookEntities.Entities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -33,9 +34,35 @@ namespace MedicalReportBookAPI.Controllers
             else
             {
                 var consultancyReport = new ConsultancyReport();
+                string sPath = "";
+                sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
+
+
+                System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
+
+                for (int iCnt = 0; iCnt <= hfc.Count - 1; iCnt++)
+                {
+                    System.Web.HttpPostedFile hpf = hfc[iCnt];
+                    if (hpf.ContentLength > 0)
+                    {
+                        string FileName = (Path.GetFileName(hpf.FileName));
+                        if (!File.Exists(sPath + FileName))
+                        {
+                            // SAVE THE FILES IN THE FOLDER.  
+
+                            hpf.SaveAs(sPath + FileName);
+                            consultancyReportDto.Prescription = FileName;
+
+                        }
+                    }
+                }
+
+               
+
+                
                 consultancyReport.ClinicName = consultancyReportDto.ClinicName;
                 consultancyReport.DoctorName = consultancyReportDto.DoctorName;
-                consultancyReport.DateofConsultancy = consultancyReportDto.DateofConsultancy;
+                consultancyReport.DateofConsultancy= consultancyReportDto.DateofConsultancy.Date;
                 consultancyReport.DiseaseName = consultancyReportDto.DiseaseName;
                 consultancyReport.Prescription = consultancyReportDto.Prescription;
                 consultancyReport.IsActive = consultancyReportDto.IsActive;
@@ -80,7 +107,7 @@ namespace MedicalReportBookAPI.Controllers
                     List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive, UId = obj.UId });
+                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive});//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
@@ -109,7 +136,7 @@ namespace MedicalReportBookAPI.Controllers
                 var labReportEntity = new LabReportEntity();
                 labReportEntity.LabName = labReportEntityDto.LabName;
                 labReportEntity.DoctorName = labReportEntityDto.DoctorName;
-                labReportEntity.DateofTest = labReportEntityDto.DateofTest;
+                labReportEntity.DateofTest = labReportEntityDto.DateofTest.Date;
                 labReportEntity.TestName = labReportEntityDto.TestName;
                 labReportEntity.LabReport = labReportEntityDto.LabReport;
                 labReportEntity.IsActive = labReportEntityDto.IsActive;
@@ -154,14 +181,14 @@ namespace MedicalReportBookAPI.Controllers
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest, LabName = obj.LabName, LabReport = obj.LabReport, IsActive = obj.IsActive, UID = obj.UID});
+                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = obj.LabReport, IsActive = obj.IsActive});//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
                 }
-
-
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+
             }
 
 

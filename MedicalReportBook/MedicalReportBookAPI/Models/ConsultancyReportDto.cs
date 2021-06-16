@@ -27,11 +27,11 @@ namespace MedicalReportBookAPI.Models
         public string Prescription { get; set; }
         [Required]
         public bool IsActive { get; set; }
-
-        [ForeignKey("User")]
+       
         public int UId { get; set; }
-        public virtual AppUser User { get; set; }
-      
-        
+       
+
+
+
     }
 }

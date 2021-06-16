@@ -20,7 +20,7 @@ namespace MedicalReportBookEntities.Entities
         public int UserId { get; set; }
         [Required,MaxLength(30),MinLength(3)]
         public string FirstName { get; set; }
-        [MinLength(3),MaxLength(30)]
+        [MinLength(3),MaxLength(30)]         // Remove this
         public string MiddleName { get; set; }
         [MinLength(3), MaxLength(30)]
         public string LastName { get; set; }
@@ -32,7 +32,7 @@ namespace MedicalReportBookEntities.Entities
         public string Address { get; set; }
         [EmailAddress]
         [Required]        
-        public string EmailId { get; set; }
+        public string EmailId { get; set; }//data anotation for making feild unique
         [Required]
         public string UserType { get; set; }
         [Required]

@@ -15,6 +15,7 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
 import { AuthService } from './Services/auth.service';
 import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
+import { AddtestReportComponent } from './addtest-report/addtest-report.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpcon
     DashboardComponent,
     PconsultancyReportComponent,
     PtestReportComponent,
-    AddpconsultancyReportComponent
+    AddpconsultancyReportComponent,
+    AddtestReportComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpcon
 
   ],
   providers: [AuthService],
-  bootstrap: [DashboardComponent]
+  bootstrap:// [DashboardComponent]
+                 [AppComponent]
 })
 export class AppModule { }

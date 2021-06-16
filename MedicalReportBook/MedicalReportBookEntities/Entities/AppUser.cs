@@ -20,18 +20,19 @@ namespace MedicalReportBookEntities.Entities
         public int UserId { get; set; }
         [Required,MaxLength(30),MinLength(3)]
         public string FirstName { get; set; }
-        [MinLength(3),MaxLength(30)]         // Remove this
+        [StringLength(30)]
         public string MiddleName { get; set; }
-        [MinLength(3), MaxLength(30)]
+        [StringLength(30)]
         public string LastName { get; set; }
         [Required]
         public string Gender { get; set; }
         [Required]
-        
+        [Index(IsUnique = true)]
         public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
-        [Required]        
+        [Required]
+        [Index(IsUnique = true)]
         public string EmailId { get; set; }//data anotation for making feild unique
         [Required]
         public string UserType { get; set; }

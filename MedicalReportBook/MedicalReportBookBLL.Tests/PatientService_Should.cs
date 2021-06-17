@@ -67,7 +67,7 @@ namespace MedicalReportBookBLL.Tests
         [Test]
         public void ViewLabReportByTestName()
         {
-            var TestName = "xray";
+            var TestName = "xray";//add 'xray' to pass
             var id = 1;
             var result = service.ViewLabReportByTestName(id, TestName);
             CollectionAssert.IsNotEmpty(result);

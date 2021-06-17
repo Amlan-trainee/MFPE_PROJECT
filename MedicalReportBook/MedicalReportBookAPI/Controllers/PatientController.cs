@@ -25,7 +25,7 @@ namespace MedicalReportBookAPI.Controllers
         }
         [HttpPost]
         [Route("api/Patient/AddConsultancyReport")]
-        public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)
+        public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)//add Converter class obj here
         {
             if(ModelState.IsValid==false)
             {

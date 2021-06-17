@@ -123,6 +123,7 @@
     </Compile>
     <Compile Include="Models\AppUserDto.cs" />
     <Compile Include="Models\ConsultancyReportDto.cs" />
+    <Compile Include="Models\ConsultancyReportDtoConverter.cs" />
     <Compile Include="Models\LabReportEntityDto.cs" />
     <Compile Include="Models\UserLoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

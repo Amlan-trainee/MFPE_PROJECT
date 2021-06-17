@@ -56,7 +56,7 @@ namespace MedicalReportBookBLL
 
 
         }
-        public List<LabReportEntity> ViewLabReportOfPatient(string EmailId, string TestName) //give id (input it) include ,,image 
+        public List<LabReportEntity> ViewLabReportOfPatient(string EmailId, string TestName) // image, get part is not returning badrequest,en
         {
             try
             {

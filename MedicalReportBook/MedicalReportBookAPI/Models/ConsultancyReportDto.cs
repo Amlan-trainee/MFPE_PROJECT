@@ -1,6 +1,7 @@
 ﻿using MedicalReportBookEntities.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web;
 
 namespace MedicalReportBookAPI.Models
 {
+   // [TypeConverter(typeof(ConsultancyReportDtoConverter))] //add this
     public class ConsultancyReportDto
     {
         [Key]

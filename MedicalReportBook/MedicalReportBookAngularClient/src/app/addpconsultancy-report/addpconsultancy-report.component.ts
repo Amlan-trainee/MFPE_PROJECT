@@ -19,7 +19,7 @@ frmCReport:FormGroup;
      DiseaseName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      Prescription:new FormControl('',Validators.required),
      IsActive:new FormControl('',Validators.required),
-    UId:new FormControl('',Validators.required)
+    UId:localStorage.getItem('UId')
 
     });
    }

@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AdminAuthService } from '../Services/admin-auth.service';
 import { AuthService } from '../Services/auth.service';
 
 @Component({
@@ -9,8 +10,10 @@ import { AuthService } from '../Services/auth.service';
 })
 export class DashboardComponent implements OnInit , OnDestroy {
   subs: Subscription = new Subscription;
+  asubs: Subscription = new Subscription;
   userLoggedIn: boolean = false;
-  constructor(private as:AuthService) { }
+  adminLoggedIn: boolean = false;
+  constructor(private as:AuthService,private ass:AdminAuthService) { }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -19,10 +22,13 @@ export class DashboardComponent implements OnInit , OnDestroy {
 
   ngOnInit(): void {
     this.subs=this.as.OnLoggedIn.subscribe(result => this.userLoggedIn = result);
+
+    this.asubs=this.ass.OnAdminLoggedIn.subscribe(result => this.adminLoggedIn = result);
   }
 
   logout(){
     this.as.doLogin(false);
+    this.ass.doAdminLogin(false);
   }
 
 }

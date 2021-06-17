@@ -114,7 +114,7 @@
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']" >Register</a>
       </li>
 
-      <li class="nav-item active" *ngIf='userLoggedIn'>
+      <li class="nav-item active" *ngIf='userLoggedIn || adminLoggedIn'>
         <a class="nav-link" [routerLink]="['/consultancy-report']">Consultancy Report</a>
     </li>
     <li class="nav-item active" *ngIf='userLoggedIn'>

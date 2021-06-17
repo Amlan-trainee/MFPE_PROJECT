@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace MedicalReportBookAPI.Controllers
@@ -33,33 +34,7 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                var consultancyReport = new ConsultancyReport();
-                //string sPath = "";
-                //sPath = System.Web.Hosting.HostingEnvironment.MapPath("~/Image/");
-
-
-                //System.Web.HttpFileCollection hfc = System.Web.HttpContext.Current.Request.Files;
-
-                //for (int iCnt = 0; iCnt <= hfc.Count - 1; iCnt++)
-                //{
-                //    System.Web.HttpPostedFile hpf = hfc[iCnt];
-                //    if (hpf.ContentLength > 0)
-                //    {
-                //        string FileName = (Path.GetFileName(hpf.FileName));
-                //        if (!File.Exists(sPath + FileName))
-                //        {
-                //            // SAVE THE FILES IN THE FOLDER.  
-
-                //            hpf.SaveAs(sPath + FileName);
-                //            consultancyReportDto.Prescription = FileName;
-
-                //        }
-                //    }
-                //}
-
-               
-
-                
+                var consultancyReport = new ConsultancyReport(); 
                 consultancyReport.ClinicName = consultancyReportDto.ClinicName;
                 consultancyReport.DoctorName = consultancyReportDto.DoctorName;
                 consultancyReport.DateofConsultancy= consultancyReportDto.DateofConsultancy.Date;
@@ -67,6 +42,8 @@ namespace MedicalReportBookAPI.Controllers
                 consultancyReport.Prescription = consultancyReportDto.Prescription;
                 consultancyReport.IsActive = consultancyReportDto.IsActive;
                 consultancyReport.UId = consultancyReportDto.UId;
+                var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
+                consultancyReportDto.File.SaveAs(uploadedImagePath + consultancyReportDto.Prescription);
 
                 var result=  patientService.AddConsultancyReport(consultancyReport);
                 if(result)
@@ -97,9 +74,10 @@ namespace MedicalReportBookAPI.Controllers
                 if(objs!=null)
                 {
                     List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive});//Not retoring UserId as output
+                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl+obj.Prescription, IsActive = obj.IsActive});//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 

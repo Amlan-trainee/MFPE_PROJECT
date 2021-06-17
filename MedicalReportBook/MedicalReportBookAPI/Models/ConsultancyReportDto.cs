@@ -6,12 +6,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Http.ModelBinding;
 
 namespace MedicalReportBookAPI.Models
 {
    // [TypeConverter(typeof(ConsultancyReportDtoConverter))] //add this
+   [ModelBinder(typeof(ConsultancyReportDtoBinder))]
     public class ConsultancyReportDto
-    {
+    { 
         [Key]
         public int CR_Id { get; set; }
         [Required, MaxLength(30), MinLength(3)]
@@ -24,9 +26,10 @@ namespace MedicalReportBookAPI.Models
         public string ClinicName { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string DiseaseName { get; set; }
-        [Required]
+     
         [Column(TypeName = "varchar(Max)")]
         public string Prescription { get; set; }
+        public HttpPostedFile File { get; set; }
         [Required]
         public bool IsActive { get; set; }
        

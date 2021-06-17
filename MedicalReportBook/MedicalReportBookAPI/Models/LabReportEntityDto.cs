@@ -20,9 +20,10 @@ namespace MedicalReportBookAPI.Models
         public DateTime DateofTest { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string TestName { get; set; }
-        [Required]
+       
         [Column(TypeName = "varchar(Max)")]
         public string LabReport { get; set; }
+        public HttpPostedFile File { get; set; }
         [Required]
         public bool IsActive { get; set; }
         

@@ -24,7 +24,7 @@ namespace MedicalReportBookEntities.Entities
         public string ClinicName { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string DiseaseName { get; set; }
-        [Required]
+        
         [Column(TypeName="varchar(Max)")]
         public string Prescription { get; set; }
         [Required]

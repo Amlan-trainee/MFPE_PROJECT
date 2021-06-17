@@ -71,7 +71,7 @@ namespace MedicalReportBookAPI.Controllers
 
 
                 var objs = patientService.ViewConsultancyReportByDiseaseName(id,DiseaseName);
-                if(objs!=null)
+                if(objs!=null && objs.Count != 0)
                 {
                     List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
                     var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
@@ -141,7 +141,7 @@ namespace MedicalReportBookAPI.Controllers
 
                 var objs = patientService.ViewLabReportByTestName(id, TestName);
                 var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
-                if (objs != null)
+                if (objs != null && objs.Count != 0)
                 {
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
                     foreach (var obj in objs)

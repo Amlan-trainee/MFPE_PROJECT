@@ -113,6 +113,10 @@
     <Compile Include="Migrations\202106170624416_changed the entity feilds.designer.cs">
       <DependentUpon>202106170624416_changed the entity feilds.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106170757509_changed email to unique.cs" />
+    <Compile Include="Migrations\202106170757509_changed email to unique.designer.cs">
+      <DependentUpon>202106170757509_changed email to unique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106170624416_changed the entity feilds.resx">
       <DependentUpon>202106170624416_changed the entity feilds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106170757509_changed email to unique.resx">
+      <DependentUpon>202106170757509_changed email to unique.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

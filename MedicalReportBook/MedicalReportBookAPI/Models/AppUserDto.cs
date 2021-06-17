@@ -27,6 +27,7 @@ namespace MedicalReportBookAPI.Models
         public string Address { get; set; }
         [EmailAddress]
         [Required(ErrorMessage = "EmaiId feild is mandatory")]
+        [Index(IsUnique =true)]
         public string EmailId { get; set; }
         [Required]
         public string UserType { get; set; }

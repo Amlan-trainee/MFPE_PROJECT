@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { Register } from "../app/register";
-
+// import{RequestOptions} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +22,11 @@ export class LoginService {
     // debugger;
      var a =this.Url+'Login';
    return this.http.post<any>(a,model,{ headers: this.header});
+
+  //  let headers = new Headers({ 'Content-Type': 'application/json' });
+  //   let options = new RequestOptions({ headers: headers });
+
+  //   return this.http.post(this.Url, JSON.stringify({}), options).catch(this.handleError);
   }
    CreateUser(register:Register)
    {

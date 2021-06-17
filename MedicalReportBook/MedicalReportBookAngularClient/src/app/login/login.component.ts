@@ -30,20 +30,24 @@ export class LoginComponent {
     this.LoginService.Login(this.model).subscribe(
       data => {
         // debugger;
-        if(data.Status=="Success")
+        if(data.Id == 1)
         {
           // this.router.navigate(['/Landing']);
           this.as.doLogin(true);
+          alert("Welcome");
 
           // debugger;
         }
         else{
           this.errorMessage = data.Message;
           this.as.doLogin(false);
+          alert("Error while Login");
+
         }
       },
       error => {
         this.errorMessage = error.message;
+        alert("API connection failed");
       });
   };
 }

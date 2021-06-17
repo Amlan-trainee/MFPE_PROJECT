@@ -17,7 +17,7 @@ frmCReport:FormGroup;
      DateofConsultancy:new FormControl('',Validators.required),
      ClinicName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      DiseaseName:new FormControl('',[Validators.required,Validators.minLength(3)]),
-     Prescription:new FormControl('',Validators.required),
+     Prescription:new FormControl(''),
      IsActive:new FormControl('',Validators.required),
     UId:localStorage.getItem('UId')
 

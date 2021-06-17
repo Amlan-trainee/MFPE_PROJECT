@@ -12,6 +12,9 @@ using System.Web.Http;
 
 namespace MedicalReportBookAPI.Controllers
 {
+    /// <summary>
+    /// Controller class to work with Patient service
+    /// </summary>
     public class PatientController : ApiController
     {
         private readonly PatientService patientService;
@@ -24,9 +27,14 @@ namespace MedicalReportBookAPI.Controllers
             patientService.Dispose();
             base.Dispose(disposing);
         }
+        /// <summary>
+        /// Method to add the Consultancy Report
+        /// </summary>
+        /// <param name="consultancyReportDto"></param>
+        /// <returns>Statuscode 201 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPost]
         [Route("api/Patient/AddConsultancyReport")]
-        public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)//add Converter class obj here
+        public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)
         {
             if(ModelState.IsValid==false)
             {
@@ -57,6 +65,13 @@ namespace MedicalReportBookAPI.Controllers
 
             }
         }
+
+        /// <summary>
+        /// Method to View the Counsultancy Report by passing the Disease Name
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="DiseaseName"></param>
+        /// <returns>List of Counsultancy Report</returns>
         [HttpGet]
         [Route("api/Patient/ViewConsultancyReport/{id}/{DiseaseName}")]
         public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri]int id,[FromUri]string DiseaseName) 
@@ -91,7 +106,11 @@ namespace MedicalReportBookAPI.Controllers
         }
 
 
-
+        /// <summary>
+        /// Method to add the Lab Report
+        /// </summary>
+        /// <param name="labReportEntityDto"></param>
+        /// <returns>Statuscode 201 on sucessful execution else returns 415 Statuscode</returns>
 
         [HttpPost]
         [Route("api/Patient/AddTestReport")]
@@ -126,6 +145,13 @@ namespace MedicalReportBookAPI.Controllers
 
             }
         }
+
+        /// <summary>
+        /// Method to View the Lab Report by passing Test Name
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="TestName"></param>
+        /// <returns>List of Lab Report</returns>
         [HttpGet]
         [Route("api/Patient/ViewLabReport/{id}/{TestName}")]
         public HttpResponseMessage ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)

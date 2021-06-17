@@ -26,6 +26,13 @@ namespace MedicalReportBookAPI.Controllers
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// Method to View the Counsultancy Report by passing the Disease Name and EmailId
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <param name="DiseaseName"></param>
+        /// <returns>List of Counsultancy Report</returns>
+
         [HttpGet]
         [Route("api/Doctor/ViewConsultancyReportOfPatient/{EmailId}/{DiseaseName}")]
         public HttpResponseMessage ViewConsultancyReportOfPatient([FromUri] string EmailId, [FromUri] string DiseaseName)
@@ -58,6 +65,13 @@ namespace MedicalReportBookAPI.Controllers
 
 
         }
+
+        /// <summary>
+        /// Method to View the Lab Report by passing the Test Name and EmailId
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <param name="TestName"></param>
+        /// <returns>List of Counsultancy Report</returns>
         [HttpGet]
         [Route("api/Doctor/ViewLabReportOfPatient/{EmailId}/{TestName}")]
         public HttpResponseMessage ViewLabReportOfPatient([FromUri] string EmailId, [FromUri] string TestName)

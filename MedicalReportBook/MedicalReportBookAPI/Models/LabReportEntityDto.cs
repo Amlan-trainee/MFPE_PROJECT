@@ -5,9 +5,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Http.ModelBinding;
 
 namespace MedicalReportBookAPI.Models
 {
+    [ModelBinder(typeof(LabReportEntityDtoBinder))]
     public class LabReportEntityDto
     {
         [Key]

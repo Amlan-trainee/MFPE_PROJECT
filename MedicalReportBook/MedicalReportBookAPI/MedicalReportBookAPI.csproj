@@ -125,6 +125,7 @@
     <Compile Include="Models\ConsultancyReportDto.cs" />
     <Compile Include="Models\ConsultancyReportDtoBinder.cs" />
     <Compile Include="Models\LabReportEntityDto.cs" />
+    <Compile Include="Models\LabReportEntityDtoBinder.cs" />
     <Compile Include="Models\UserLoginDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

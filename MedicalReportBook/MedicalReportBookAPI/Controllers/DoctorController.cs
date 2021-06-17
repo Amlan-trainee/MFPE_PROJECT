@@ -40,9 +40,10 @@ namespace MedicalReportBookAPI.Controllers
                 if (objs != null)
                 {
                     List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = obj.Prescription, IsActive = obj.IsActive});
+                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = baseurl+obj.Prescription, IsActive = obj.IsActive});
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
@@ -71,9 +72,10 @@ namespace MedicalReportBookAPI.Controllers
                 if (objs != null)
                 {
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
+                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
+                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl+obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 

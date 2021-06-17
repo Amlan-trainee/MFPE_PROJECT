@@ -111,6 +111,8 @@ namespace MedicalReportBookAPI.Controllers
                 labReportEntity.LabReport = labReportEntityDto.LabReport;
                 labReportEntity.IsActive = labReportEntityDto.IsActive;
                 labReportEntity.UID = labReportEntityDto.UID;
+                var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
+                labReportEntityDto.File.SaveAs(uploadedImagePath + labReportEntityDto.LabReport);
 
                 var result = patientService.AddLabReport(labReportEntity);
                 if (result)
@@ -138,12 +140,13 @@ namespace MedicalReportBookAPI.Controllers
 
 
                 var objs = patientService.ViewLabReportByTestName(id, TestName);
+                var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                 if (objs != null)
                 {
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = obj.LabReport, IsActive = obj.IsActive});//Not retoring UserId as output
+                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport =baseurl+ obj.LabReport, IsActive = obj.IsActive});//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 

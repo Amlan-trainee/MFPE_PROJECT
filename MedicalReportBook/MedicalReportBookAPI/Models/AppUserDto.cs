@@ -15,9 +15,9 @@ namespace MedicalReportBookAPI.Models
         public int UserId { get; set; }
         [Required, MaxLength(30), MinLength(3)]
         public string FirstName { get; set; }
-        [MinLength(3), MaxLength(30)]
+        [StringLength(30)]
         public string MiddleName { get; set; }
-        [MinLength(3), MaxLength(30)]
+        [StringLength(30)]
         public string LastName { get; set; }
         [Required(ErrorMessage = "Pleasse enter your gender")]
         public string Gender { get; set; }

@@ -30,10 +30,11 @@ export class LoginComponent {
     this.LoginService.Login(this.model).subscribe(
       data => {
         // debugger;
-        if(data.Id == 1)
+        if(data.Result == 'Admin')
         {
           // this.router.navigate(['/Landing']);
           this.as.doLogin(true);
+          localStorage.setItem('UId',data.Id);
           alert("Welcome");
 
           // debugger;
@@ -51,3 +52,7 @@ export class LoginComponent {
       });
   };
 }
+// function Id(Id: any, Id: any) {
+//   throw new Error('Function not implemented.');
+// }
+

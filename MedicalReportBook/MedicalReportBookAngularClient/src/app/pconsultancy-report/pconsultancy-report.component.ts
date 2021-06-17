@@ -21,6 +21,8 @@ export class PconsultancyReportComponent implements OnInit {
 
   public urlt:string="";
 
+  public UserId=localStorage.getItem('UId');
+
 
   ngOnInit(): void {
     this.formData = new FormGroup({
@@ -30,7 +32,7 @@ export class PconsultancyReportComponent implements OnInit {
   }
 
   onSubmit(data: { DiseaseName: string; }){ 
-     this.urlt= this.url+data.DiseaseName   ;
+     this.urlt= this.url+this.UserId+'/'+data.DiseaseName;
 
      this.http.get(this.urlt).subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},

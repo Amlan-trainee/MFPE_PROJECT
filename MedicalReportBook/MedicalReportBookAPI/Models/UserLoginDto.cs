@@ -6,7 +6,10 @@ using System.Web;
 using Xunit;
 
 namespace MedicalReportBookAPI.Models
-{
+{ 
+    /// <summary>
+    /// Dto class for Login
+    /// </summary>
     public class UserLoginDto
     {
         [EmailAddress]

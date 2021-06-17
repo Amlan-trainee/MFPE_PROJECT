@@ -8,6 +8,9 @@ using System.Web;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// Dto class for AppUser Table
+    /// </summary>
     public class AppUserDto
     {
         

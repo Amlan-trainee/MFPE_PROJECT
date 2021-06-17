@@ -10,8 +10,11 @@ using System.Web.Http.ModelBinding;
 
 namespace MedicalReportBookAPI.Models
 {
-   // [TypeConverter(typeof(ConsultancyReportDtoConverter))] //add this
-   [ModelBinder(typeof(ConsultancyReportDtoBinder))]
+    /// <summary>
+    /// Dto class for ConsultancyReportDto
+    /// </summary>
+  
+    [ModelBinder(typeof(ConsultancyReportDtoBinder))]
     public class ConsultancyReportDto
     { 
         [Key]

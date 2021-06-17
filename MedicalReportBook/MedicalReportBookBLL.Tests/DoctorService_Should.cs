@@ -9,6 +9,9 @@ using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookBLL.Tests
 {
+    /// <summary>
+    /// test class for DoctorService
+    /// </summary>
     [TestFixture]
     public class DoctorService_Should
     {
@@ -24,6 +27,9 @@ namespace MedicalReportBookBLL.Tests
         {
             service.Dispose();
         }
+        /// <summary>
+        /// Test method to test the  ViewConsultancyReportOfPatient of DoctorService
+        /// </summary>
         [Test]
         public void ViewConsultancyReportOfPatient()
         {
@@ -32,6 +38,9 @@ namespace MedicalReportBookBLL.Tests
             var result = service.ViewConsultancyReportOfPatient(EmilId, DiseaseName);
             CollectionAssert.IsNotEmpty(result);
         }
+        /// <summary>
+        /// Test method for the ViewLabReportOfPatient of DoctorService
+        /// </summary>
         [Test]
         public void ViewLabReportOfPatient()
         {

@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookBLL
 {
-   public class DoctorService
+    /// <summary>
+    /// MedicalReportService to interact with MedicalReportBookModel database and do CRUD operation
+    /// </summary>
+    public class DoctorService
     {
         private readonly MedicalReportBookContext context;
 
@@ -22,6 +25,12 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
+        /// <summary>
+        /// This method allows the doctor to see the consultancy report of user that are left unlocked by the user.
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <param name="DiseaseName"></param>
+        /// <returns> list of consultancy report based on disease name and emailid of a particular user or else return null if the method fails</returns>
         public List<ConsultancyReport> ViewConsultancyReportOfPatient(string EmailId, string DiseaseName) //give id (input it) include ,,image 
         {
             try
@@ -56,6 +65,12 @@ namespace MedicalReportBookBLL
 
 
         }
+        /// <summary>
+        /// This method allows the doctor to see the labreport of user that are left unlocked by the user.
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <param name="TestName"></param>
+        /// <returns>list of lab report based on test name and emailid of a particular user or else return null if the method fails</returns>
         public List<LabReportEntity> ViewLabReportOfPatient(string EmailId, string TestName) // image, get part is not returning badrequest,en
         {
             try

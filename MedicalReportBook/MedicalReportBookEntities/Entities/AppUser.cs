@@ -11,6 +11,9 @@ namespace MedicalReportBookEntities.Entities
 {
     public class AppUser
     {
+        /// <summary>
+        /// Class for adding appUsers Table to MedicalReportBookModel database
+        /// </summary>
         public AppUser()
         {
             ConsultancyReports = new HashSet<ConsultancyReport>();
@@ -27,12 +30,12 @@ namespace MedicalReportBookEntities.Entities
         [Required]
         public string Gender { get; set; }
         [Required]
-      //  [Index(IsUnique = true)]
+       //[Index(IsUnique = true)]
         public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
         [Required]
-       // [Index(IsUnique = true)]
+      // [Index(IsUnique = true)]
         public string EmailId { get; set; }//data anotation for making feild unique
         [Required]
         public string UserType { get; set; }
@@ -49,9 +52,9 @@ namespace MedicalReportBookEntities.Entities
         public string ConfirmPassword { get; set; }
 
 
-        public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; }
-        public virtual ICollection<LabReportEntity> LabReports { get; set; }
+        public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; } //navigation property with ConsultancyReport
+        public virtual ICollection<LabReportEntity> LabReports { get; set; } //navigation property with LabReport
 
-       
+
     }
 }

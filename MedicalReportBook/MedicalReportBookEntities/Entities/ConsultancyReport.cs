@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookEntities.Entities
 {
+    /// <summary>
+    /// Class to add ConsultancyReorts Table to MedicalReportBookModel Database
+    /// </summary>
     public class ConsultancyReport
     {
         
@@ -30,9 +33,9 @@ namespace MedicalReportBookEntities.Entities
         [Required]
         public bool IsActive { get; set; }
 
-        [ForeignKey("User")]
-        public int UId { get; set; }
-        public virtual AppUser User { get; set; }
+        [ForeignKey("User")]       
+        public int UId { get; set; }  //navigation property to Appuser
+        public virtual AppUser User { get; set; }  
 
     }
 }

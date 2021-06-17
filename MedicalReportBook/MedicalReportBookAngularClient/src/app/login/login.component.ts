@@ -30,7 +30,7 @@ export class LoginComponent {
     this.LoginService.Login(this.model).subscribe(
       data => {
         // debugger;
-        if(data.Result == 'Admin')
+        if(data.Result == 'User')
         {
           // this.router.navigate(['/Landing']);
           this.as.doLogin(true);

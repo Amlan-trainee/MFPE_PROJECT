@@ -9,6 +9,9 @@ using System.Web.Http;
 
 namespace MedicalReportBookAPI.Controllers
 {
+    /// <summary>
+    /// Controller class to work with Doctor Service
+    /// </summary>
     public class DoctorController : ApiController
     {
 

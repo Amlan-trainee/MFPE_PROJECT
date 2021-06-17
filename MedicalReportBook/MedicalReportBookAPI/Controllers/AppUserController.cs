@@ -12,6 +12,9 @@ using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookAPI.Controllers
 {
+    /// <summary>
+    /// Controller class for working with AppUser Service 
+    /// </summary>
     public class AppUserController : ApiController
     {
         private readonly AppUserService appUserService;
@@ -24,7 +27,11 @@ namespace MedicalReportBookAPI.Controllers
             appUserService.Dispose();
             base.Dispose(disposing);
         }
-
+        /// <summary>
+        /// Action Method for adding a new user to database
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>Statuscode 201 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPost]
         [Route("api/AppUser/Registration")]
         public IHttpActionResult Post(AppUserDto obj)
@@ -61,6 +68,11 @@ namespace MedicalReportBookAPI.Controllers
             }
 
         }
+        /// <summary>
+        /// Action method for checking credentials of user and logging him into his profile
+        /// </summary>
+        /// <param name="userLoginDto"></param>
+        /// <returns>user type and user id on sucessful execution else returns 415 BadRequest Stattus code</returns>
         [HttpPost]
         [Route("api/AppUser/Login")]
         public IHttpActionResult Login(UserLoginDto userLoginDto)
@@ -79,7 +91,7 @@ namespace MedicalReportBookAPI.Controllers
                 appUser.EmailId = userLoginDto.EmailId;
                 appUser.Password = userLoginDto.Password;
                 var result = appUserService.Login(appUser.EmailId,appUser.Password,out int id);
-                if (result!=null)
+                if (result!=null && result!="")
                 {
                     return Ok(new {Result=result ,Id=id});
 

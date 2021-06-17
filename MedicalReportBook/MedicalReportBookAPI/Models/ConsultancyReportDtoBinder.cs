@@ -11,6 +11,9 @@ using System.IO;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// Model Binder class for ConsultancyReportDto
+    /// </summary>
     public class ConsultancyReportDtoBinder : IModelBinder
     {
         public bool BindModel(HttpActionContext actionContext, ModelBindingContext bindingContext)

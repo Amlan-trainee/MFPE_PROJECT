@@ -9,6 +9,9 @@ using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookBLL.Tests
 {
+    /// <summary>
+    /// Test Class for PatientService
+    /// </summary>
     [TestFixture]
    public class PatientService_Should
     {
@@ -24,6 +27,9 @@ namespace MedicalReportBookBLL.Tests
         {
             service.Dispose();
         }
+        /// <summary>
+        /// Test Method for testing AddConsultancyReport method of Patient class
+        /// </summary>
         [Test]
         public void AddConsultancyReport()
         {
@@ -40,6 +46,9 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(expected, result);
 
         }
+        /// <summary>
+        /// Test Method for testing ViewConsultancyReportByDiseaseName method of Patient class
+        /// </summary>
         [Test]
         public void ViewConsultancyReportByDiseaseName()
         {
@@ -48,6 +57,9 @@ namespace MedicalReportBookBLL.Tests
             var result = service.ViewConsultancyReportByDiseaseName(id,DiseaseName);        
             CollectionAssert.IsNotEmpty(result);
         }
+        /// <summary>
+        /// Test Method for testing AddLabReport method of Patient class
+        /// </summary>
         [Test]
         public void AddLabReport()
         {
@@ -64,6 +76,9 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(expected, result);
 
         }
+        /// <summary>
+        /// Test Method for testing ViewLabReportByTestName method of Patient class
+        /// </summary>
         [Test]
         public void ViewLabReportByTestName()
         {

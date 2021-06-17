@@ -9,6 +9,9 @@ using System.Web.Http.ModelBinding;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// Model Binder Class for LabReportEntityDto
+    /// </summary>
     public class LabReportEntityDtoBinder : IModelBinder
     {
         public bool BindModel(HttpActionContext actionContext, ModelBindingContext bindingContext)

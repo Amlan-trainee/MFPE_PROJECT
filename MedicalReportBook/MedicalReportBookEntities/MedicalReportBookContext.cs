@@ -5,6 +5,9 @@ using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookEntities
 {
+    /// <summary>
+    /// Data Context for working with MedicalReportBookModel Database
+    /// </summary>
     public class MedicalReportBookContext : DbContext
     {
         

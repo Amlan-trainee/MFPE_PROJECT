@@ -10,6 +10,9 @@ using System.Web.Http;
 
 namespace MedicalReportBookAPI.Controllers
 {
+    /// <summary>
+    /// Controller class to work with Admin service and Appuser Service
+    /// </summary>
     public class AdminController : ApiController
     {
         private readonly AppUserService appUserService;
@@ -22,6 +25,11 @@ namespace MedicalReportBookAPI.Controllers
             appUserService.Dispose();
             base.Dispose(disposing);
         }
+        /// <summary>
+        /// Action Method for a new doctor or admin to database by admin
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns> Statuscode 201 on sucessful execution else returns 415 Statuscode </returns>
         [HttpPost]
         [Route("api/Admin/AddDrAdm")]
         public IHttpActionResult AddDoctorOrAdmin(AppUserDto obj)

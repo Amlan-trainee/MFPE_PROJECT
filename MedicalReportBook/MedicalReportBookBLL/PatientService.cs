@@ -12,7 +12,11 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookBLL
 {
-  public class PatientService
+    
+    /// <summary>
+  /// PatientService to interact with MedicalReportBookModel database and do CRUD operation
+  /// </summary>
+    public class PatientService
     {
         private readonly MedicalReportBookContext context;
 
@@ -25,6 +29,11 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
+        /// <summary>
+        /// AddConsultancyReport -method to add prescriptions to the database along with the required feilds
+        /// </summary>
+        /// <param name="consultancyReport"></param>
+        /// <returns> returns true in case of sucessful adddition of data to database else return false</returns>
         public bool AddConsultancyReport(ConsultancyReport consultancyReport )
         {
             try
@@ -42,6 +51,12 @@ namespace MedicalReportBookBLL
             }
 
         }
+        /// <summary>
+        /// ViewConsultancyReportByDiseaseName -method to view the consultancy  report of a particular user based on disease name
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="DiseaseName"></param>
+        /// <returns>List of consultancy report on sucessful execution else returns null</returns>
         public List<ConsultancyReport> ViewConsultancyReportByDiseaseName(int id ,string DiseaseName) //give id (input it) include ,,image 
         {
             try 
@@ -62,6 +77,11 @@ namespace MedicalReportBookBLL
 
 
         }
+        /// <summary>
+        /// AddLabReport -method to add prescriptions to the database along with the required feilds
+        /// </summary>
+        /// <param name="labReportEntity"></param>
+        /// <returns> returns true in case of sucessful adddition of data to database else return false</returns>
         public bool AddLabReport(LabReportEntity labReportEntity)
         {
             try
@@ -79,6 +99,12 @@ namespace MedicalReportBookBLL
             }
 
         }
+        /// <summary>
+        /// ViewLabReportByTestName -method to view the lab  report of a particular user based on test name
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="TestName"></param>
+        /// <returns>return list of lab reports on sucessful execution esle returns null</returns>
         public List<LabReportEntity> ViewLabReportByTestName(int id, string TestName) //give id (input it) include ,,image 
         {
             try

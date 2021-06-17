@@ -8,7 +8,9 @@ using MedicalReportBookBLL;
 using MedicalReportBookEntities.Entities;
 
 namespace MedicalReportBookBLL.Tests
-{
+{/// <summary>
+/// Test class for AppUserService 
+/// </summary>
     [TestFixture]
    public class AppUserService_Should
     { 
@@ -24,7 +26,9 @@ namespace MedicalReportBookBLL.Tests
         {
             service.Dispose();
         }
-
+        /// <summary>
+        /// Test Method for Adding user method of AppUserService
+        /// </summary>
         [Test]
         public void AddUser()
         {
@@ -44,6 +48,9 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(true, result);
 
         }
+        /// <summary>
+        /// Test method for testing Login method of AppUserService
+        /// </summary>
         [Test]
         public void CheckCredentialsForLogin()
         {

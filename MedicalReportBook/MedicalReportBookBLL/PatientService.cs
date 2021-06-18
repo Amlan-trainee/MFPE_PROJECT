@@ -34,7 +34,7 @@ namespace MedicalReportBookBLL
         /// </summary>
         /// <param name="consultancyReport"></param>
         /// <returns> returns true in case of sucessful adddition of data to database else return false</returns>
-        public bool AddConsultancyReport(ConsultancyReport consultancyReport )
+        public bool AddConsultancyReport(ConsultancyReport consultancyReport)
         {
             try
             {
@@ -126,5 +126,42 @@ namespace MedicalReportBookBLL
 
         }
 
+        //Harish
+        public bool DeleteLabReportByTestName(int id,string TestName)
+        {
+            try
+            {
+                LabReportEntity labReportEntity = (from obj in context.LabReportEntities.Include(user => user.User)
+                            where obj.TestName == TestName && obj.UID == id
+                            select obj).FirstOrDefault();
+                context.LabReportEntities.Remove(labReportEntity);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Deleting prescription... failed", e);
+
+            }
+        }
+
+        //Harish
+        public bool DeleteConsultancyReportByDiseaseName(int id, string DiseaseName)
+        {
+            try
+            {
+                ConsultancyReport consultancyReport = (from obj in context.ConsultancyReports.Include(user => user.User)
+                                                   where obj.DiseaseName == DiseaseName && obj.UId == id
+                                                   select obj).FirstOrDefault();
+                context.ConsultancyReports.Remove(consultancyReport);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Deleting prescription... failed", e);
+
+            }
+        }
     }
 }

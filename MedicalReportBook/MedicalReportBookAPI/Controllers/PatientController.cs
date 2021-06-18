@@ -185,5 +185,51 @@ namespace MedicalReportBookAPI.Controllers
 
         }
 
+        //Harish
+        [HttpDelete]
+        [Route("api/Patient/DeleteLabReport/{id}/{TestName}")]
+        public HttpResponseMessage DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var objs = patientService.DeleteLabReportByTestName(id, TestName);
+                if(objs)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK,"Deleted Successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
+            }
+        }
+
+        //Harish
+        [HttpDelete]
+        [Route("api/Patient/DeleteConsultancyReport/{id}/{DiseaseName}")]
+        public HttpResponseMessage DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var objs = patientService.DeleteConsultancyReportByDiseaseName(id, DiseaseName);
+                if (objs)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
+            }
+        }
+
     }
 }

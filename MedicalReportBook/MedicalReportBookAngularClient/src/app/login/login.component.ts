@@ -35,6 +35,7 @@ export class LoginComponent {
           // this.router.navigate(['/Landing']);
           this.as.doLogin(true);
           localStorage.setItem('UId',data.Id);
+          localStorage.setItem('UType',data.Result);
           alert("Welcome");
 
           // debugger;

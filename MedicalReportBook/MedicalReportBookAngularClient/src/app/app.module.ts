@@ -16,6 +16,7 @@ import { AuthService } from './Services/auth.service';
 import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
 import { AddtestReportComponent } from './addtest-report/addtest-report.component';
+import { DregisterComponent } from './dregister/dregister.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AddtestReportComponent } from './addtest-report/addtest-report.componen
     PconsultancyReportComponent,
     PtestReportComponent,
     AddpconsultancyReportComponent,
-    AddtestReportComponent
+    AddtestReportComponent,
+    DregisterComponent
   ],
   imports: [
     BrowserModule,

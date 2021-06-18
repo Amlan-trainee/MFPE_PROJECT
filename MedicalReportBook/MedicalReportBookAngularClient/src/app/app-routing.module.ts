@@ -5,6 +5,7 @@ import { AddtestReportComponent } from './addtest-report/addtest-report.componen
 import { AfterLoginComponent } from './after-login/after-login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DregisterComponent } from './dregister/dregister.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
@@ -27,7 +28,8 @@ const routes: Routes = [
   //{path: '',redirectTo:'Dashboard' ,pathMatch:'full'},
   //{path: '',component:AppComponent ,pathMatch:'full'},
   {path:'add-consultancy-report',component:AddpconsultancyReportComponent},
-  {path:'add-test-report',component:AddtestReportComponent}
+  {path:'add-test-report',component:AddtestReportComponent},
+  {path:'dregister',component:DregisterComponent}
 ];
 
 @NgModule({

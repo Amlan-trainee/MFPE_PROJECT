@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
-import {Register} from '../register';
-import {Observable} from 'rxjs';
-import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import{FormsModule} from '@angular/forms'
+import { Register } from '../register';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-dregister',
+  templateUrl: './dregister.component.html',
+  styleUrls: ['./dregister.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class DregisterComponent implements OnInit {
   data = false;
   UserForm: any;
   massage: string = "";
@@ -56,6 +54,4 @@ export class RegisterComponent implements OnInit {
       alert('not saved');
     });
   }
-  
- 
 }

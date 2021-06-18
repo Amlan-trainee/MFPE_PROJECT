@@ -68,7 +68,7 @@ namespace MedicalReportBookAPI.Controllers
 
             //Harish
         [HttpDelete]
-        [Route("api/Admin/DeleteDoctor/{EmailId}")]
+        [Route("api/Admin/RemoveDoctor")]
         public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId)
         {
             if (ModelState.IsValid == false)

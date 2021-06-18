@@ -66,10 +66,14 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
-            //Harish
+         /// <summary>
+         /// 
+         /// </summary>
+         /// <param name="EmailId"></param>
+         /// <returns></returns>
         [HttpDelete]
-        [Route("api/Admin/RemoveDoctor")]
-        public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId)
+        [Route("api/Admin/RemoveDoctor/{EmailId}/{UserId}")]
+        public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId,[FromUri] int UserId)
         {
             if (ModelState.IsValid == false)
             {
@@ -77,7 +81,7 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                bool result = appUserService.DeleteDoctor(EmailId);
+                bool result = appUserService.DeleteDoctor(EmailId,UserId);
                 if (result)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");

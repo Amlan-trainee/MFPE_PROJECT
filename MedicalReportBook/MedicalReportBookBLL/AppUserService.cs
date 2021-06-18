@@ -85,13 +85,18 @@ namespace MedicalReportBookBLL
 
         }
 
-        //Harish
-        public bool DeleteDoctor(string EmailId)
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="EmailId"></param>
+       /// <param name="userType"></param>
+       /// <returns></returns>
+        public bool DeleteDoctor(string EmailId,int UserId)
         {
             try
             {
                 AppUser query = (from user in context.appUsers
-                                 where user.EmailId == EmailId
+                                 where user.EmailId == EmailId && user.UserType=="Doctor" && user.UserId==UserId
                                  select user).FirstOrDefault();
                 context.appUsers.Remove(query);
                 int RowsAffected = context.SaveChanges();

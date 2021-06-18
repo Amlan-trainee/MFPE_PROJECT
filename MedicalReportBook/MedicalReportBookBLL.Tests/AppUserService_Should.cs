@@ -39,8 +39,8 @@ namespace MedicalReportBookBLL.Tests
             obj.Gender = "Male";
             obj.PhoneNumber = 1234444890;
             obj.Address = "123333st";
-            obj.EmailId = "abcdef@gmail.com";
-            obj.UserType = "User";
+            obj.EmailId = "doc@gmail.com";
+            obj.UserType = "Doctor";
             obj.Password = "jojojose";
             obj.ConfirmPassword = "jojojose";
             bool result = service.AddUser(obj);
@@ -64,12 +64,15 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(expectedUserId, id);
         }
 
-        //Harish
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void DeleteDoctor()
         {
-            var EmailId = "barath@gmail.com";
-            var actual = service.DeleteDoctor(EmailId);
+            var EmailId = "doc@gmail.com";
+            var UserId = 0;
+            var actual = service.DeleteDoctor(EmailId,UserId);
             var expected = true;
             Assert.That(expected, Is.EqualTo(actual));
         }

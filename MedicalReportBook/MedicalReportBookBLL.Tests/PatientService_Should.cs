@@ -88,24 +88,30 @@ namespace MedicalReportBookBLL.Tests
             CollectionAssert.IsNotEmpty(result);
         }
 
-        //Harish
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void DeleteLabReportByTestName()
         {
-            var TestName = "BloodTest";
+            var TestName = "xray";
             var id = 1;
-            var actual = service.DeleteLabReportByTestName(id, TestName);
+            var Lr_Id = 1003;
+            var actual = service.DeleteLabReportByTestName(id, TestName,Lr_Id);
             var expected = true;
             Assert.That(expected, Is.EqualTo(actual));
         }
 
-        //Harish
+       /// <summary>
+       /// 
+       /// </summary>
         [Test]
         public void DeleteConsultancyReportByDiseasetName()
         {
-            var DiseaseName = "allergy";
+            var DiseaseName = "Stomach Ache";
             var id = 1;
-            var actual = service.DeleteConsultancyReportByDiseaseName(id, DiseaseName);
+            var CR_Id = 10;
+            var actual = service.DeleteConsultancyReportByDiseaseName(id, DiseaseName,CR_Id);
             var expected = true;
             Assert.That(expected, Is.EqualTo(actual));
         }

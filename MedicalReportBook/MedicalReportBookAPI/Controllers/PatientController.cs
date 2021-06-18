@@ -36,16 +36,16 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/AddConsultancyReport")]
         public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)
         {
-            if(ModelState.IsValid==false)
+            if (ModelState.IsValid == false)
             {
                 return BadRequest(ModelState);
             }
             else
             {
-                var consultancyReport = new ConsultancyReport(); 
+                var consultancyReport = new ConsultancyReport();
                 consultancyReport.ClinicName = consultancyReportDto.ClinicName;
                 consultancyReport.DoctorName = consultancyReportDto.DoctorName;
-                consultancyReport.DateofConsultancy= consultancyReportDto.DateofConsultancy.Date;
+                consultancyReport.DateofConsultancy = consultancyReportDto.DateofConsultancy.Date;
                 consultancyReport.DiseaseName = consultancyReportDto.DiseaseName;
                 consultancyReport.Prescription = consultancyReportDto.Prescription;
                 consultancyReport.IsActive = consultancyReportDto.IsActive;
@@ -53,8 +53,8 @@ namespace MedicalReportBookAPI.Controllers
                 var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
                 consultancyReportDto.File.SaveAs(uploadedImagePath + consultancyReportDto.Prescription);
 
-                var result=  patientService.AddConsultancyReport(consultancyReport);
-                if(result)
+                var result = patientService.AddConsultancyReport(consultancyReport);
+                if (result)
                 {
                     return Ok();
                 }
@@ -74,9 +74,9 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns>List of Counsultancy Report</returns>
         [HttpGet]
         [Route("api/Patient/ViewConsultancyReport/{id}/{DiseaseName}")]
-        public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri]int id,[FromUri]string DiseaseName) 
+        public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri] int id, [FromUri] string DiseaseName)
         {
-           
+
             if (ModelState.IsValid == false)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -85,20 +85,20 @@ namespace MedicalReportBookAPI.Controllers
             {
 
 
-                var objs = patientService.ViewConsultancyReportByDiseaseName(id,DiseaseName);
-                if(objs!=null && objs.Count != 0)
+                var objs = patientService.ViewConsultancyReportByDiseaseName(id, DiseaseName);
+                if (objs != null && objs.Count != 0)
                 {
                     List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
                     var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl+obj.Prescription, IsActive = obj.IsActive});//Not retoring UserId as output
+                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
                 }
 
-               
+
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
 
@@ -156,7 +156,7 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/ViewLabReport/{id}/{TestName}")]
         public HttpResponseMessage ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)
         {
-            
+
             if (ModelState.IsValid == false)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -172,7 +172,7 @@ namespace MedicalReportBookAPI.Controllers
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport =baseurl+ obj.LabReport, IsActive = obj.IsActive});//Not retoring UserId as output
+                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
@@ -185,10 +185,16 @@ namespace MedicalReportBookAPI.Controllers
 
         }
 
-        //Harish
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="TestName"></param>
+       /// <param name="Lr_Id"></param>
+       /// <returns></returns>
         [HttpDelete]
-        [Route("api/Patient/DeleteLabReport/{id}/{TestName}")]
-        public HttpResponseMessage DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName)
+        [Route("api/Patient/DeleteLabReport/{id}/{TestName}/{Lr_Id}")]
+        public HttpResponseMessage DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName, [FromUri] int Lr_Id)
         {
             if (ModelState.IsValid == false)
             {
@@ -196,10 +202,10 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                var objs = patientService.DeleteLabReportByTestName(id, TestName);
-                if(objs)
+                var objs = patientService.DeleteLabReportByTestName(id, TestName, Lr_Id);
+                if (objs)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK,"Deleted Successfully");
+                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
                 }
                 else
                 {
@@ -208,10 +214,16 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
-        //Harish
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="DiseaseName"></param>
+        /// <param name="CR_Id"></param>
+        /// <returns></returns>
         [HttpDelete]
-        [Route("api/Patient/DeleteConsultancyReport/{id}/{DiseaseName}")]
-        public HttpResponseMessage DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName)
+        [Route("api/Patient/DeleteConsultancyReport/{id}/{DiseaseName}/{CR_Id}")] 
+        public HttpResponseMessage DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName, [FromUri] int CR_Id)
         {
             if (ModelState.IsValid == false)
             {
@@ -219,7 +231,7 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                var objs = patientService.DeleteConsultancyReportByDiseaseName(id, DiseaseName);
+                var objs = patientService.DeleteConsultancyReportByDiseaseName(id, DiseaseName,CR_Id);
                 if (objs)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");

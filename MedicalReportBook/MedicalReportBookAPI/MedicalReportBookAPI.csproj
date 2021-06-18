@@ -124,6 +124,7 @@
     <Compile Include="Models\AppUserDto.cs" />
     <Compile Include="Models\ConsultancyReportDto.cs" />
     <Compile Include="Models\ConsultancyReportDtoBinder.cs" />
+    <Compile Include="Models\Doubt.cs" />
     <Compile Include="Models\LabReportEntityDto.cs" />
     <Compile Include="Models\LabReportEntityDtoBinder.cs" />
     <Compile Include="Models\UserLoginDto.cs" />

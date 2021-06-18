@@ -126,13 +126,18 @@ namespace MedicalReportBookBLL
 
         }
 
-        //Harish
-        public bool DeleteLabReportByTestName(int id,string TestName)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="TestName"></param>
+        /// <returns></returns>
+        public bool DeleteLabReportByTestName(int id,string TestName,int Lr_Id)
         {
             try
             {
                 LabReportEntity labReportEntity = (from obj in context.LabReportEntities.Include(user => user.User)
-                            where obj.TestName == TestName && obj.UID == id
+                            where obj.TestName == TestName && obj.UID == id && obj.Lr_Id==Lr_Id
                             select obj).FirstOrDefault();
                 context.LabReportEntities.Remove(labReportEntity);
                 int RowsAffected = context.SaveChanges();
@@ -145,13 +150,18 @@ namespace MedicalReportBookBLL
             }
         }
 
-        //Harish
-        public bool DeleteConsultancyReportByDiseaseName(int id, string DiseaseName)
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="id"></param>
+       /// <param name="DiseaseName"></param>
+       /// <returns></returns>
+        public bool DeleteConsultancyReportByDiseaseName(int id, string DiseaseName,int CR_Id)
         {
             try
             {
                 ConsultancyReport consultancyReport = (from obj in context.ConsultancyReports.Include(user => user.User)
-                                                   where obj.DiseaseName == DiseaseName && obj.UId == id
+                                                   where obj.DiseaseName == DiseaseName && obj.UId == id && obj.CR_Id==CR_Id
                                                    select obj).FirstOrDefault();
                 context.ConsultancyReports.Remove(consultancyReport);
                 int RowsAffected = context.SaveChanges();

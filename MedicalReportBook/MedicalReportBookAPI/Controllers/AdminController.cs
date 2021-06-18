@@ -64,7 +64,30 @@ namespace MedicalReportBookAPI.Controllers
                 }
 
             }
-
         }
+
+            //Harish
+        [HttpDelete]
+        [Route("api/Admin/DeleteDoctor/{EmailId}")]
+        public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                bool result = appUserService.DeleteDoctor(EmailId);
+                if (result)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                }
+            }
+        }
+
     }
 }

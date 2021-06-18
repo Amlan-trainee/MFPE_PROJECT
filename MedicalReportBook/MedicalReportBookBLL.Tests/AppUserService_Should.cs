@@ -63,6 +63,16 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(expectedUserType, result);
             Assert.AreEqual(expectedUserId, id);
         }
+
+        //Harish
+        [Test]
+        public void DeleteDoctor()
+        {
+            var EmailId = "barath@gmail.com";
+            var actual = service.DeleteDoctor(EmailId);
+            var expected = true;
+            Assert.That(expected, Is.EqualTo(actual));
+        }
        
     }
 }

@@ -85,6 +85,23 @@ namespace MedicalReportBookBLL
 
         }
 
+        //Harish
+        public bool DeleteDoctor(string EmailId)
+        {
+            try
+            {
+                AppUser query = (from user in context.appUsers
+                                 where user.EmailId == EmailId
+                                 select user).FirstOrDefault();
+                context.appUsers.Remove(query);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Deleting Doctor... failed", e);
 
+            }
+        }
     }
 }

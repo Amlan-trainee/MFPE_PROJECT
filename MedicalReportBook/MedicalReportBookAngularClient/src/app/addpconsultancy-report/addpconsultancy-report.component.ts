@@ -44,9 +44,9 @@ export class AddpconsultancyReportComponent implements OnInit {
     if(this.frmCReport.valid){
       // let p:ConsultancyReport=this.frmCReport.value as ConsultancyReport;
       this.http.post('http://localhost:57071/api/Patient/AddConsultancyReport', fd).subscribe(data=>{
-        alert('product saved');
+        alert('Prescription Saved');
       },error=>{
-        alert('not saved');
+        alert('Prescription not Saved');
       })
 
     }

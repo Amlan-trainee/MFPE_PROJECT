@@ -38,7 +38,7 @@ export class LoginComponent {
           this.as.doLogin(true);
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
-          alert("Welcome");
+          alert("Login successful for User");
 
           // debugger;
         }
@@ -49,7 +49,7 @@ export class LoginComponent {
           this.ass.doAdminLogin(true);
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
-          alert("Welcome");
+          alert("Login successful for Admin");
 
           // debugger;
         }
@@ -60,7 +60,7 @@ export class LoginComponent {
           this.das.doDoctorLogin(true);
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
-          alert("Welcome");
+          alert("Login successful for Doctor ");
 
           // debugger;
         }

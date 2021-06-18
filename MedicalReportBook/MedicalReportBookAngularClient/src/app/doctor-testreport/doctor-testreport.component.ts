@@ -15,11 +15,11 @@ export class DoctorTestreportComponent implements OnInit {
   constructor(private http :HttpClient) {
   
   }
-  public url:string="http://localhost:57071/api/Patient/ViewLabReport/";
+  public url:string="http://localhost:57071/api/Doctor/ViewLabReportOfPatient/";
 
   public urlt:string="";
 
-  public UserId:string="";
+  public EmailId:string="";
 
   ngOnInit(): void {
     this.formData=new FormGroup({
@@ -28,8 +28,8 @@ export class DoctorTestreportComponent implements OnInit {
 
   }
 
-    ontestsubmit(data: { UserId: string;TestName: string; }){ 
-      this.urlt= this.url+data.UserId+'/'+data.TestName;
+    ontestsubmit(data: { EmailId: string;TestName: string; }){ 
+      this.urlt= this.url+data.EmailId+'/'+data.TestName;
  
       this.http.get(this.urlt).subscribe(
        (data)=>{this.treports= data as TestReport[];},

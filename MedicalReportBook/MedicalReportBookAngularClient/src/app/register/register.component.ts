@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.UserForm = this.formbulider.group({
 
       FirstName: ['', [Validators.required]],
-      MiddleName: ['', [Validators.required]],
+      MiddleName: [],
       LastName: ['', [Validators.required]],
       Gender: ['', [Validators.required]],
       PhoneNumber: ['', [Validators.required,Validators.maxLength(10)]],

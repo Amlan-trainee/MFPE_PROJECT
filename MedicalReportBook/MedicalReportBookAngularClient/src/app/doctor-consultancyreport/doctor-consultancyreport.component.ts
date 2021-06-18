@@ -17,11 +17,11 @@ export class DoctorConsultancyreportComponent implements OnInit {
   }
 
 
-  public url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
+  public url:string="http://localhost:57071/api/Doctor/ViewConsultancyReportOfPatient/";
 
   public urlt:string="";
 
-  public UserId:string="";
+  public EmailId:string="";
 
 
   ngOnInit(): void {
@@ -31,8 +31,8 @@ export class DoctorConsultancyreportComponent implements OnInit {
     
   }
 
-  onSubmit(data: { UserId: string; DiseaseName: string; }){ 
-     this.urlt= this.url+data.UserId+'/'+data.DiseaseName;
+  onSubmit(data: { EmailId:string; DiseaseName: string; }){ 
+     this.urlt= this.url+data.EmailId+'/'+data.DiseaseName;
 
      this.http.get(this.urlt).subscribe(
       (data)=>{this.reports= data as ConsultancyReport[];},

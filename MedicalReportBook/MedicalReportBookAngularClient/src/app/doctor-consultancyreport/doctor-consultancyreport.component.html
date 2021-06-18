@@ -1,0 +1,38 @@
+<h1>Report</h1>
+<div class="row">
+    <div class="col-md-12">
+      
+      <form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
+        <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
+        <input type="text" name="UserId" placeholder="UserId" ngModel required>
+        
+        <input type="submit" value="Search">
+      </form>
+
+
+        <table class="table ">
+            <tr>
+                <!-- <th>Report Id</th> -->
+                <th>Doctor Name</th>
+                <th>Date of Consultancy</th>
+                <th>Clinic Name</th>
+                <th>Disease Name</th>
+                <th>Prescription</th>
+                <th>Lock</th>
+                
+            </tr>
+
+            <tr *ngFor="let r of reports">
+                <!-- <td>{{r.CR_Id}}</td> -->
+                <td>{{r.DoctorName}}</td>
+                <td>{{r.DateofConsultancy}}</td>
+                <td>{{r.ClinicName}}</td>
+                <td>{{r.DiseaseName}}</td>
+                <td>{{r.Prescription}}</td>
+                <td>{{r.IsActive}}</td>
+               
+                
+            </tr>
+        </table>
+    </div>
+</div>

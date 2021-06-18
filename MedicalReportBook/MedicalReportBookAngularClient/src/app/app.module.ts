@@ -17,6 +17,8 @@ import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
 import { AddtestReportComponent } from './addtest-report/addtest-report.component';
 import { DregisterComponent } from './dregister/dregister.component';
+import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
+import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { DregisterComponent } from './dregister/dregister.component';
     PtestReportComponent,
     AddpconsultancyReportComponent,
     AddtestReportComponent,
-    DregisterComponent
+    DregisterComponent,
+    DoctorConsultancyreportComponent,
+    DoctorTestreportComponent
   ],
   imports: [
     BrowserModule,

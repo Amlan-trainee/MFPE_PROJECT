@@ -2,12 +2,12 @@
   Add-Test-Report
 </h1>
 <div id="container">
-<form novalidate [formGroup]="frmCReport" (ngSubmit) ="SaveReport()">
-  <div>
+<form novalidate [formGroup]="frmTReport" (ngSubmit) ="SaveReport()">
+  <!-- <div>
     <label>Enter Test Report Id</label><br/>
     <input type="string" name="cr_id" formControlName="Lr_Id"><br/>
 
-  </div><br/>
+  </div><br/> -->
   <div>
     <label>Enter Doctor Name</label><br/>
     <input type="string" name="doctor_name" formControlName="DoctorName"><br/>
@@ -38,9 +38,14 @@
       <span *ngIf="f.TestName.errors?.minLength">Minimum Length is required</span>
     </div>
   </div>
-  <div>
+  <!-- <div>
     <label>Enter Lab Report</label><br/>
     <input type="file" name="prescription" formControlName="LabReport"><br/>
+
+  </div> -->
+  <div>
+    <label>Enter Prescription</label><br/>
+    <input type="file" name="Lab Report" (change)="fileSelected($event)"><br/>
 
   </div>
   <div>
@@ -48,13 +53,13 @@
     <input type="checkbox" name="active_state" formControlName="IsActive"><br/>
 
   </div>
-  <div>
+  <!-- <div>
     <label>Enter User Id</label><br/>
     <input type="string" name="user_id" formControlName="UID"><br/>
 
-  </div><br/>
+  </div><br/> -->
   <div>
-    <input type="submit" [disabled]="frmCReport.invalid" value="save report">
+    <input type="submit" [disabled]="frmTReport.invalid" value="save report">
   </div>
 
 </form>

@@ -5,6 +5,8 @@ import { AddtestReportComponent } from './addtest-report/addtest-report.componen
 import { AfterLoginComponent } from './after-login/after-login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
+import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 import { DregisterComponent } from './dregister/dregister.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
@@ -29,7 +31,9 @@ const routes: Routes = [
   //{path: '',component:AppComponent ,pathMatch:'full'},
   {path:'add-consultancy-report',component:AddpconsultancyReportComponent},
   {path:'add-test-report',component:AddtestReportComponent},
-  {path:'dregister',component:DregisterComponent}
+  {path:'dregister',component:DregisterComponent},
+  {path:'doctor-view-consultancy-report',component:DoctorConsultancyreportComponent},
+  {path:'doctor-view-test-report',component:DoctorTestreportComponent}
 ];
 
 @NgModule({

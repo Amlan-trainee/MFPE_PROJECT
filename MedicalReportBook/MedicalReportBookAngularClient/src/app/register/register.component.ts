@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
       Gender: ['', [Validators.required]],
       PhoneNumber: ['', [Validators.required,Validators.maxLength(10)]],
       Address: ['', [Validators.required]],
-      UserType:localStorage.getItem('UType'),
+      UserType:'User',
       Password: ['', [Validators.required,Validators.minLength(8)]],
       ConfirmPassword:['', [Validators.required,Validators.minLength(8)]],
       EmailId: ['', [Validators.required,Validators.email]],
@@ -50,10 +50,10 @@ export class RegisterComponent implements OnInit {
       this.data = true;
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
-      alert('product saved');
+      alert('User Registered');
     }),
     error=>{
-      alert('not saved');
+      alert('User Registration Failed');
     });
   }
   

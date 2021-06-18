@@ -25,7 +25,7 @@ export class DregisterComponent implements OnInit {
       Gender: ['', [Validators.required]],
       PhoneNumber: ['', [Validators.required,Validators.maxLength(10)]],
       Address: ['', [Validators.required]],
-      UserType:localStorage.getItem('UType'),
+      UserType:'Doctor',
       Password: ['', [Validators.required,Validators.minLength(8)]],
       ConfirmPassword:['', [Validators.required,Validators.minLength(8)]],
       EmailId: ['', [Validators.required,Validators.email]],
@@ -48,10 +48,10 @@ export class DregisterComponent implements OnInit {
       this.data = true;
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
-      alert('product saved');
+      alert('Doctor Registered');
     }),
     error=>{
-      alert('not saved');
+      alert('Doctor Registeration Failed');
     });
   }
 }

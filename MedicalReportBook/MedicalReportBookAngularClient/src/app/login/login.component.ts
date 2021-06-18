@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { AdminAuthService } from '../Services/admin-auth.service';
 import { AuthService } from '../Services/auth.service';
+import { DoctorAuthService } from '../Services/doctor-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,7 @@ export class LoginComponent {
   public model : any={};
 
   errorMessage: string = "";
-  constructor(private router:Router,private LoginService:LoginService,private as:AuthService) { }
+  constructor(private router:Router,private LoginService:LoginService,private as:AuthService,private ass:AdminAuthService,private das:DoctorAuthService) { }
 
   get f(){
     return this.model.controls;
@@ -34,6 +36,28 @@ export class LoginComponent {
         {
           // this.router.navigate(['/Landing']);
           this.as.doLogin(true);
+          localStorage.setItem('UId',data.Id);
+          localStorage.setItem('UType',data.Result);
+          alert("Welcome");
+
+          // debugger;
+        }
+
+        else if(data.Result == 'Admin')
+        {
+          // this.router.navigate(['/Landing']);
+          this.ass.doAdminLogin(true);
+          localStorage.setItem('UId',data.Id);
+          localStorage.setItem('UType',data.Result);
+          alert("Welcome");
+
+          // debugger;
+        }
+
+        else if(data.Result == 'Doctor')
+        {
+          // this.router.navigate(['/Landing']);
+          this.das.doDoctorLogin(true);
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
           alert("Welcome");

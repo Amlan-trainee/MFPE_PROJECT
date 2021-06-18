@@ -12,27 +12,39 @@ import { TestReport } from '../Source/test-report';
 })
 export class AddtestReportComponent implements OnInit {
 
-  frmCReport:FormGroup;
+  frmTReport:FormGroup;
+  selectedFile!: File;
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
-    this.frmCReport=this.formBuilder.group({
-     Lr_Id:new FormControl('',Validators.required) ,
+    this.frmTReport=this.formBuilder.group({
+    //  Lr_Id:new FormControl('',Validators.required) ,
      DoctorName :new FormControl('',[Validators.required,Validators.minLength(3)]),
      LabName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      DateofTest:new FormControl('',Validators.required),
      TestName:new FormControl('',[Validators.required,Validators.minLength(3)]),
-     LabReport:new FormControl('',Validators.required),
+    //  LabReport:new FormControl('',Validators.required),
      IsActive:new FormControl('',Validators.required),
-    UID:new FormControl('',Validators.required)
+    UID:localStorage.getItem('UId')
 
     });
    }
+
+   fileSelected($event:any){
+    this.selectedFile = $event.target.files[0];
+    console.log(this.selectedFile);
+  }
+
    get f(){
-     return this.frmCReport.controls;
+     return this.frmTReport.controls;
    }
    SaveReport(){
-    if(this.frmCReport.valid){
-      let p:TestReport=this.frmCReport.value as TestReport;
-      this.http.post('add test report wala api ',p).subscribe(data=>{
+
+    const fd = new FormData();
+     fd.append('uploadedfile',this.selectedFile);
+     fd.append('labreport' , JSON.stringify(this.frmTReport.value));
+
+    if(this.frmTReport.valid){
+      // let p:TestReport=this.frmCReport.value as TestReport;
+      this.http.post('http://localhost:57071/api/Patient/AddTestReport',fd).subscribe(data=>{
         alert('test report saved');
       },error=>{
         alert('not saved');

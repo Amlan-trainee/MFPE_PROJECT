@@ -110,13 +110,20 @@
       <li class="nav-item active">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']" *ngIf='!userLoggedIn' >Login</a>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item active" *ngIf='!userLoggedIn && !adminLoggedIn && !doctorLoggedIn'>
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']" >Register</a>
       </li>
 
-      <li class="nav-item active" *ngIf='userLoggedIn || adminLoggedIn'>
+      <li class="nav-item active" *ngIf='userLoggedIn'>
         <a class="nav-link" [routerLink]="['/consultancy-report']">Consultancy Report</a>
     </li>
+    <li class="nav-item active" *ngIf='doctorLoggedIn'>
+      <a class="nav-link" [routerLink]="['/doctor-view-consultancy-report']">View Consultancy Report</a>
+  </li>
+
+  <li class="nav-item active" *ngIf='doctorLoggedIn'>
+    <a class="nav-link" [routerLink]="['/doctor-view-test-report']">View Test Report</a>
+</li>
     <li class="nav-item active" *ngIf='userLoggedIn'>
       <a class="nav-link" [routerLink]="['/test-report']">Test Report</a>
   </li>
@@ -127,11 +134,11 @@
 <li class="nav-item active" *ngIf='userLoggedIn'>
   <a class="nav-link" [routerLink]="['/add-test-report']">Add Test Report</a>
 </li>
-<li class="nav-item active" *ngIf='!adminLoggedIn'>
+<li class="nav-item active" *ngIf='adminLoggedIn'>
   <a class="nav-link" routerLinkActive="active" [routerLink]="['/dregister']" >Doctor Register</a>
 </li>
 
-      <li class="nav-item active" *ngIf='userLoggedIn'>
+      <li class="nav-item active" *ngIf='userLoggedIn || adminLoggedIn || doctorLoggedIn'>
         <a class="nav-link" (click)='logout()' >Logout</a>
     </li>
 

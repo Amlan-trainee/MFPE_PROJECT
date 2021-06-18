@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AdminAuthService } from '../Services/admin-auth.service';
 import { AuthService } from '../Services/auth.service';
+import { DoctorAuthService } from '../Services/doctor-auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,10 +14,14 @@ export class DashboardComponent implements OnInit , OnDestroy {
   asubs: Subscription = new Subscription;
   userLoggedIn: boolean = false;
   adminLoggedIn: boolean = false;
-  constructor(private as:AuthService,private ass:AdminAuthService) { }
+  dsubs: Subscription = new Subscription;
+  doctorLoggedIn: boolean = false;
+  constructor(private as:AuthService,private ass:AdminAuthService,private das:DoctorAuthService) { }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+    this.asubs.unsubscribe();
+    this.dsubs.unsubscribe();
   
   }
 
@@ -24,11 +29,14 @@ export class DashboardComponent implements OnInit , OnDestroy {
     this.subs=this.as.OnLoggedIn.subscribe(result => this.userLoggedIn = result);
 
     this.asubs=this.ass.OnAdminLoggedIn.subscribe(result => this.adminLoggedIn = result);
+
+    this.dsubs=this.das.OnDoctorLoggedIn.subscribe(result => this.doctorLoggedIn = result);
   }
 
   logout(){
     this.as.doLogin(false);
     this.ass.doAdminLogin(false);
+    this.das.doDoctorLogin(false);
   }
 
 }

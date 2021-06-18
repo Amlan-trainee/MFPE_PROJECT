@@ -4,6 +4,7 @@
       
       <form #user="ngForm" (ngSubmit)="ontestsubmit(user.value)">
         <input type="text" name="TestName" placeholder="TestName" ngModel required>
+        <input type="text" name="UserId" placeholder="UserId" ngModel required>
         
         <input type="submit" value="Search">
       </form>

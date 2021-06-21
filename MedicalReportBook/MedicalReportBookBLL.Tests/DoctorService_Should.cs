@@ -50,5 +50,25 @@ namespace MedicalReportBookBLL.Tests
             var result = service.ViewLabReportOfPatient(EmilId, DiseaseName);
             CollectionAssert.IsNotEmpty(result);
         }
+
+        [Test]
+        public void ChangePassword()
+        {
+            /*AppUser app = new AppUser();
+            app.FirstName = "Kumar";
+            app.MiddleName = "Raj";
+            app.LastName = "J";
+            app.Gender = "Male";
+            app.PhoneNumber = 3456789021;
+            app.Address = "abc";
+            app.EmailId = "kumar@gmail.com";
+            app.UserType = "Doctor";
+            app.Password = "Doctor@123";*/
+            var Id = 4;
+            var Password = "Doctor@123";
+            var result = service.ChangePassword(Id,Password);
+            var expexted = true;
+            Assert.AreEqual(expexted, result);
+        }
     }
 }

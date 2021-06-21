@@ -101,8 +101,45 @@ namespace MedicalReportBookBLL
 
             }
 
-
         }
+        public bool ChangePassword(int ID,string Password)
+        {
+            try
+            {
+                var doc = context.appUsers.Find(ID);
+                if (doc == null)
+                    return false;
+                else
+                {
+                    doc.Password = Password;
+                    var Rows = context.SaveChanges();
+                    if (Rows == 1)
+                        return true;
+                    return false;
+                    /*doc.FirstName = app.FirstName;
+                    doc.MiddleName = app.MiddleName;
+                    doc.LastName = app.LastName;
+                    doc.Gender = app.Gender;
+                    doc.PhoneNumber = app.PhoneNumber;
+                    doc.Address = app.Address;
+                    doc.EmailId = app.EmailId;
+                    doc.UserType = app.UserType;
+                    doc.Password = app.Password;
+                    var Rows = context.SaveChanges();
+                    if (Rows == 1)
+                        return true;
+                    else
+                        return false;*/
+                }
+                
 
+            }
+
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("not found", e);
+
+            }
+        }
     }
 }

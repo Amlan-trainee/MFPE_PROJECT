@@ -105,7 +105,28 @@ namespace MedicalReportBookAPI.Controllers
 
         }
 
-
+        [HttpPut]
+        [Route("api/Doctor/ChangePassword/{Id}/{Password}")]
+        public HttpResponseMessage ChangePassword(int Id, string Password)
+        {
+                if (ModelState.IsValid == false)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                }
+                else
+                {
+                    var obj = doctorService.ChangePassword(Id, Password);
+                    if (obj)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    }
+                }
+            
+        }
 
     }
 }

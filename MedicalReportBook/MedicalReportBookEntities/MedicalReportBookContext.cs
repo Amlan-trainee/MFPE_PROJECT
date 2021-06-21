@@ -19,6 +19,10 @@ namespace MedicalReportBookEntities
 
       public DbSet<ConsultancyReport> ConsultancyReports { get; set; }
         public DbSet<LabReportEntity> LabReportEntities { get; set; }
+        public DbSet<UserDetails> UserDetails { get; set; }
+        public DbSet<DoctorDetails> DoctorDetails { get; set; }
+        public DbSet<Vaccine> Vaccines { get; set; }
+        public DbSet<VaccineDetails> VaccineDetails { get; set; }  
     }
 
    

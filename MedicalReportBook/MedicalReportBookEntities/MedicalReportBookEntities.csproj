@@ -59,7 +59,11 @@
   <ItemGroup>
     <Compile Include="Entities\AppUser.cs" />
     <Compile Include="Entities\ConsultancyReport.cs" />
+    <Compile Include="Entities\DoctorDetails.cs" />
     <Compile Include="Entities\LabReportEntity.cs" />
+    <Compile Include="Entities\UserDetails.cs" />
+    <Compile Include="Entities\Vaccine.cs" />
+    <Compile Include="Entities\VaccineDetails.cs" />
     <Compile Include="MedicalReportBookContext.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.designer.cs">
@@ -117,6 +121,14 @@
     <Compile Include="Migrations\202106170757509_changed email to unique.designer.cs">
       <DependentUpon>202106170757509_changed email to unique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106210507580_Created new entities and navigations.cs" />
+    <Compile Include="Migrations\202106210507580_Created new entities and navigations.designer.cs">
+      <DependentUpon>202106210507580_Created new entities and navigations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106210518173_vaccine table added.cs" />
+    <Compile Include="Migrations\202106210518173_vaccine table added.designer.cs">
+      <DependentUpon>202106210518173_vaccine table added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -166,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106170757509_changed email to unique.resx">
       <DependentUpon>202106170757509_changed email to unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106210507580_Created new entities and navigations.resx">
+      <DependentUpon>202106210507580_Created new entities and navigations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106210518173_vaccine table added.resx">
+      <DependentUpon>202106210518173_vaccine table added.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

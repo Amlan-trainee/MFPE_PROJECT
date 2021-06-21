@@ -54,6 +54,8 @@ namespace MedicalReportBookEntities.Entities
 
         public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; } //navigation property with ConsultancyReport
         public virtual ICollection<LabReportEntity> LabReports { get; set; } //navigation property with LabReport
+        public virtual UserDetails UserDetails { get; set; }//navigation property with UserDetails 
+        public virtual DoctorDetails DoctorDetails { get; set; } //navigation property with DoctorDeatils
 
 
     }

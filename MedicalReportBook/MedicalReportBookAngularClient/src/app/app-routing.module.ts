@@ -11,9 +11,11 @@ import { DregisterComponent } from './dregister/dregister.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { Login2Component } from './login2/login2.component';
 import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-report.component';
 import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { RegisterComponent } from './register/register.component';
+import { Register2Component } from './register2/register2.component';
 
 const routes: Routes = [
 
@@ -35,7 +37,9 @@ const routes: Routes = [
   {path:'dregister',component:DregisterComponent},
   {path:'doctor-view-consultancy-report',component:DoctorConsultancyreportComponent},
   {path:'doctor-view-test-report',component:DoctorTestreportComponent},
-  {path:'footer',component:FooterComponent}
+  {path:'footer',component:FooterComponent},
+  {path:'login2',component:Login2Component},
+  {path:'register2',component:Register2Component}
 ];
 
 @NgModule({

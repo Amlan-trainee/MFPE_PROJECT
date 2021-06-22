@@ -21,6 +21,8 @@ import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doc
 import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 import { DeletetestreportComponent } from './deletetestreport/deletetestreport.component';
 import { FooterComponent } from './footer/footer.component';
+import { Login2Component } from './login2/login2.component';
+import { Register2Component } from './register2/register2.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FooterComponent } from './footer/footer.component';
     DoctorConsultancyreportComponent,
     DoctorTestreportComponent,
     DeletetestreportComponent,
-    FooterComponent
+    FooterComponent,
+    Login2Component,
+    Register2Component
   ],
   imports: [
     BrowserModule,

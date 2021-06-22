@@ -109,22 +109,22 @@ namespace MedicalReportBookBLL
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="userDetails"></param>
-        /// <returns></returns>
-        public bool AddUserDetails(UserDetails userDetails)
+       public List<AppUser> ViewDoctor()
         {
             try
             {
-                context.UserDetails.Add(userDetails);
-                int RowsAffected = context.SaveChanges();
-                return RowsAffected == 1;
+                var doctors = from items in context.appUsers
+                              where items.UserType == "Doctor"
+                              select items;
+                if (doctors == null)
+                    return null;
+                return doctors.ToList();
+
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Adding Details... failed", e);
+                throw new MedicalReportBookExceptions("Deleting Doctor... failed", e);
+
             }
         }
     }

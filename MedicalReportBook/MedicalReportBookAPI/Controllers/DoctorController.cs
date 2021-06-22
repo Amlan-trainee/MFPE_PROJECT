@@ -105,18 +105,29 @@ namespace MedicalReportBookAPI.Controllers
 
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
         [HttpPut]
-        [Route("api/Doctor/ChangePassword/{Id}/{Password}")]
-        public HttpResponseMessage ChangePassword(int Id, string Password)
+        [Route("api/Doctor/ChangePassword")]
+        public HttpResponseMessage ChangePassword([FromBody] ChangePassowrdDto changePassowrdDto)
         {
-                if (ModelState.IsValid == false)
+            if (ModelState.IsValid == false)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var User_Id = changePassowrdDto.User_Id;
+                var OldPassword = changePassowrdDto.OldPassword;
+                var NewPassword = changePassowrdDto.NewPassword;
+                var ConfimPassword = changePassowrdDto.ConfirmPassword;
+                if (NewPassword == ConfimPassword)
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
-                }
-                else
-                {
-                    var obj = doctorService.ChangePassword(Id, Password);
+                    var obj = doctorService.ChangePassword(User_Id, OldPassword, NewPassword);
                     if (obj)
                     {
                         return Request.CreateResponse(HttpStatusCode.OK);
@@ -126,6 +137,11 @@ namespace MedicalReportBookAPI.Controllers
                         return Request.CreateResponse(HttpStatusCode.BadRequest);
                     }
                 }
+
+
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+
+            }
             
         }
 

@@ -27,7 +27,41 @@ namespace MedicalReportBookAPI.Controllers
             patientService.Dispose();
             base.Dispose(disposing);
         }
-       
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("api/AppUser/UserDetails")]
+        public IHttpActionResult Post(UserDetailsDto obj)
+        {
+
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var userDetails = new UserDetails();
+                userDetails.User_Id = obj.User_Id;
+                userDetails.Weight = obj.Weight;
+                userDetails.Height = obj.Height;
+                userDetails.BloodGroup = obj.BloodGroup;
+                bool result = patientService.AddUserDetails(userDetails);
+                if (result)
+                {
+                    return Ok(HttpStatusCode.Created);
+
+                }
+                else
+                {
+                    return BadRequest("cannot add");
+                }
+
+            }
+
+        }
         /// <summary>
         /// Method to add the Consultancy Report
         /// </summary>
@@ -93,7 +127,7 @@ namespace MedicalReportBookAPI.Controllers
                     var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });//Not retoring UserId as output
+                        dtos.Add(new ConsultancyReportDto {CR_Id=obj.CR_Id, ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 
@@ -173,7 +207,7 @@ namespace MedicalReportBookAPI.Controllers
                     List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
                     foreach (var obj in objs)
                     {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
+                        dtos.Add(new LabReportEntityDto { Lr_Id=obj.Lr_Id, TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, dtos);
 

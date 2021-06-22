@@ -77,18 +77,6 @@ namespace MedicalReportBookBLL.Tests
             Assert.That(expected, Is.EqualTo(actual));
         }
 
-        [Test]
-        public void AddUserDetails()
-        {
-            var obj = new UserDetails();
-            obj.BloodGroup = "O+";
-            obj.Height = 1.83;
-            obj.Weight = 72.5;
-            obj.User_Id = 1;
-            var actual = service.AddUserDetails(obj);
-            var expected = true;
-            Assert.That(expected, Is.EqualTo(actual));
-        }
        
     }
 }

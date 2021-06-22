@@ -29,7 +29,24 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
-      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userDetails"></param>
+        /// <returns></returns>
+        public bool AddUserDetails(UserDetails userDetails)
+        {
+            try
+            {
+                context.UserDetails.Add(userDetails);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Adding Details... failed", e);
+            }
+        }
         /// <summary>
         /// AddConsultancyReport -method to add prescriptions to the database along with the required feilds
         /// </summary>

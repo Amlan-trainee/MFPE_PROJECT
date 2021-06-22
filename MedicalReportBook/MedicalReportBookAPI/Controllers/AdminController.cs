@@ -93,5 +93,33 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/Admin/ViewAllDoctors")]
+        public IHttpActionResult ViewAllDoctors()
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest();
+            }
+            else
+            {
+                var objs = appUserService.ViewDoctor();
+                if (objs != null && objs.Count != 0)
+                {
+                    List<AppUserDto> dtos = new List<AppUserDto>();
+                    foreach (var obj in objs)
+                    {
+                        dtos.Add(new AppUserDto {UserId=obj.UserId, FirstName=obj.FirstName,MiddleName=obj.MiddleName,LastName=obj.LastName,PhoneNumber=obj.PhoneNumber,EmailId=obj.EmailId,UserType=obj.UserType });
+                    }
+                    return Ok(dtos);
+
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+
+        }
     }
 }

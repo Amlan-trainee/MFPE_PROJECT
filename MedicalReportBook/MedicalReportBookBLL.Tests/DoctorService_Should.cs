@@ -54,19 +54,13 @@ namespace MedicalReportBookBLL.Tests
         [Test]
         public void ChangePassword()
         {
-            /*AppUser app = new AppUser();
-            app.FirstName = "Kumar";
-            app.MiddleName = "Raj";
-            app.LastName = "J";
-            app.Gender = "Male";
-            app.PhoneNumber = 3456789021;
-            app.Address = "abc";
-            app.EmailId = "kumar@gmail.com";
-            app.UserType = "Doctor";
-            app.Password = "Doctor@123";*/
-            var Id = 4;
-            var Password = "Doctor@123";
-            var result = service.ChangePassword(Id,Password);
+          
+            var User_Id = 1016;
+            var NewPassword = "Doctor@123";
+            var OldPassword = "maharshi@1234";
+           
+
+            var result = service.ChangePassword(User_Id,OldPassword,NewPassword);
             var expexted = true;
             Assert.AreEqual(expexted, result);
         }

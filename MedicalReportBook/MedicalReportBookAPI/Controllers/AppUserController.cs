@@ -105,40 +105,6 @@ namespace MedicalReportBookAPI.Controllers
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("api/AppUser/UserDetails")]
-        public IHttpActionResult Post(UserDetailsDto obj)
-        {
-
-            if (ModelState.IsValid == false)
-            {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var userDetails = new UserDetails();
-                userDetails.User_Id = obj.User_Id;
-                userDetails.Weight = obj.Weight;
-                userDetails.Height = obj.Height;
-                userDetails.BloodGroup = obj.BloodGroup;
-                bool result = appUserService.AddUserDetails(userDetails);
-                if (result)
-                {
-                    return Ok(HttpStatusCode.Created);
-
-                }
-                else
-                {
-                    return BadRequest("cannot add");
-                }
-
-            }
-
-        }
+       
     }
 }

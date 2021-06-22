@@ -10,5 +10,7 @@ namespace MedicalReportBookAPI.Models
         //Space in the report names or consultancy report names while deleting
         //how to make emailId unique
         //deleting doctor part url(we are adjusting it by passing two parameters)
+        //change password
+
     }
 }

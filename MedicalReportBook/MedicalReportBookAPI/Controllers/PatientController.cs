@@ -242,6 +242,42 @@ namespace MedicalReportBookAPI.Controllers
                 }
             }
         }
+        [HttpPut]
+        [Route("api/Patient/LockUnlockCrReport/{CR_Id}")]
+        public IHttpActionResult LockUnlockConsultancyReport(int CR_Id)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var result = patientService.AccessPermissionForConsultancyReport(CR_Id);
+                if(result)
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+        }
+        [HttpPut]
+        [Route("api/Patient/LockUnlockLrReport/{Lr_Id}")]
+        public IHttpActionResult LockUnlockLabReport(int Lr_Id)
+        {
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var result = patientService.AccessPermissionForLabReport(Lr_Id);
+                if (result)
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+        }
 
     }
 }

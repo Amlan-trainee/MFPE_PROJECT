@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class PconsultancyReportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
+  // CR_Id: ConsultancyReport[] = [];
   formData: any;
   
   constructor(private http :HttpClient) {
@@ -35,7 +36,7 @@ export class PconsultancyReportComponent implements OnInit {
      this.urlt= this.url+this.UserId+'/'+data.DiseaseName;
 
      this.http.get(this.urlt).subscribe(
-      (data)=>{this.reports= data as ConsultancyReport[];this.reports=data as },
+      (data)=>{this.reports= data as ConsultancyReport[];},
       (err)=>{
         if(err.status===404){
           alert('Api not available');

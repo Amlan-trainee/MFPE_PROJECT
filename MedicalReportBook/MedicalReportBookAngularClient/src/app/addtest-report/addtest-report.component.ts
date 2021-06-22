@@ -14,6 +14,7 @@ export class AddtestReportComponent implements OnInit {
 
   frmTReport:FormGroup;
   selectedFile!: File;
+  router: any;
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
     this.frmTReport=this.formBuilder.group({
     //  Lr_Id:new FormControl('',Validators.required) ,
@@ -22,7 +23,7 @@ export class AddtestReportComponent implements OnInit {
      DateofTest:new FormControl('',Validators.required),
      TestName:new FormControl('',[Validators.required,Validators.minLength(3)]),
     //  LabReport:new FormControl('',Validators.required),
-     IsActive:new FormControl('',Validators.required),
+     IsActive:new FormControl(false),
     UID:localStorage.getItem('UId')
 
     });
@@ -45,7 +46,9 @@ export class AddtestReportComponent implements OnInit {
     if(this.frmTReport.valid){
       // let p:TestReport=this.frmCReport.value as TestReport;
       this.http.post('http://localhost:57071/api/Patient/AddTestReport',fd).subscribe(data=>{
-        alert('test report saved');
+        alert('test report saved'); 
+        this.router.navigate(['/test-report']);
+
       },error=>{
         alert('not saved');
       })
@@ -54,6 +57,7 @@ export class AddtestReportComponent implements OnInit {
     else{
      alert('Invalid form entries');
     }
+
    }
 
   ngOnInit(): void {

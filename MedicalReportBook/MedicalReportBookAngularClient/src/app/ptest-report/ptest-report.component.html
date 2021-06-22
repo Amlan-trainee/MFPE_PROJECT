@@ -11,24 +11,30 @@
 
         <table class="table ">
             <tr>
-                <!-- <th>Report Id</th> -->
+                <th>Test Report Id</th>
                 <th>Doctor Name</th>
                 <th>Date of Test</th>
                 <th>Lab Name</th>
                 <th>Test Name</th>
                 <th>Lab Report</th>
-                <th>Lock</th>
+                <th>View Status</th>
+                <th>Delete</th>
+                <th>UserId</th>
                 
             </tr>
 
             <tr *ngFor="let r of treports">
-                <!-- <td>{{r.CR_Id}}</td> -->
+                <td>{{r.Lr_Id}}</td>
                 <td>{{r.DoctorName}}</td>
                 <td>{{r.DateofTest}}</td>
                 <td>{{r.LabName}}</td>
                 <td>{{r.TestName}}</td>
                 <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
+                <td>
+                    <a [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</a>
+                </td>
+                <td>{{r.UID}}</td>
             
                 
             </tr>

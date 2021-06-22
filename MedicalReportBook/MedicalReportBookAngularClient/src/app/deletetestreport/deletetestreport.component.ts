@@ -1,8 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { ConsultancyReport } from '../Source/consultancy-report';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TestReport } from '../Source/test-report';
 
 @Component({
@@ -11,21 +10,36 @@ import { TestReport } from '../Source/test-report';
   styleUrls: ['./deletetestreport.component.css']
 })
 export class DeletetestreportComponent implements OnInit {
+  TestId: number;
+  TestName: string;
+  UserId=localStorage.getItem('UId');
+  public url:string="http://localhost:57071/api/Patient/DeleteLabReport/";
+  status!: string;
+  errorMessage: any;
+  urlt: string='';
 
-  reports:TestReport[] = [];
-  formData: any;
 
-
-  constructor(private http: HttpClientModule,private router:Router){}
+  constructor(private http: HttpClient,private router:Router,private actr:ActivatedRoute){
+    this.TestId=Number(this.actr.snapshot.paramMap.get('Lr-Id'));
+    this.TestName=String(this.actr.snapshot.paramMap.get('Test-Name'));
+  }
 
   ngOnInit(): void {
-
+    
   };
-  public url:string="http://localhost:57071/api/Patient/DeleteConsultancyReport/";
-
-  public urlt:string="";
-
-  public UserId=localStorage.getItem('UId');
+  OnSubmit(){
+    this.urlt=this.url+this.UserId+'/'+this.TestName+'/'+this.TestId;
+    this.http.delete(this.urlt)
+        .subscribe({
+            next: data => {
+                this.status = 'Delete successful';
+            },
+            error: error => {
+                this.errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        });
+  }
 
 
 

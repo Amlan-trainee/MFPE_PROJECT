@@ -20,6 +20,7 @@ import { DregisterComponent } from './dregister/dregister.component';
 import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
 import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 import { DeletetestreportComponent } from './deletetestreport/deletetestreport.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DeletetestreportComponent } from './deletetestreport/deletetestreport.c
     DregisterComponent,
     DoctorConsultancyreportComponent,
     DoctorTestreportComponent,
-    DeletetestreportComponent
+    DeletetestreportComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

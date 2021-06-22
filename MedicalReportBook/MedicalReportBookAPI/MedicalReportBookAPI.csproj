@@ -122,6 +122,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AppUserDto.cs" />
+    <Compile Include="Models\ChangePassowrdDto.cs" />
     <Compile Include="Models\ConsultancyReportDto.cs" />
     <Compile Include="Models\ConsultancyReportDtoBinder.cs" />
     <Compile Include="Models\DoctorDetailsDto.cs" />

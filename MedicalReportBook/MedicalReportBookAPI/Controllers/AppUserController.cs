@@ -53,7 +53,7 @@ namespace MedicalReportBookAPI.Controllers
                 appUser.EmailId = obj.EmailId;
                 appUser.UserType = obj.UserType;
                 appUser.Password = obj.Password;
-                appUser.ConfirmPassword = obj.ConfirmPassword;
+                
                 bool result = appUserService.AddUser(appUser);
                 if (result)
                 {

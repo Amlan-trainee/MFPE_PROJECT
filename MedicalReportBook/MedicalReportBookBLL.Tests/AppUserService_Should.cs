@@ -42,7 +42,7 @@ namespace MedicalReportBookBLL.Tests
             obj.EmailId = "doc@gmail.com";
             obj.UserType = "Doctor";
             obj.Password = "jojojose";
-            obj.ConfirmPassword = "jojojose";
+            
             bool result = service.AddUser(obj);
 
             Assert.AreEqual(true, result);

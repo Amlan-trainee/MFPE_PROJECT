@@ -27,22 +27,7 @@ namespace MedicalReportBookAPI.Controllers
             patientService.Dispose();
             base.Dispose(disposing);
         }
-        [HttpGet]
-        [Route("api/Patient/UserProfile/{id}")]
-        public IHttpActionResult ViewUserProfile([FromUri]int id)
-        {
-            if (ModelState.IsValid == false)
-            {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var userProfile = patientService.ViewUserProfile(id);
-                if (userProfile == null)
-                    return BadRequest();
-                return Ok(userProfile);
-            }
-        }
+       
         /// <summary>
         /// Method to add the Consultancy Report
         /// </summary>

@@ -129,6 +129,10 @@
     <Compile Include="Migrations\202106210518173_vaccine table added.designer.cs">
       <DependentUpon>202106210518173_vaccine table added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106221115213_Email unique.cs" />
+    <Compile Include="Migrations\202106221115213_Email unique.designer.cs">
+      <DependentUpon>202106221115213_Email unique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -184,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106210518173_vaccine table added.resx">
       <DependentUpon>202106210518173_vaccine table added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106221115213_Email unique.resx">
+      <DependentUpon>202106221115213_Email unique.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

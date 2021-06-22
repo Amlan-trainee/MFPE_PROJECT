@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class PconsultancyReportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
+  // CR_Id: ConsultancyReport[] = [];
   formData: any;
   
   constructor(private http :HttpClient) {

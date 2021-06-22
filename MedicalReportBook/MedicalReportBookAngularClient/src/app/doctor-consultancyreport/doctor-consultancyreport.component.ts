@@ -11,9 +11,9 @@ import { ConsultancyReport } from '../Source/consultancy-report';
 export class DoctorConsultancyreportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
   formData: any;
-  
+
   constructor(private http :HttpClient) {
-  
+
   }
 
 
@@ -28,10 +28,10 @@ export class DoctorConsultancyreportComponent implements OnInit {
     this.formData = new FormGroup({
       name    : new FormControl()
   });
-    
+
   }
 
-  onSubmit(data: { EmailId:string; DiseaseName: string; }){ 
+  onSubmit(data: { EmailId:string; DiseaseName: string; }){
      this.urlt= this.url+data.EmailId+'/'+data.DiseaseName;
 
      this.http.get(this.urlt).subscribe(

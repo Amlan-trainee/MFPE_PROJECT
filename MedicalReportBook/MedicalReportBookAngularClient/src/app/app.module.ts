@@ -19,6 +19,10 @@ import { AddtestReportComponent } from './addtest-report/addtest-report.componen
 import { DregisterComponent } from './dregister/dregister.component';
 import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
 import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
+import { DeletetestreportComponent } from './deletetestreport/deletetestreport.component';
+import { FooterComponent } from './footer/footer.component';
+import { Login2Component } from './login2/login2.component';
+import { Register2Component } from './register2/register2.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport
     AddtestReportComponent,
     DregisterComponent,
     DoctorConsultancyreportComponent,
-    DoctorTestreportComponent
+    DoctorTestreportComponent,
+    DeletetestreportComponent,
+    FooterComponent,
+    Login2Component,
+    Register2Component
   ],
   imports: [
     BrowserModule,

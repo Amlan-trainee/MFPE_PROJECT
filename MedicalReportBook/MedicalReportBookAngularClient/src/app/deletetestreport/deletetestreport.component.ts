@@ -26,7 +26,7 @@ export class DeletetestreportComponent implements OnInit {
 
   ngOnInit(): void {
     
-  };
+  }
   OnSubmit(){
     this.urlt=this.url+this.UserId+'/'+this.TestName+'/'+this.TestId;
     this.http.delete(this.urlt)

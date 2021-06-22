@@ -5,6 +5,7 @@ import { AddtestReportComponent } from './addtest-report/addtest-report.componen
 import { AfterLoginComponent } from './after-login/after-login.component';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeleteConsultancyReportComponent } from './delete-consultancy-report/delete-consultancy-report.component';
 import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DeletetestreportComponent } from './deletetestreport/deletetestreport.component';
 import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
@@ -43,7 +44,8 @@ const routes: Routes = [
   {path:'login2',component:Login2Component},
   {path:'register2',component:Register2Component},
   {path:'delete-test-report/:Test-Name/:Lr-Id',component:DeletetestreportComponent},
-  {path:'delete-doctor',component:DeleteDoctorComponent}
+  {path:'delete-doctor',component:DeleteDoctorComponent},
+  {path:'delete-consultancy-report/:Disease-Name/:CR-Id',component:DeleteConsultancyReportComponent}
 ];
 
 @NgModule({

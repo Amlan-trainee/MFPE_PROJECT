@@ -108,5 +108,21 @@ namespace MedicalReportBookBLL
 
             }
         }
+
+        //Harish
+        public bool AddUserDetails(UserDetails userDetails)
+        {
+            try
+            {
+                context.UserDetails.Add(userDetails);
+                int RowsAffected = context.SaveChanges();
+                return RowsAffected == 1;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Adding Details... failed", e);
+
+            }
+        }
     }
 }

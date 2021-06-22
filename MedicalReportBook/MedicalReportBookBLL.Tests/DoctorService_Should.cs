@@ -70,5 +70,17 @@ namespace MedicalReportBookBLL.Tests
             var expexted = true;
             Assert.AreEqual(expexted, result);
         }
+
+        [Test]
+        public void UpdateDoctorDetails()
+        {
+            var obj = new DoctorDetails();
+            obj.DoctorId = 3;
+            obj.Specialization = "ophthalmology";
+            obj.Qualification = "MBBS";
+            var result = service.AddDoctorDetails(obj);
+            var expexted = true;
+            Assert.AreEqual(expexted, result);
+        }
     }
 }

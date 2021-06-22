@@ -1,5 +1,6 @@
 ﻿using MedicalReportBookAPI.Models;
 using MedicalReportBookBLL;
+using MedicalReportBookEntities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,6 +127,37 @@ namespace MedicalReportBookAPI.Controllers
                     }
                 }
             
+        }
+
+        //Harish
+        [HttpPost]
+        [Route("api/Doctor/DoctorDetails")]
+        public IHttpActionResult Post(DoctorDetailsDto obj)
+        {
+
+            if (ModelState.IsValid == false)
+            {
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                var doctorDetails = new DoctorDetails();
+                doctorDetails.DoctorId = obj.DoctorId;
+                doctorDetails.Specialization = obj.Specialization;
+                doctorDetails.Qualification = obj.Qualification;
+                bool result = doctorService.AddDoctorDetails(doctorDetails);
+                if (result)
+                {
+                    return Ok(HttpStatusCode.Created);
+
+                }
+                else
+                {
+                    return BadRequest("cannot add");
+                }
+
+            }
+
         }
 
     }

@@ -115,5 +115,28 @@ namespace MedicalReportBookBLL.Tests
             var expected = true;
             Assert.That(expected, Is.EqualTo(actual));
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void AccessPermissionForConsultancyRepoort()
+        {
+            var CR_Id = 7;
+            var actual = service.AccessPermissionForConsultancyReport(CR_Id);
+            var expected = true;
+            Assert.AreEqual(expected, actual);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        [Test]
+        public void AccessPermissionForLabRepoort()
+        {
+            var Lr_Id = 1;
+            var actual = service.AccessPermissionForLabReport(Lr_Id);
+            var expected = true;
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }

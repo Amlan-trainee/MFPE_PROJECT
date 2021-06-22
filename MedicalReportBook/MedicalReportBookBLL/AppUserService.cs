@@ -109,7 +109,11 @@ namespace MedicalReportBookBLL
             }
         }
 
-        //Harish
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userDetails"></param>
+        /// <returns></returns>
         public bool AddUserDetails(UserDetails userDetails)
         {
             try

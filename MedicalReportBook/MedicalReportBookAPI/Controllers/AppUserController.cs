@@ -105,7 +105,11 @@ namespace MedicalReportBookAPI.Controllers
 
         }
 
-        //Harish
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("api/AppUser/UserDetails")]
         public IHttpActionResult Post(UserDetailsDto obj)

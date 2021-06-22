@@ -173,5 +173,50 @@ namespace MedicalReportBookBLL
 
             }
         }
+        public bool AccessPermissionForConsultancyReport(int CR_Id)
+        {
+            var item = context.ConsultancyReports.Find(CR_Id);
+            if (item == null)
+                return false;
+            else {
+                if (item.IsActive == true)
+                {
+                    item.IsActive = false;
+                    context.SaveChanges();
+                    return true;
+                }
+                  
+                else
+                {
+                    item.IsActive = true;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            
+        }
+        public bool AccessPermissionForLabReport(int Lr_Id)
+        {
+            var item = context.LabReportEntities.Find(Lr_Id);
+            if (item == null)
+                return false;
+            else 
+            {
+                if (item.IsActive == true)
+                { item.IsActive = false;
+                    context.SaveChanges();
+                    return true;
+                }
+
+                else
+                {
+                    item.IsActive = true;
+                    context.SaveChanges();
+                    return true;
+                }
+                   
+            }
+         
+        }
     }
 }

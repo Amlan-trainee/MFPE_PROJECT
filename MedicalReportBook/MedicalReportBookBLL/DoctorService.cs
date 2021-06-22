@@ -147,9 +147,14 @@ namespace MedicalReportBookBLL
         {
             try
             {
-                context.DoctorDetails.Add(doctorDetails);
-                int RowsAffected = context.SaveChanges();
-                return RowsAffected == 1;
+                AppUser user = context.appUsers.Find(doctorDetails.DoctorId);
+                if(user.UserType=="Doctor")
+                {
+                    context.DoctorDetails.Add(doctorDetails);
+                    int RowsAffected = context.SaveChanges();
+                    return RowsAffected == 1;
+                }
+                return false;
             }
             catch (DbException e)
             {

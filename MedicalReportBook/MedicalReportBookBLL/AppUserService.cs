@@ -121,7 +121,6 @@ namespace MedicalReportBookBLL
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Adding Details... failed", e);
-
             }
         }
     }

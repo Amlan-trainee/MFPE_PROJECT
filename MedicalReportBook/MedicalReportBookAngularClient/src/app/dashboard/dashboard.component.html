@@ -107,8 +107,8 @@
     <li class="nav-item active" *ngIf='!userLoggedIn'>
       <a class="nav-link" [routerLink]="['/Landing']">Dashboard</a>
   </li>
-      <li class="nav-item active">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']" *ngIf='!userLoggedIn' >Login</a>
+      <li class="nav-item active" *ngIf='!userLoggedIn || !adminLoggedIn || !doctorLoggedIn'>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']"  >Login</a>
       </li>
       <li class="nav-item active" *ngIf='!userLoggedIn && !adminLoggedIn && !doctorLoggedIn'>
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/register']" >Register</a>

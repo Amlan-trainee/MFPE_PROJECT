@@ -17,11 +17,11 @@ export class PconsultancyReportComponent implements OnInit {
   }
 
 
-  public url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
+  url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
 
-  public urlt:string="";
+  urlt:string="";
 
-  public UserId=localStorage.getItem('UId');
+  UserId=localStorage.getItem('UId');
 
 
   ngOnInit(): void {

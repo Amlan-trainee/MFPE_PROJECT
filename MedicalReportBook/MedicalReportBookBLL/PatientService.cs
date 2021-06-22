@@ -30,6 +30,30 @@ namespace MedicalReportBookBLL
 
         }
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+       public AppUser ViewUserProfile(int id)
+        {
+            try {
+                var query = from obj in context.appUsers.Include(user => user.UserDetails)
+                            where obj.UserId == id
+                            select obj;
+                if (query != null)
+                {
+                    return query.FirstOrDefault();
+                }
+                return null;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Uploading prescription... failed", e);
+
+            }
+
+        }
+        /// <summary>
         /// AddConsultancyReport -method to add prescriptions to the database along with the required feilds
         /// </summary>
         /// <param name="consultancyReport"></param>

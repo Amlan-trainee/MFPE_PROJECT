@@ -25,6 +25,28 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
+        public AppUser ViewDoctorProfile(int id)
+        {
+            try
+            {
+                var query = from obj in context.appUsers.Include(doc => doc.DoctorDetails)
+                            where obj.UserId==id
+                            select obj;
+                if (query != null)
+                {
+                    return query.FirstOrDefault();
+                }
+                return null;
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("No doctor found.. ", e);
+
+            }
+
+
+
+        }
         /// <summary>
         /// This method allows the doctor to see the consultancy report of user that are left unlocked by the user.
         /// </summary>

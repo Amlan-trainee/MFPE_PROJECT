@@ -11,6 +11,6 @@ namespace MedicalReportBookAPI.Models
         //how to make emailId unique
         //deleting doctor part url(we are adjusting it by passing two parameters)
         //change password
-
+        //need to add get method for showing details..for user admin and doctor(get all)
     }
 }

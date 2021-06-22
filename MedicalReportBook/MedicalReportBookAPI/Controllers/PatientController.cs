@@ -27,6 +27,7 @@ namespace MedicalReportBookAPI.Controllers
             patientService.Dispose();
             base.Dispose(disposing);
         }
+       
         /// <summary>
         /// Method to add the Consultancy Report
         /// </summary>

@@ -29,6 +29,7 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
+      
         /// <summary>
         /// AddConsultancyReport -method to add prescriptions to the database along with the required feilds
         /// </summary>

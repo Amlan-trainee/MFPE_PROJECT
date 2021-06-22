@@ -30,12 +30,13 @@ namespace MedicalReportBookEntities.Entities
         [Required]
         public string Gender { get; set; }
         [Required]
-       //[Index(IsUnique = true)]
+        [Index(IsUnique = true)]
         public long PhoneNumber { get; set; }        
         public string Address { get; set; }
         [EmailAddress]
         [Required]
-      // [Index(IsUnique = true)]
+        [StringLength(30)]
+        [Index(IsUnique = true)]
         public string EmailId { get; set; }//data anotation for making feild unique
         [Required]
         public string UserType { get; set; }
@@ -44,12 +45,7 @@ namespace MedicalReportBookEntities.Entities
         [DataType(DataType.Password)]
         public string Password { get; set; }
        
-        [Required]
-        [StringLength(30, MinimumLength = 8)]
-        [DataType(DataType.Password)]
-        [Compare("Password")]
-        [NotMapped]
-        public string ConfirmPassword { get; set; }
+    
 
 
         public virtual ICollection<ConsultancyReport> ConsultancyReports { get; set; } //navigation property with ConsultancyReport

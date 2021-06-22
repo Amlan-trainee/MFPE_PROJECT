@@ -25,6 +25,7 @@ namespace MedicalReportBookBLL
             context.Dispose();
 
         }
+
         /// <summary>
         /// This method allows the doctor to see the consultancy report of user that are left unlocked by the user.
         /// </summary>

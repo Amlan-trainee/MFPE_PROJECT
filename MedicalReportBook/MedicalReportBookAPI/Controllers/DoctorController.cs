@@ -124,8 +124,8 @@ namespace MedicalReportBookAPI.Controllers
                 var User_Id = changePassowrdDto.User_Id;
                 var OldPassword = changePassowrdDto.OldPassword;
                 var NewPassword = changePassowrdDto.NewPassword;
-                var ConfimPassword = changePassowrdDto.ConfirmPassword;
-                if (NewPassword == ConfimPassword)
+                var ConfirmPassword = changePassowrdDto.ConfirmPassword;
+                if (NewPassword == ConfirmPassword)
                 {
                     var obj = doctorService.ChangePassword(User_Id, OldPassword, NewPassword);
                     if (obj)

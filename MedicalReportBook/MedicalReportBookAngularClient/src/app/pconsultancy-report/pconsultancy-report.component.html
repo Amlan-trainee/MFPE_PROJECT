@@ -32,41 +32,43 @@
 
   </nav>
 </div> -->
-<h1>Consultancy Report</h1>
+<h2>Consultancy Report</h2>
 <div class="row">
-    <div class="col-md-12">
-      
-      <form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
-        <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
-        
-        <input type="submit" value="Search">
-      </form>
+  <div class="col-md-12">
+<form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
+  <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
+
+  <input type="submit" value="Search">
+</form>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+          <th>Doctor Name</th>
+          <th>Date of Consultancy</th>
+          <th>Clinic Name</th>
+          <th>Disease Name</th>
+          <th>Prescription</th>
+          <th>Lock</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of reports">
+            <td>{{r.DoctorName}}</td>
+            <td>{{r.DateofConsultancy}}</td>
+            <td>{{r.ClinicName}}</td>
+            <td>{{r.DiseaseName}}</td>
+            <td><a href="{{r.Prescription}}">View/Download</a></td>
+            <td>{{r.IsActive}}</td>
+            <td>
+              <a [routerLink]="['/delete-consultancy-report',r.DiseaseName,r.CR_Id]">Delete</a>
+            </td>
 
 
-        <table class="table ">
-            <tr>
-                <th>Doctor Name</th>
-                <th>Date of Consultancy</th>
-                <th>Clinic Name</th>
-                <th>Disease Name</th>
-                <th>Prescription</th>
-                <th>Lock</th>
-                
-            </tr>
-
-            <tr *ngFor="let r of reports">
-                <td>{{r.DoctorName}}</td>
-                <td>{{r.DateofConsultancy}}</td>
-                <td>{{r.ClinicName}}</td>
-                <td>{{r.DiseaseName}}</td>
-                <td><a href="{{r.Prescription}}">View/Download</a></td>
-                <td>{{r.IsActive}}</td>
-                <td>
-                  <a [routerLink]="['/delete-consultancy-report',r.DiseaseName,r.CR_Id]">Delete</a>
-                </td>
-               
-                
-            </tr>
+        </tr>
+      </tbody>
         </table>
     </div>
-</div>
+    </div>
+    </div>
+

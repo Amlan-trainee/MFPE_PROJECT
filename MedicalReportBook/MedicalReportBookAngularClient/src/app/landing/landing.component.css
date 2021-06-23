@@ -24,3 +24,18 @@ margin-right: 10px;
 h1{
 margin-left: 5px;
 } */
+
+
+.image-head {
+  background-image:url("https://images.unsplash.com/photo-1599045118108-bf9954418b76?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDN8fGRvY3RvciUyMHJlcG9ydHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  height: 500px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
+}
+

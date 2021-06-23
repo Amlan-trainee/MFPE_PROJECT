@@ -37,6 +37,7 @@ const routes: Routes = [
   {path:'after-login',component:AfterLoginComponent},
   //{path: '',redirectTo:'Dashboard' ,pathMatch:'full'},
   //{path: '',component:AppComponent ,pathMatch:'full'},
+  {path:'',component:LandingComponent},
   {path:'add-consultancy-report',component:AddpconsultancyReportComponent},
   {path:'add-test-report',component:AddtestReportComponent},
   {path:'dregister',component:DregisterComponent},

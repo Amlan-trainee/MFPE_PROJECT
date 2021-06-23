@@ -25,10 +25,12 @@ export class DeleteDoctorComponent implements OnInit {
         .subscribe({
             next: data => {
                 this.status = 'Delete successful';
+                alert('Doctor Deleted');
             },
             error: error => {
                 this.errorMessage = error.message;
                 console.error('There was an error!', error);
+                alert('Doctor Deletion Unsuccessful');
             }
         });
 

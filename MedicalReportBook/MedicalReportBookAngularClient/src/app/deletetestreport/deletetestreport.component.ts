@@ -32,11 +32,14 @@ export class DeletetestreportComponent implements OnInit {
     this.http.delete(this.urlt)
         .subscribe({
             next: data => {
-                this.status = 'Delete successful';
+              alert('Doctor Deleted');
+              this.status = 'Delete successful';
+               
             },
             error: error => {
-                this.errorMessage = error.message;
-                console.error('There was an error!', error);
+              alert('Doctor Deletion Failed');
+              this.errorMessage = error.message;
+              console.error('There was an error!', error);
             }
         });
   }

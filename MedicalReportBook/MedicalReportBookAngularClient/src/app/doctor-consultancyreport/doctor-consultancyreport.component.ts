@@ -11,7 +11,7 @@ import {map,filter} from 'rxjs/operators';
   styleUrls: ['./doctor-consultancyreport.component.css']
 })
 export class DoctorConsultancyreportComponent implements OnInit {
-  reports: ConsultancyReport | undefined;
+  reports: ConsultancyReport[]=[];
   formData: any;
 
   constructor(private http :HttpClient, private cr :ConsultancyReport) {
@@ -36,8 +36,8 @@ export class DoctorConsultancyreportComponent implements OnInit {
   onSubmit(data: { EmailId:string; DiseaseName: string; }){
      this.urlt= this.url+data.EmailId+'/'+data.DiseaseName;
 
-     this.http.get(this.urlt).pipe(map(item => item as ConsultancyReport),filter(item => item.IsActive)).subscribe(
-      data =>{this.reports= data },
+     this.http.get(this.urlt).subscribe(
+      data =>{this.reports= data as ConsultancyReport[] },
       err=>{
         if(err.status===404){
           alert('Api not available');

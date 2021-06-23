@@ -1,0 +1,26 @@
+<h1>
+  Add-Doctor-Details
+</h1>
+<div id="container">
+<form novalidate [formGroup]="frmTReport" (ngSubmit) ="SaveReport()">
+  <div>
+    <label>Enter User Id</label><br/>
+    <input type="number" name="userid" formControlName="DoctorId"><br/>
+    </div>
+
+    <div>
+      <label>Enter Specialization</label><br/>
+      <input type="string" name="specialization" formControlName="Specialization"><br/>
+      </div>
+
+      <div>
+        <label>Enter Qualification</label><br/>
+        <input type="string" name="qualification" formControlName="Qualification"><br/>
+        </div>
+
+          <div>
+            <input type="submit"  value="save extra user details">
+          </div>
+          </form>
+          </div>
+

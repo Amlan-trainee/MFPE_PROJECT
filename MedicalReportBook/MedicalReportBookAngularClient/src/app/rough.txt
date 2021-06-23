@@ -1,9 +1,9 @@
-<h1>Consultancy Report</h1>
+<h1>Test Report</h1>
 <div class="row">
     <div class="col-md-12">
 
-      <form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
-        <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
+      <form #user="ngForm" (ngSubmit)="ontestsubmit(user.value)">
+        <input type="text" name="TestName" placeholder="TestName" ngModel required>
 
         <input type="submit" value="Search">
       </form>
@@ -11,97 +11,33 @@
 
         <table class="table ">
             <tr>
+                <th>Test Report Id</th>
                 <th>Doctor Name</th>
-                <th>Date of Consultancy</th>
-                <th>Clinic Name</th>
-                <th>Disease Name</th>
-                <th>Prescription</th>
-                <th>Lock</th>
+                <th>Date of Test</th>
+                <th>Lab Name</th>
+                <th>Test Name</th>
+                <th>Lab Report</th>
+                <th>View Status</th>
+                <th>Delete</th>
+                <!-- <th>UserId</th> -->
 
             </tr>
 
-            <tr *ngFor="let r of reports">
+            <tr *ngFor="let r of treports">
+                <td>{{r.Lr_Id}}</td>
                 <td>{{r.DoctorName}}</td>
-                <td>{{r.DateofConsultancy}}</td>
-                <td>{{r.ClinicName}}</td>
-                <td>{{r.DiseaseName}}</td>
-                <td><a href="{{r.Prescription}}">View/Download</a></td>
+                <td>{{r.DateofTest}}</td>
+                <td>{{r.LabName}}</td>
+                <td>{{r.TestName}}</td>
+                <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
                 <td>
-                  <a [routerLink]="['/delete-consultancy-report',r.DiseaseName,r.CR_Id]">Delete</a>
+                    <a [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</a>
                 </td>
+                <!-- <td>{{r.UID}}</td> -->
 
 
             </tr>
         </table>
     </div>
 </div>
-
-
-
-
-.container{
-  margin: 50px 50px;
-
-}
-#enter{
-  padding-bottom: 200px;
-  background-color: blueviolet;
-}
-#enter2{
-  background-color: cadetblue;
-}
-
-.final{
-
-    min-height: 100vh;
-   width: 100%;
-   background: url('https://c8.alamy.com/comp/CTW9T0/graphiti-on-a-wall-CTW9T0.jpg') no-repeat center center fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-   margin-top: 0px;
-}
-.sec{
-  margin-top: 80px;
-}
-#heading{
-
-  display: block;
-  width: 100vw;
-  height: 60vh;
-  object-fit: cover;
-  background-size: cover;
-
-}
-.navig{
-margin: 0;
-}
-body{
-background-color: black;
-}
-hell{
-margin-left: 95px;
-}
-.hell{
-margin-left: 10px;;
-margin-right: 10px;
-
-}
-h1{
-margin-left: 5px;
-}
-.navbar{
-  margin-bottom: 0px;
-}
-.ng-invalid.ng-touched{
-border-color:red;
-}
-.error-block{
-color:red;
-}
-.design{
-  width: 10%;
-  height:100%
-}

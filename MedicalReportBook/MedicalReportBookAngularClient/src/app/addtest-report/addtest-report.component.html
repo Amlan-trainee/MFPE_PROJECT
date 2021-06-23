@@ -1,66 +1,97 @@
-<h1>
-  Add-Test-Report
-</h1>
-<div id="container">
-<form novalidate [formGroup]="frmTReport" (ngSubmit) ="SaveReport()">
-  <!-- <div>
-    <label>Enter Test Report Id</label><br/>
-    <input type="string" name="cr_id" formControlName="Lr_Id"><br/>
 
-  </div><br/> -->
-  <div>
-    <label>Enter Doctor Name</label><br/>
-    <input type="string" name="doctor_name" formControlName="DoctorName"><br/>
-    <div *ngIf= "f.DoctorName.invalid">
-      <span *ngIf="f.DoctorName.errors?.required">Name is required</span>
-      <span *ngIf="f.DoctorName.errors?.minLength">Minimum Length is required</span>
-    </div>
-  </div>
-  <div>
-    <label>Enter Lab Name</label><br/>
-    <input type="string" name="consultancy_date" formControlName="LabName"><br/>
-    <div *ngIf= "f.LabName.invalid">
-      <span *ngIf="f.LabName.errors?.required">Name is required</span>
-      <span *ngIf="f.LabName.errors?.minLength">Minimum Length is required</span>
-    </div>
 
-  </div>
-  <div>
-    <label>Enter Date of Test</label><br/>
-    <input type="date" name="dateoftest" formControlName="DateofTest"><br/>
 
-  </div>
-  <div>
-    <label>Enter Test Name</label><br/>
-    <input type="string" name="disease_name" formControlName="TestName"><br/>
-    <div *ngIf= "f.TestName.invalid">
-      <span *ngIf="f.TestName.errors?.required">Name is required</span>
-      <span *ngIf="f.TestName.errors?.minLength">Minimum Length is required</span>
-    </div>
-  </div>
-  <!-- <div>
-    <label>Enter Lab Report</label><br/>
-    <input type="file" name="prescription" formControlName="LabReport"><br/>
 
-  </div> -->
-  <div>
-    <label>Enter Prescription</label><br/>
-    <input type="file" name="Lab Report" (change)="fileSelected($event)"><br/>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
 
-  </div>
-  <div>
-    <label>Enter IsActive</label><br/>
-    <input type="checkbox" name="active_state" formControlName="IsActive"><br/>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Add test report</title>
 
-  </div>
-  <!-- <div>
-    <label>Enter User Id</label><br/>
-    <input type="string" name="user_id" formControlName="UID"><br/>
 
-  </div><br/> -->
-  <div>
-    <input type="submit"  value="save report">
-  </div>
+        <!--Bootsrap 4 CDN-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-</form>
-</div>
+          <!--Fontawesome CDN-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!--Custom styles-->
+
+      </head>
+      <body>
+      <div class="container">
+        <div class="d-flex justify-content-center h-100">
+          <div class="card">
+            <div class="card-header">
+              <h3>Add Consultancy report</h3>
+
+            </div>
+            <div class="card-body">
+              <form novalidate [formGroup]="frmTReport" (ngSubmit) ="SaveReport()">
+               <!-- <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="string" name="cr_id" class="form-control" placeholder="enter test report id" formControlName="CR_Id">
+                </div>-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="doctor name" name="doctor name"  formControlName="DoctorName">
+                </div><div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="date" class="form-control" placeholder="Date of Consultancy"  formControlName="DateofConsultancy">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="clinic name" placeholder="Clinic Name"  formControlName="ClinicName">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="disease name" placeholder="Disease Name"  formControlName="DiseaseName">
+                </div>
+         <!-- <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Address"  formControlName="Address">
+                </div>-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="file" name="TestReport" placeholder="upload test report"  (change)="fileSelected($event)">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="checkbox" name="IsActive" placeholder="Enter Is Active(y/n)" formControlName="IsActive">
+                </div>
+
+
+
+                <div class="form-group">
+                  <button [disabled]="!frmTReport.valid" type="submit" class="btn btn-primary px-4">Add</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      </body>
+      </html>
+
+

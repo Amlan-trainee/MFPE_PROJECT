@@ -1,16 +1,17 @@
-<h1>Consultancy Report</h1>
+<h1>View Consultancy Report</h1>
 <div class="row">
     <div class="col-md-12">
-      
+
       <form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
         <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
         <input type="text" name="EmailId" placeholder="EmailId" ngModel required>
-        
+
         <input type="submit" value="Search">
       </form>
 
-
-        <table class="table ">
+      <div class="table-wrapper">
+        <table class="f1-table ">
+          <thead>
             <tr>
                 <!-- <th>Report Id</th> -->
                 <th>Doctor Name</th>
@@ -19,8 +20,10 @@
                 <th>Disease Name</th>
                 <th>Prescription</th>
                 <th>Lock</th>
-                
+
             </tr>
+            </thead>
+            <tbody>
 
             <tr *ngFor="let r of reports">
                 <!-- <td>{{r.CR_Id}}</td> -->
@@ -30,9 +33,11 @@
                 <td>{{r.DiseaseName}}</td>
                 <td><a href="{{r.Prescription}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
-               
-                
+
+
             </tr>
+            </tbody>
         </table>
     </div>
+</div>
 </div>

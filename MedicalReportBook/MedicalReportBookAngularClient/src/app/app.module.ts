@@ -26,6 +26,7 @@ import { Register2Component } from './register2/register2.component';
 import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DeleteConsultancyReportComponent } from './delete-consultancy-report/delete-consultancy-report.component';
 import { FeaturesComponent } from './features/features.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { FeaturesComponent } from './features/features.component';
     Register2Component,
     DeleteDoctorComponent,
     DeleteConsultancyReportComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

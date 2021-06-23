@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { AddpconsultancyReportComponent } from './addpconsultancy-report/addpconsultancy-report.component';
 import { AddtestReportComponent } from './addtest-report/addtest-report.component';
 import { AfterLoginComponent } from './after-login/after-login.component';
@@ -47,7 +48,8 @@ const routes: Routes = [
   {path:'delete-test-report/:Test-Name/:Lr-Id',component:DeletetestreportComponent},
   {path:'delete-doctor',component:DeleteDoctorComponent},
   {path:'delete-consultancy-report/:Disease-Name/:CR-Id',component:DeleteConsultancyReportComponent},
-  {path:'features',component:FeaturesComponent}
+  {path:'features',component:FeaturesComponent},
+  {path:'about-us',component:AboutUsComponent}
 ];
 
 @NgModule({

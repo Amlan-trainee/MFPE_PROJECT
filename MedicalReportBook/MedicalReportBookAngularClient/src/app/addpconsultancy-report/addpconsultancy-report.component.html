@@ -10,7 +10,7 @@
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Register</title>
+        <title>Add consultancy report</title>
 
 
         <!--Bootsrap 4 CDN-->
@@ -56,29 +56,19 @@
                   </div>
                   <input type="text" class="form-control" placeholder="Disease Name"  formControlName="DiseaseName">
                 </div>
+
+
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="PhoneNumber"  formControlName="PhoneNumber">
+                  <input type="file" class="form-control" name="Prescription" placeholder="upload prescription"  (change)="fileSelected($event)">
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-key"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Address"  formControlName="Address">
-                </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
-                  </div>
-                  <input type="file" name="Prescription" placeholder="upload prescription"  (change)="fileSelected($event)">
-                </div>
-                <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
-                  </div>
-                  <input type="checkbox" name="IsActive" placeholder="Enter Is Active(y/n)" formControlName="IsActive">
+                  <input type="checkbox" class="form-control" name="IsActive" placeholder="Enter Is Active(y/n)" formControlName="IsActive">
                 </div>
 
 

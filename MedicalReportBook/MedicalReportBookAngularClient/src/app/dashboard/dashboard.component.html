@@ -96,17 +96,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-eye"></i>Features <span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/features']" ><i class="fa fa-eye"></i>Features <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-black-tie"></i>About Us</a>
+          <a class="nav-link" [routerLink]="['/about-us']" routerLinkActive="router-link-active" ><i class="fa fa-black-tie"></i>About Us</a>
       </li>
-      <li class="nav-item active">
+   <!-- <li class="nav-item active">
           <a class="nav-link" href="#"><i class="fa fa-address-book"></i>Contact Us</a>
       </li>
     <li class="nav-item active" *ngIf='!userLoggedIn'>
       <a class="nav-link" [routerLink]="['/Landing']">Dashboard</a>
-  </li>
+  </li>-->
       <li class="nav-item active" *ngIf='!userLoggedIn || !adminLoggedIn || !doctorLoggedIn'>
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/login']"  >Login</a>
       </li>

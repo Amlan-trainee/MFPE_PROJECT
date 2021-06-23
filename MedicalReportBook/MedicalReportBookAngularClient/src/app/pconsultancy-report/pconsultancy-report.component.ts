@@ -12,23 +12,23 @@ import { ActivatedRoute } from '@angular/router';
 export class PconsultancyReportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
   formData: any;
-  ReportId: number;
+  // ReportId: number;
   Status:boolean | undefined;
   postId: any;
   errorMessage: any;
   
-  constructor(private http :HttpClient,private actr:ActivatedRoute) {
-    this.ReportId=Number(this.actr.snapshot.paramMap.get('CR-Id'));
-    this.Status=Boolean(this.actr.snapshot.paramMap.get('Status'));
+  constructor(private http :HttpClient) {
+    // this.ReportId=Number(this.actr.snapshot.paramMap.get('CR-Id'));
+    // this.Status=Boolean(this.actr.snapshot.paramMap.get('Status'));
   
   }
 
 
   url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
-  urllt:string="http://localhost:57071/api/Patient/LockUnlockCrReport/";
+  // urllt:string="http://localhost:57071/api/Patient/LockUnlockCrReport/";
   urlt:string="";
   UserId=localStorage.getItem('UId');
-  urll:string="";
+  // urll:string="";
 
 
 
@@ -43,7 +43,7 @@ export class PconsultancyReportComponent implements OnInit {
      this.urlt= this.url+this.UserId+'/'+data.DiseaseName;
 
      this.http.get(this.urlt).subscribe(
-      (data)=>{this.reports= data as ConsultancyReport[];},
+      (data)=>{this.reports= data as ConsultancyReport[]},
       (err)=>{
         if(err.status===404){
           alert('Api not available');

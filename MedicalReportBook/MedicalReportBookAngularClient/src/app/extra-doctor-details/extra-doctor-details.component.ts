@@ -9,9 +9,10 @@ import { ExtraDoctorDetails } from '../Source/extradoctordetails';
 })
 export class ExtraDoctorDetailsComponent implements OnInit {
   frmTReport:FormGroup;
+  url:string='http://localhost:57071/api/Doctor/DoctorDetails';
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
     this.frmTReport=this.formBuilder.group({
-      DoctorId: new FormControl('',[Validators.required,Validators.minLength(3)]),
+      DoctorId:localStorage.getItem('UId'),
       Specialization:new FormControl('',[Validators.required,Validators.minLength(3)]),
       Qualification:new FormControl('',Validators.required)
       })
@@ -24,12 +25,13 @@ export class ExtraDoctorDetailsComponent implements OnInit {
   }
 
   SaveReport(){
-    const fd=new FormData()
+    let p:ExtraDoctorDetails=this.frmTReport.value as ExtraDoctorDetails;
     if(this.frmTReport.valid){
-      this.http.post('pi',fd).subscribe(data=>{
+      this.http.post(this.url,p).subscribe(data=>{
         alert('details saved');
       },error=>{
         alert('details not saved');
       })
     }
+  }
 }

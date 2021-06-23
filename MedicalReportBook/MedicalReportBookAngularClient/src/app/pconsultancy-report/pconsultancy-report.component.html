@@ -61,9 +61,9 @@
             <td>{{r.DiseaseName}}</td>
             <td><a href="{{r.Prescription}}">View/Download</a></td>
             <td>{{r.IsActive}}</td>
-            <td>
+            <!-- <td>
               <button [routerLink]="['/consultancy-report',r.CR_Id,r.IsActive]">Status</button>
-          </td>
+          </td> -->
             <td>
               <button [routerLink]="['/delete-consultancy-report',r.DiseaseName,r.CR_Id]">Delete</button>
             </td>

@@ -9,31 +9,36 @@ import { ExtraUserDetails } from '../Source/extrauserdetails';
   styleUrls: ['./extra-user-details.component.css']
 })
 export class ExtraUserDetailsComponent implements OnInit {
-  frmTReport:FormGroup;
+  frmXReport:FormGroup;
+  url:string='http://localhost:57071/api/AppUser/UserDetails';
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
-    this.frmTReport=this.formBuilder.group({
-      User_Id: new FormControl('',[Validators.required,Validators.minLength(3)]),
-      BloodGroup:new FormControl('',[Validators.required,Validators.minLength(3)]),
+    this.frmXReport=this.formBuilder.group({
+      User_Id:localStorage.getItem('UId'),
+      BloodGroup:new FormControl('',[Validators.required]),
       Height:new FormControl('',Validators.required),
       Weight:new FormControl('',Validators.required),
     })
    }
    get f(){
-    return this.frmTReport.controls;
+    return this.frmXReport.controls;
   }
 
 
   ngOnInit(): void {
   }
+
+
   SaveReport(){
-    const fd=new FormData()
-    if(this.frmTReport.valid){
-      this.http.post('pi',fd).subscribe(data=>{
+    // const fd=new FormData();
+    let p:ExtraUserDetails=this.frmXReport.value as ExtraUserDetails;
+    if(this.frmXReport.valid){
+      this.http.post(this.url,p).subscribe(data=>{
         alert('details saved');
       },error=>{
         alert('details not saved');
       })
     }
+    
   }
 
 

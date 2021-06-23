@@ -140,6 +140,12 @@
 <li class="nav-item active" *ngIf='adminLoggedIn'>
   <a class="nav-link" routerLinkActive="active" [routerLink]="['/delete-doctor']" >Delete Doctor</a>
 </li>
+<li class="nav-item active" *ngIf='doctorLoggedIn'>
+  <a class="nav-link" routerLinkActive="active" [routerLink]="['/extra-doctor-details']" >Add Details</a>
+</li>
+<li class="nav-item active" *ngIf='userLoggedIn'>
+  <a class="nav-link" routerLinkActive="active" [routerLink]="['/extra-user-details']" >Add Details</a>
+</li>
 
 <li class="nav-item active" *ngIf='userLoggedIn || adminLoggedIn || doctorLoggedIn'>
     <a class="nav-link" (click)='logout()' >Logout</a>

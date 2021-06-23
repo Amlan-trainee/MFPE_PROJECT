@@ -12,6 +12,8 @@ import { DeletetestreportComponent } from './deletetestreport/deletetestreport.c
 import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
 import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 import { DregisterComponent } from './dregister/dregister.component';
+import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor-details.component';
+import { ExtraUserDetailsComponent } from './extra-user-details/extra-user-details.component';
 import { FeaturesComponent } from './features/features.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingComponent } from './landing/landing.component';
@@ -51,7 +53,9 @@ const routes: Routes = [
   {path:'delete-doctor',component:DeleteDoctorComponent},
   {path:'delete-consultancy-report/:Disease-Name/:CR-Id',component:DeleteConsultancyReportComponent},
   {path:'features',component:FeaturesComponent},
-  {path:'about-us',component:AboutUsComponent}
+  {path:'about-us',component:AboutUsComponent},
+  {path:'extra-user-details',component:ExtraUserDetailsComponent},
+  {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent}
 ];
 
 @NgModule({

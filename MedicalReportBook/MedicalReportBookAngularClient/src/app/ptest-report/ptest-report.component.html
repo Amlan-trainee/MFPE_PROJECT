@@ -32,7 +32,11 @@
                 <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
                 <td>
-                    <a [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</a>
+                    <button [routerLink]="['/test-report',r.Lr_Id]">Status</button>
+                </td>
+                <td>
+                    <button [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</button>
+                    <!-- <a [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</a> -->
                 </td>
                 <!-- <td>{{r.UID}}</td> -->
             

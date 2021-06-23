@@ -28,11 +28,12 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
   {path:'Landing',component: LandingComponent},
-  {path:'test-report',component:PtestReportComponent},
+  {path:'test-report/:Lr-Id',component:PtestReportComponent},
   // {
   //   path:'logout',
   //   component:LandingComponent
   // },
+  {path:'consultancy-report/:CR-Id/:Status',component:PconsultancyReportComponent},
   {path:'consultancy-report',component:PconsultancyReportComponent},
   {path:'after-login',component:AfterLoginComponent},
   {path: '',redirectTo:'landing-page' ,pathMatch:'full'},

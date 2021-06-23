@@ -19,7 +19,7 @@ export class AddpconsultancyReportComponent implements OnInit {
      ClinicName:new FormControl('',[Validators.required,Validators.minLength(3)]),
      DiseaseName:new FormControl('',[Validators.required,Validators.minLength(3)]),
     //  Prescription:new FormControl('',Validators.required),
-     IsActive:new FormControl('',Validators.required),
+     IsActive:new FormControl(false),
     UId:localStorage.getItem('UId')
 
 

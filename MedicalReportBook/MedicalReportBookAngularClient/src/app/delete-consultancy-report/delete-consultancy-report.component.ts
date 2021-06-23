@@ -29,10 +29,12 @@ export class DeleteConsultancyReportComponent implements OnInit {
         .subscribe({
             next: data => {
                 this.status = 'Delete successful';
+                alert('Prescription Deleted');
             },
             error: error => {
                 this.errorMessage = error.message;
                 console.error('There was an error!', error);
+                alert('Prescription deletion failed');
             }
         });
 

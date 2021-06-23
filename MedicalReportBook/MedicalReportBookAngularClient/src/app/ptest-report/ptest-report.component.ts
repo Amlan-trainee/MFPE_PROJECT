@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { TestReport } from '../Source/test-report';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-ptest-report',
   templateUrl: './ptest-report.component.html',
@@ -10,7 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class PtestReportComponent implements OnInit {
   treports:TestReport[] = [];
   formData:any;
-  constructor(private http :HttpClient) {
+  TestId: number;
+  constructor(private http :HttpClient,private actr:ActivatedRoute) {
+    this.TestId=Number(this.actr.snapshot.paramMap.get('Lr-Id'));
   
   }
   public url:string="http://localhost:57071/api/Patient/ViewLabReport/";

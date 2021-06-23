@@ -1,0 +1,118 @@
+/*=== MEDIA QUERY ===*/
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Open+Sans:400,400i,700");
+body {
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  color: #5e5e5e;
+  font-weight: 400;
+  line-height: 1;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 48px;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+
+
+
+
+.feature .feature-item .icon {
+  margin-bottom: 25px;
+}
+
+.feature .feature-item .icon i {
+  font-size: 48px;
+  color: #7d71d3;
+}
+
+.feature .feature-item .content h5 {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.feature .feature-item:not(:last-child) {
+  margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .feature .feature-item {
+    margin-bottom: 80px;
+  }
+}
+
+.feature .app-screen {
+  margin: 40px 0;
+}
+
+
+
+
+
+
+
+.feature .feature-content h2, .feature .feature-content p {
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .feature .feature-content h2, .feature .feature-content p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .feature .testimonial {
+    text-align: center;
+  }
+}
+
+.feature .testimonial p {
+  font-family: "Josefin Sans", sans-serif;
+  margin-bottom: 10px;
+  font-style: italic;
+  color: #242424;
+}
+
+.feature .testimonial ul.meta li {
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.feature .testimonial ul.meta li img {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+
+
+
+
+
+
+/*# sourceMappingURL=maps/style.css.map */

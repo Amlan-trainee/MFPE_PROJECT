@@ -25,6 +25,7 @@ import { Login2Component } from './login2/login2.component';
 import { Register2Component } from './register2/register2.component';
 import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DeleteConsultancyReportComponent } from './delete-consultancy-report/delete-consultancy-report.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { DeleteConsultancyReportComponent } from './delete-consultancy-report/de
     Login2Component,
     Register2Component,
     DeleteDoctorComponent,
-    DeleteConsultancyReportComponent
+    DeleteConsultancyReportComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,

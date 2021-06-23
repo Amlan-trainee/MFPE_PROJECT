@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ConsultancyReport } from '../Source/consultancy-report';
+import {pipe} from 'rxjs';
+import {map,filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-doctor-consultancyreport',
@@ -9,10 +11,10 @@ import { ConsultancyReport } from '../Source/consultancy-report';
   styleUrls: ['./doctor-consultancyreport.component.css']
 })
 export class DoctorConsultancyreportComponent implements OnInit {
-  reports:ConsultancyReport[] = [];
+  reports: ConsultancyReport | undefined;
   formData: any;
 
-  constructor(private http :HttpClient) {
+  constructor(private http :HttpClient, private cr :ConsultancyReport) {
 
   }
 
@@ -34,9 +36,9 @@ export class DoctorConsultancyreportComponent implements OnInit {
   onSubmit(data: { EmailId:string; DiseaseName: string; }){
      this.urlt= this.url+data.EmailId+'/'+data.DiseaseName;
 
-     this.http.get(this.urlt).subscribe(
-      (data)=>{this.reports= data as ConsultancyReport[];},
-      (err)=>{
+     this.http.get(this.urlt).pipe(map(item => item as ConsultancyReport),filter(item => item.IsActive)).subscribe(
+      data =>{this.reports= data },
+      err=>{
         if(err.status===404){
           alert('Api not available');
         }

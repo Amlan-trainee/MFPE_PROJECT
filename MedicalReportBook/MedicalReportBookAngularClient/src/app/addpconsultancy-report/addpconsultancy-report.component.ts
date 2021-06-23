@@ -22,6 +22,7 @@ export class AddpconsultancyReportComponent implements OnInit {
      IsActive:new FormControl('',Validators.required),
     UId:localStorage.getItem('UId')
 
+
     });
    }
 

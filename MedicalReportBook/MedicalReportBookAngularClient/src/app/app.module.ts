@@ -27,6 +27,8 @@ import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DeleteConsultancyReportComponent } from './delete-consultancy-report/delete-consultancy-report.component';
 import { FeaturesComponent } from './features/features.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ExtraUserDetailsComponent } from './extra-user-details/extra-user-details.component';
+import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor-details.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     DeleteDoctorComponent,
     DeleteConsultancyReportComponent,
     FeaturesComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ExtraUserDetailsComponent,
+    ExtraDoctorDetailsComponent
   ],
   imports: [
     BrowserModule,

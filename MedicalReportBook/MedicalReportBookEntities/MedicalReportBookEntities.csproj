@@ -62,8 +62,6 @@
     <Compile Include="Entities\DoctorDetails.cs" />
     <Compile Include="Entities\LabReportEntity.cs" />
     <Compile Include="Entities\UserDetails.cs" />
-    <Compile Include="Entities\Vaccine.cs" />
-    <Compile Include="Entities\VaccineDetails.cs" />
     <Compile Include="MedicalReportBookContext.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.cs" />
     <Compile Include="Migrations\202106111152219_NewDatabase Created.designer.cs">
@@ -133,6 +131,10 @@
     <Compile Include="Migrations\202106221115213_Email unique.designer.cs">
       <DependentUpon>202106221115213_Email unique.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106230824007_vaccine table deleted.cs" />
+    <Compile Include="Migrations\202106230824007_vaccine table deleted.designer.cs">
+      <DependentUpon>202106230824007_vaccine table deleted.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -191,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106221115213_Email unique.resx">
       <DependentUpon>202106221115213_Email unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106230824007_vaccine table deleted.resx">
+      <DependentUpon>202106230824007_vaccine table deleted.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

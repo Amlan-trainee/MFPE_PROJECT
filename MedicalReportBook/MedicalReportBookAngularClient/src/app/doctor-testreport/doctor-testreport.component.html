@@ -1,16 +1,17 @@
-<h1>Test Report</h1>
+<h1>View Test Report</h1>
 <div class="row">
     <div class="col-md-12">
-      
+
       <form #user="ngForm" (ngSubmit)="ontestsubmit(user.value)">
         <input type="text" name="TestName" placeholder="TestName" ngModel required>
         <input type="text" name="EmailId" placeholder="EmailId" ngModel required>
-        
+
         <input type="submit" value="Search">
       </form>
+      <div class="table-wrapper">
 
-
-        <table class="table ">
+        <table class="f1-table ">
+          <thead>
             <tr>
                 <!-- <th>Report Id</th> -->
                 <th>Doctor Name</th>
@@ -19,9 +20,10 @@
                 <th>Test Name</th>
                 <th>Lab Report</th>
                 <th>Lock</th>
-                
-            </tr>
 
+            </tr>
+            </thead>
+            <tbody>
             <tr *ngFor="let r of treports">
                 <!-- <td>{{r.CR_Id}}</td> -->
                 <td>{{r.DoctorName}}</td>
@@ -30,9 +32,11 @@
                 <td>{{r.TestName}}</td>
                 <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
-            
-                
+
+
             </tr>
+            </tbody>
         </table>
     </div>
+</div>
 </div>

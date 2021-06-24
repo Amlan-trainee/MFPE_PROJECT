@@ -40,26 +40,26 @@
                 </div>-->
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
                   <input type="text" class="form-control" placeholder="Doctor Name" name="doctor name"  formControlName="DoctorName">
                 </div><div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                   </div>
-                  <input type="date" class="form-control" placeholder="Date of Test"  formControlName="DateofConsultancy">
+                  <input type="date" class="form-control" placeholder="Date of Test"  formControlName="DateofTest">
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-home"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="clinic name" placeholder="Lab Name"  formControlName="ClinicName">
+                  <input type="text" class="form-control" name="clinic name" placeholder="Lab Name"  formControlName="LabName">
                 </div>
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-diagnoses"></i></span>
                   </div>
-                  <input type="text" class="form-control" name="disease name" placeholder="Test Name"  formControlName="DiseaseName">
+                  <input type="text" class="form-control" name="disease name" placeholder="Test Name"  formControlName="TestName">
                 </div>
          <!-- <div class="input-group form-group">
                   <div class="input-group-prepend">
@@ -69,16 +69,17 @@
                 </div>-->
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-image"></i></span>
                   </div>
-                  <input type="file" name="TestReport" placeholder="Upload Test Report"  (change)="fileSelected($event)">
+                  <input type="file" class="form-control" name="TestReport" placeholder="Upload Test Report"  (change)="fileSelected($event)">
                 </div>
                 
                 <div class="input-group form-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                    <span class="input-group-text"><i class="fa fa-check"></i></span>
                   </div>
-                  <input type="checkbox" name="IsActive" placeholder="Enter Is Active(y/n)" formControlName="IsActive">
+                  <input type="checkbox" name="IsActive" formControlName="IsActive">
+                  <label style="width: auto; color: antiquewhite;font-size:large;padding-left: 2em;padding-top: 2mm;" >IsActive</label>
                 </div>
 
 

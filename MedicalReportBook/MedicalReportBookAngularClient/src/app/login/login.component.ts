@@ -77,7 +77,7 @@ export class LoginComponent {
       },
       error => {
         this.errorMessage = error.message;
-        alert("API connection failed");
+        alert("Wrong Credential");
       });
   };
 }

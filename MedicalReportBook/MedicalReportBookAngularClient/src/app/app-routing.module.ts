@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { Register2Component } from './register2/register2.component';
 import { ToggleStatusComponent } from './toggle-status/toggle-status.component';
 import { ToggleTestStatusComponent } from './toggle-test-status/toggle-test-status.component';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
 
 const routes: Routes = [
 
@@ -52,7 +53,7 @@ const routes: Routes = [
   {path:'login2',component:Login2Component},
   {path:'register2',component:Register2Component},
   {path:'delete-test-report/:Test-Name/:Lr-Id',component:DeletetestreportComponent},
-  {path:'delete-doctor',component:DeleteDoctorComponent},
+  {path:'delete-doctor/:mail-id/:user-id',component:DeleteDoctorComponent},
   {path:'delete-consultancy-report/:Disease-Name/:CR-Id',component:DeleteConsultancyReportComponent},
   {path:'features',component:FeaturesComponent},
   {path:'about-us',component:AboutUsComponent},
@@ -60,7 +61,8 @@ const routes: Routes = [
   {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent},
   {path:'Update-doctor-password',component:DoctorPasswordUpdateComponent},
   {path:'toggle-status/:R-Id',component:ToggleStatusComponent},
-  {path:'toggle-test-status/:R-Id',component:ToggleTestStatusComponent}
+  {path:'toggle-test-status/:R-Id',component:ToggleTestStatusComponent},
+  {path:'view-doctor',component:ViewDoctorComponent}
 ];
 
 @NgModule({

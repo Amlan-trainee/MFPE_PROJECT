@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-doctor',
@@ -8,32 +9,31 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./delete-doctor.component.css']
 })
 export class DeleteDoctorComponent implements OnInit {
+  UserId: number;
+  EmailId: string;
+  url:string="http://localhost:57071/api/Admin/RemoveDoctor/";
+  urlt: string='';
+  
 
-  url:string = 'http://localhost:57071/api/Admin/RemoveDoctor/';
-  urlt:string = '';
-  status: string='';
-  errorMessage: any;
-
-  constructor(private http :HttpClient) { }
+  constructor(private http: HttpClient,private router:Router,private actr:ActivatedRoute){
+    this.UserId=Number(this.actr.snapshot.paramMap.get('user-id'));
+    this.EmailId=String(this.actr.snapshot.paramMap.get('mail-id'));
+  }
 
   ngOnInit(): void {
   }
 
-  OnDelete(data: { Email: string; UserId: string; }){
-    this.urlt=this.url+data.Email+'/'+data.UserId;
+  OnSubmit(){
+    this.urlt=this.url+this.EmailId+'/'+this.UserId;
     this.http.delete(this.urlt)
         .subscribe({
             next: data => {
-                this.status = 'Delete successful';
                 alert('Doctor Deleted');
             },
             error: error => {
-                this.errorMessage = error.message;
-                console.error('There was an error!', error);
-                alert('Doctor Deletion Unsuccessful');
+                alert('Doctor deletion failed');
             }
         });
 
-  }
-
+}
 }

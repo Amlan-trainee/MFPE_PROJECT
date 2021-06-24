@@ -32,6 +32,7 @@ import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor
 import { DoctorPasswordUpdateComponent } from './doctor-password-update/doctor-password-update.component';
 import { ToggleStatusComponent } from './toggle-status/toggle-status.component';
 import { ToggleTestStatusComponent } from './toggle-test-status/toggle-test-status.component';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ToggleTestStatusComponent } from './toggle-test-status/toggle-test-stat
     ExtraDoctorDetailsComponent,
     DoctorPasswordUpdateComponent,
     ToggleStatusComponent,
-    ToggleTestStatusComponent
+    ToggleTestStatusComponent,
+    ViewDoctorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+<h2>Consultancy Report</h2>
+<div class="row">
+  <div class="col-md-12">
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Contact Details</th>
+          <th>Email Id</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of DoctorData">
+            <td>{{r.FirstName}}{{r.MiddleName}}{{r.LastName}}</td>
+            <!-- <td>{{r.MiddleName}}</td>
+            <td>{{r.LastName}}</td> -->
+            <td>{{r.PhoneNumber}}</td>
+            <td>{{r.EmailId}}</td>
+            <!-- <td>{{r.UserType}}</td> -->
+            <td>
+              <button [routerLink]="['/delete-consultancy-report',r.EmailId,r.UserId]">Delete</button>
+            </td>
+
+
+        </tr>
+      </tbody>
+        </table>
+    </div>
+    </div>
+    </div>

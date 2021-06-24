@@ -51,7 +51,7 @@ namespace MedicalReportBookBLL.Tests
             CollectionAssert.IsNotEmpty(result);
         }
         /// <summary>
-        /// 
+        /// Test method for ChangePassword method of DoctorService
         /// </summary>
         [Test]
         public void ChangePassword()
@@ -67,7 +67,7 @@ namespace MedicalReportBookBLL.Tests
             Assert.AreEqual(expexted, result);
         }
         /// <summary>
-        /// 
+        /// Test method for AddDoctorDetails method of DoctorService
         /// </summary>
         [Test]
         public void UpdateDoctorDetails()

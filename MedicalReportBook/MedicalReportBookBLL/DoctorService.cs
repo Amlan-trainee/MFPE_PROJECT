@@ -103,6 +103,13 @@ namespace MedicalReportBookBLL
                 throw new MedicalReportBookExceptions("Unknown error while getting lab report", e);
             }
         }
+        /// <summary>
+        /// This method will allow the doctor to change his password.
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="OldPassword"></param>
+        /// <param name="NewPassword"></param>
+        /// <returns>True is password is changed else returns false.</returns>
         public bool ChangePassword(int ID,string OldPassword,string NewPassword)
         {
             try
@@ -136,10 +143,10 @@ namespace MedicalReportBookBLL
         }
 
         /// <summary>
-        /// 
+        /// This method will allow the doctor to add additional details.
         /// </summary>
         /// <param name="doctorDetails"></param>
-        /// <returns></returns>
+        /// <returns> Returns true on sucessful execution else returns false</returns>
         public bool AddDoctorDetails(DoctorDetails doctorDetails)
         {
             try
@@ -164,4 +171,3 @@ namespace MedicalReportBookBLL
         }
     }
 }
-// 4 Services

@@ -30,10 +30,10 @@ namespace MedicalReportBookBLL
 
         }
         /// <summary>
-        /// 
+        /// This method will allow the user to add additional details.
         /// </summary>
         /// <param name="userDetails"></param>
-        /// <returns></returns>
+        /// <returns>True is details are addded successfully else returns false.</returns>
         public bool AddUserDetails(UserDetails userDetails)
         {
             try
@@ -156,11 +156,11 @@ namespace MedicalReportBookBLL
         }
 
         /// <summary>
-        /// 
+        /// This method will allow the user to delete the Lab report he wants.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="TestName"></param>
-        /// <returns></returns>
+        /// <returns>True on sucessful deletion else returns false</returns>
         public bool DeleteLabReportByTestName(int id,string TestName,int Lr_Id)
         {
             try
@@ -182,12 +182,12 @@ namespace MedicalReportBookBLL
             }
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="id"></param>
-       /// <param name="DiseaseName"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// This method will allow the user to delete the Consultancy report he wants.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="DiseaseName"></param>
+        /// <returns>True on sucessful deletion else returns false</returns>
         public bool DeleteConsultancyReportByDiseaseName(int id, string DiseaseName,int CR_Id)
         {
             try
@@ -209,11 +209,11 @@ namespace MedicalReportBookBLL
             }
         }
         /// <summary>
-        /// 
+        /// This method allows the User to update the lock/unlock the consultancy report as per there wish.
         /// </summary>
         /// <param name="CR_Id"></param>
         /// <param name="IsActive"></param>
-        /// <returns></returns>
+        /// <returns>True on sucessful execution else returns false.</returns>
         public bool AccessPermissionForConsultancyReport(int CR_Id,bool IsActive)
         {
             try
@@ -239,11 +239,11 @@ namespace MedicalReportBookBLL
 
         }
         /// <summary>
-        /// 
+        /// This method allows the User to update the lock/unlock the consultancy report as per there wish.
         /// </summary>
         /// <param name="Lr_Id"></param>
         /// <param name="IsActive"></param>
-        /// <returns></returns>
+        /// <returns>True on sucessful execution else returns false</returns>
         public bool AccessPermissionForLabReport(int Lr_Id,bool IsActive)
         {
             try

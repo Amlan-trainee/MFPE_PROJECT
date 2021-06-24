@@ -25,6 +25,7 @@ import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { RegisterComponent } from './register/register.component';
 import { Register2Component } from './register2/register2.component';
 import { ToggleStatusComponent } from './toggle-status/toggle-status.component';
+import { ToggleTestStatusComponent } from './toggle-test-status/toggle-test-status.component';
 
 const routes: Routes = [
 
@@ -58,7 +59,8 @@ const routes: Routes = [
   {path:'extra-user-details',component:ExtraUserDetailsComponent},
   {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent},
   {path:'Update-doctor-password',component:DoctorPasswordUpdateComponent},
-  {path:'toggle-status/:R-Id/:Status',component:ToggleStatusComponent}
+  {path:'toggle-status/:R-Id',component:ToggleStatusComponent},
+  {path:'toggle-test-status/:R-Id',component:ToggleTestStatusComponent}
 ];
 
 @NgModule({

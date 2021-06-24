@@ -39,6 +39,7 @@ export class LoginComponent {
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
           alert("Login successful for User");
+          this.router.navigateByUrl("/");
 
           // debugger;
         }
@@ -50,6 +51,7 @@ export class LoginComponent {
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
           alert("Login successful for Admin");
+          this.router.navigateByUrl("/");
 
           // debugger;
         }
@@ -61,6 +63,7 @@ export class LoginComponent {
           localStorage.setItem('UId',data.Id);
           localStorage.setItem('UType',data.Result);
           alert("Login successful for Doctor ");
+          this.router.navigateByUrl("/");
 
           // debugger;
         }
@@ -68,6 +71,7 @@ export class LoginComponent {
           this.errorMessage = data.Message;
           this.as.doLogin(false);
           alert("Error while Login");
+          this.router.navigateByUrl("/");
 
         }
       },

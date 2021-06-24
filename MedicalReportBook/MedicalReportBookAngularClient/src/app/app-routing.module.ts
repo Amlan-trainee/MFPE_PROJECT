@@ -10,6 +10,7 @@ import { DeleteConsultancyReportComponent } from './delete-consultancy-report/de
 import { DeleteDoctorComponent } from './delete-doctor/delete-doctor.component';
 import { DeletetestreportComponent } from './deletetestreport/deletetestreport.component';
 import { DoctorConsultancyreportComponent } from './doctor-consultancyreport/doctor-consultancyreport.component';
+import { DoctorPasswordUpdateComponent } from './doctor-password-update/doctor-password-update.component';
 import { DoctorTestreportComponent } from './doctor-testreport/doctor-testreport.component';
 import { DregisterComponent } from './dregister/dregister.component';
 import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor-details.component';
@@ -23,6 +24,7 @@ import { PconsultancyReportComponent } from './pconsultancy-report/pconsultancy-
 import { PtestReportComponent } from './ptest-report/ptest-report.component';
 import { RegisterComponent } from './register/register.component';
 import { Register2Component } from './register2/register2.component';
+import { ToggleStatusComponent } from './toggle-status/toggle-status.component';
 
 const routes: Routes = [
 
@@ -30,12 +32,11 @@ const routes: Routes = [
   {path: 'login',component: LoginComponent},
   {path:'register',component: RegisterComponent},
   {path:'Landing',component: LandingComponent},
-  {path:'test-report/:Lr-Id',component:PtestReportComponent},
+  {path:'test-report',component:PtestReportComponent},
   // {
   //   path:'logout',
   //   component:LandingComponent
   // },
-  {path:'consultancy-report/:CR-Id/:Status',component:PconsultancyReportComponent},
   {path:'consultancy-report',component:PconsultancyReportComponent},
   {path:'after-login',component:AfterLoginComponent},
   {path: '',redirectTo:'landing-page' ,pathMatch:'full'},
@@ -55,7 +56,9 @@ const routes: Routes = [
   {path:'features',component:FeaturesComponent},
   {path:'about-us',component:AboutUsComponent},
   {path:'extra-user-details',component:ExtraUserDetailsComponent},
-  {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent}
+  {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent},
+  {path:'Update-doctor-password',component:DoctorPasswordUpdateComponent},
+  {path:'toggle-status/:R-Id/:Status',component:ToggleStatusComponent}
 ];
 
 @NgModule({

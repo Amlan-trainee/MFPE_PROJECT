@@ -14,9 +14,9 @@ export class ExtraUserDetailsComponent implements OnInit {
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
     this.frmXReport=this.formBuilder.group({
       User_Id:localStorage.getItem('UId'),
-      BloodGroup:new FormControl('',[Validators.required]),
-      Height:new FormControl('',Validators.required),
-      Weight:new FormControl('',Validators.required),
+      BloodGroup:new FormControl('',Validators.required),
+      Height:new FormControl(),
+      Weight:new FormControl(),
     })
    }
    get f(){
@@ -33,9 +33,9 @@ export class ExtraUserDetailsComponent implements OnInit {
     let p:ExtraUserDetails=this.frmXReport.value as ExtraUserDetails;
     if(this.frmXReport.valid){
       this.http.post(this.url,p).subscribe(data=>{
-        alert('details saved');
+        alert('Details saved');
       },error=>{
-        alert('details not saved');
+        alert('You have already updated your details');
       })
     }
     

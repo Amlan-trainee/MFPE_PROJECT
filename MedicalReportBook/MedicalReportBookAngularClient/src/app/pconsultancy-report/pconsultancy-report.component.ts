@@ -12,24 +12,15 @@ import { ActivatedRoute } from '@angular/router';
 export class PconsultancyReportComponent implements OnInit {
   reports:ConsultancyReport[] = [];
   formData: any;
-  // ReportId: number;
-  Status:boolean | undefined;
-  postId: any;
-  errorMessage: any;
-  
   constructor(private http :HttpClient) {
-    // this.ReportId=Number(this.actr.snapshot.paramMap.get('CR-Id'));
-    // this.Status=Boolean(this.actr.snapshot.paramMap.get('Status'));
-  
+    
   }
 
 
   url:string="http://localhost:57071/api/Patient/ViewConsultancyReport/";
-  // urllt:string="http://localhost:57071/api/Patient/LockUnlockCrReport/";
   urlt:string="";
   UserId=localStorage.getItem('UId');
-  // urll:string="";
-
+ 
 
 
   ngOnInit(): void {

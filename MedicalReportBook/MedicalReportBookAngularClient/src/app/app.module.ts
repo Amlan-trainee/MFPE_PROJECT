@@ -29,6 +29,8 @@ import { FeaturesComponent } from './features/features.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ExtraUserDetailsComponent } from './extra-user-details/extra-user-details.component';
 import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor-details.component';
+import { DoctorPasswordUpdateComponent } from './doctor-password-update/doctor-password-update.component';
+import { ToggleStatusComponent } from './toggle-status/toggle-status.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { ExtraDoctorDetailsComponent } from './extra-doctor-details/extra-doctor
     FeaturesComponent,
     AboutUsComponent,
     ExtraUserDetailsComponent,
-    ExtraDoctorDetailsComponent
+    ExtraDoctorDetailsComponent,
+    DoctorPasswordUpdateComponent,
+    ToggleStatusComponent
   ],
   imports: [
     BrowserModule,

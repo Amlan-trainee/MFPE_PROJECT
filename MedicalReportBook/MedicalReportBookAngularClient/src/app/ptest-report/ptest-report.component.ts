@@ -11,9 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PtestReportComponent implements OnInit {
   treports:TestReport[] = [];
   formData:any;
-  TestId: number;
-  constructor(private http :HttpClient,private actr:ActivatedRoute) {
-    this.TestId=Number(this.actr.snapshot.paramMap.get('Lr-Id'));
+  constructor(private http :HttpClient) {
   
   }
   public url:string="http://localhost:57071/api/Patient/ViewLabReport/";

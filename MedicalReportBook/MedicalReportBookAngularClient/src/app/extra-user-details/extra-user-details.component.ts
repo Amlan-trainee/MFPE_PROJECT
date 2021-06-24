@@ -14,9 +14,9 @@ export class ExtraUserDetailsComponent implements OnInit {
   constructor(private http:HttpClient,private formBuilder:FormBuilder) {
     this.frmXReport=this.formBuilder.group({
       User_Id:localStorage.getItem('UId'),
-      BloodGroup:new FormControl('',[Validators.required]),
-      Height:new FormControl('',Validators.required),
-      Weight:new FormControl('',Validators.required),
+      BloodGroup:new FormControl('',Validators.required),
+      Height:new FormControl(),
+      Weight:new FormControl(),
     })
    }
    get f(){

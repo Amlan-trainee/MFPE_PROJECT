@@ -58,7 +58,7 @@ const routes: Routes = [
   {path:'extra-user-details',component:ExtraUserDetailsComponent},
   {path:'extra-doctor-details',component:ExtraDoctorDetailsComponent},
   {path:'Update-doctor-password',component:DoctorPasswordUpdateComponent},
-  {path:'toggle-status/:R-Id/:Status',component:ToggleStatusComponent}
+  {path:'toggle-status/:R-Id',component:ToggleStatusComponent}
 ];
 
 @NgModule({

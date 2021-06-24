@@ -18,11 +18,17 @@
     <div class="card text-center">
         <div class="card-header">Test Report</div>
         <div class="card-body">
-            <h5 class="card-title">Delete Test Report</h5>
-            <p class="card-text">Kindly check the test report properly before deleting it and click on delete to confirm deletion.</p>
+            <h5 class="card-title">Toggle Report Permission</h5>
+            <p class="card-text">You can set the visibility of your report by choosing true or false from the drop down below.</p>
             <!-- <a  class="btn btn-primary">Know more</a> -->
             <form #user="ngForm" (ngSubmit)="OnSubmit()">
-                <input type="submit" value="Delete">
+                <!-- <label for="Status">Report Visible To Doctor</label>
+                    <select name="Status" id="cars" formControlName="Status" ngModel>
+                        <option value="true" >True</option>
+                        <option value="false" >False</option>
+                    </select> -->
+                <input type="checkbox" formControlName="IsActive" ngModel >    
+                <input type="submit" value="Update">
             </form>
         </div>
         <div class="card-footer text-muted">Medical Report Book</div>

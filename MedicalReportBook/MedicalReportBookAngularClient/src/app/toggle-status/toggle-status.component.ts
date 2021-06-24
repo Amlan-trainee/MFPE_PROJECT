@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { StatusToggle } from '../Source/status-toggle';
 
 @Component({
   selector: 'app-toggle-status',
@@ -8,13 +10,17 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./toggle-status.component.css']
 })
 export class ToggleStatusComponent implements OnInit {
+  frmXReport:FormGroup;
   url:string="http://localhost:57071/api/Patient/LockUnlockCrReport/";
   ReportId: number;
-  Status: boolean;
 
-  constructor(private http: HttpClient,private actr:ActivatedRoute) {
+  constructor(private http: HttpClient,private actr:ActivatedRoute,private formBuilder:FormBuilder) {
     this.ReportId=Number(this.actr.snapshot.paramMap.get('R-Id'));
-    this.Status=Boolean(this.actr.snapshot.paramMap.get('Status'));
+    this.frmXReport=this.formBuilder.group({
+      Report_Id:this.ReportId,
+      IsActive:new FormControl(false)
+    })
+    
   
    }
 
@@ -22,8 +28,16 @@ export class ToggleStatusComponent implements OnInit {
   }
 
   OnSubmit(){
-    this.http.put(this.url+this.ReportId,true).subscribe(data=>{},error=>{});
+    let p:StatusToggle=this.frmXReport.value as StatusToggle;
+    if(this.frmXReport.valid){
+      this.http.put(this.url,p).subscribe(data=>{
+        alert('Password Updated');
+      },error=>{
+        alert('Update Unsuccessful');
+      })
+    }
 
   }
-
 }
+
+

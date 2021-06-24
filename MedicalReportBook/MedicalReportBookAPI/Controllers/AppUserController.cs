@@ -32,7 +32,7 @@ namespace MedicalReportBookAPI.Controllers
         /// Action Method for adding a new user to database
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns>Statuscode 201 on sucessful execution else returns 415 Statuscode</returns>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPost]
         [Route("api/AppUser/Registration")]
         public IHttpActionResult Post(AppUserDto obj)

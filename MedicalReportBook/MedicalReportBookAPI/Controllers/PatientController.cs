@@ -29,10 +29,10 @@ namespace MedicalReportBookAPI.Controllers
             base.Dispose(disposing);
         }
         /// <summary>
-        /// 
+        /// Action Method to Add User
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <returns>Statuscode 201 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPost]
         [Route("api/AppUser/UserDetails")]
         public IHttpActionResult Post(UserDetailsDto obj)
@@ -298,13 +298,13 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="id"></param>
-       /// <param name="TestName"></param>
-       /// <param name="Lr_Id"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// Action method to Delete Lab Report
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="TestName"></param>
+        /// <param name="Lr_Id"></param>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpDelete]
         [Route("api/Patient/DeleteLabReport/{id}/{TestName}/{Lr_Id}")]
         public IHttpActionResult DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName, [FromUri] int Lr_Id)
@@ -345,12 +345,12 @@ namespace MedicalReportBookAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Action method to Delete Consultancy Report
         /// </summary>
         /// <param name="id"></param>
         /// <param name="DiseaseName"></param>
         /// <param name="CR_Id"></param>
-        /// <returns></returns>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpDelete]
         [Route("api/Patient/DeleteConsultancyReport/{id}/{DiseaseName}/{CR_Id}")] 
         public IHttpActionResult DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName, [FromUri] int CR_Id)
@@ -390,10 +390,10 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
         /// <summary>
-        /// 
+        /// Action Method to Lock and Unlock Consultancy Report
         /// </summary>
         /// <param name="lockandUnlockDto"></param>
-        /// <returns></returns>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPut]
         [Route("api/Patient/LockUnlockCrReport")]
         public IHttpActionResult LockUnlockConsultancyReport(LockandUnlockDto lockandUnlockDto)
@@ -431,10 +431,10 @@ namespace MedicalReportBookAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Action Method to Lock and Unlock Lab Report
         /// </summary>
         /// <param name="lockandUnlockDto"></param>
-        /// <returns></returns>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPut]
         [Route("api/Patient/LockUnlockLrReport")]
         public IHttpActionResult LockUnlockLabReport(LockandUnlockDto lockandUnlockDto)

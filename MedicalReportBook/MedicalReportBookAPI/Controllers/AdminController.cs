@@ -31,7 +31,7 @@ namespace MedicalReportBookAPI.Controllers
         /// Action Method for a new doctor or admin to database by admin
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns> Statuscode 201 on sucessful execution else returns 415 Statuscode </returns>
+        /// <returns> Statuscode 201 on successful execution else returns 415 Statuscode </returns>
         [HttpPost]
         [Route("api/Admin/AddDrAdm")]
         public IHttpActionResult AddDoctorOrAdmin(AppUserDto obj)
@@ -84,11 +84,11 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
-         /// <summary>
-         /// 
-         /// </summary>
-         /// <param name="EmailId"></param>
-         /// <returns></returns>
+        /// <summary>
+        /// Action Method to Delete Doctor
+        /// </summary>
+        /// <param name="EmailId"></param>
+        /// <returns>Statuscode 200 on successful execution else returns 404 Statuscode</returns>
         [HttpDelete]
         [Route("api/Admin/RemoveDoctor/{EmailId}/{UserId}")]
         public IHttpActionResult DeleteDoctorbyEmail([FromUri]string EmailId,[FromUri] int UserId)
@@ -128,9 +128,9 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
         /// <summary>
-        /// 
+        /// Action Method to View All Doctor
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Statuscode 200 on successful execution and return list of doctor else returns 400 Statuscode</returns>
         [HttpGet]
         [Route("api/Admin/ViewAllDoctors")]
         public IHttpActionResult ViewAllDoctors()

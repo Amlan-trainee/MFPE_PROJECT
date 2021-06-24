@@ -135,11 +135,10 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
         /// <summary>
-        /// 
+        /// Action Method to Change Password
         /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="Password"></param>
-        /// <returns></returns>
+        /// <param name="changePassowrdDto"></param>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode </returns>
         [HttpPut]
         [Route("api/Doctor/ChangePassword")]
         public IHttpActionResult ChangePassword([FromBody] ChangePassowrdDto changePassowrdDto)
@@ -188,10 +187,10 @@ namespace MedicalReportBookAPI.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Action Method to add Doctor Details
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <returns>Statuscode 200 on sucessful execution else returns 415 Statuscode</returns>
         [HttpPost]
         [Route("api/Doctor/DoctorDetails")]
         public IHttpActionResult Post(DoctorDetailsDto obj)

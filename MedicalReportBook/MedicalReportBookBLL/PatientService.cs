@@ -208,6 +208,12 @@ namespace MedicalReportBookBLL
                 throw new MedicalReportBookExceptions("Unknown error while Deleting consultancy report", e);
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="CR_Id"></param>
+        /// <param name="IsActive"></param>
+        /// <returns></returns>
         public bool AccessPermissionForConsultancyReport(int CR_Id,bool IsActive)
         {
             try
@@ -232,6 +238,12 @@ namespace MedicalReportBookBLL
             }
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Lr_Id"></param>
+        /// <param name="IsActive"></param>
+        /// <returns></returns>
         public bool AccessPermissionForLabReport(int Lr_Id,bool IsActive)
         {
             try

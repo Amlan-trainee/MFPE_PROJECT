@@ -117,7 +117,10 @@ namespace MedicalReportBookBLL
                 throw new MedicalReportBookExceptions("Unknown error while Deleting Doctor", e);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
        public List<AppUser> ViewDoctor()
         {
             try

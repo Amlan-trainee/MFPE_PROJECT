@@ -5,6 +5,9 @@ using System.Web;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DoctorDetailsDto
     {
         public int DoctorId { get; set; }

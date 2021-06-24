@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookEntities.Entities
 {
+    /// <summary>
+/// 
+/// </summary>
    public class UserDetails
     {
         [Key]

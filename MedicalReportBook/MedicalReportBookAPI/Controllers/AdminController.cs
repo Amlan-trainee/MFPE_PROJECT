@@ -92,7 +92,10 @@ namespace MedicalReportBookAPI.Controllers
                 }
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("api/Admin/ViewAllDoctors")]
         public IHttpActionResult ViewAllDoctors()

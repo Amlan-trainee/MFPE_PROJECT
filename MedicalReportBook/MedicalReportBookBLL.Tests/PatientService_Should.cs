@@ -122,7 +122,8 @@ namespace MedicalReportBookBLL.Tests
         public void AccessPermissionForConsultancyRepoort()
         {
             var CR_Id = 7;
-            var actual = service.AccessPermissionForConsultancyReport(CR_Id);
+            var IsActive = true;
+            var actual = service.AccessPermissionForConsultancyReport(CR_Id, IsActive);
             var expected = true;
             Assert.AreEqual(expected, actual);
         }
@@ -133,10 +134,14 @@ namespace MedicalReportBookBLL.Tests
         public void AccessPermissionForLabRepoort()
         {
             var Lr_Id = 1;
-            var actual = service.AccessPermissionForLabReport(Lr_Id);
+            var IsActive = true;
+            var actual = service.AccessPermissionForLabReport(Lr_Id, IsActive);
             var expected = true;
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// 
+        /// </summary>
         [Test]
         public void AddUserDetails()
         {

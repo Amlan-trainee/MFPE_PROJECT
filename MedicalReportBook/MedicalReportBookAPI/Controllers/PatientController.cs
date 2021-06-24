@@ -277,6 +277,11 @@ namespace MedicalReportBookAPI.Controllers
                 }
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lockandUnlockDto"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("api/Patient/LockUnlockCrReport")]
         public IHttpActionResult LockUnlockConsultancyReport(LockandUnlockDto lockandUnlockDto)
@@ -296,7 +301,11 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="lockandUnlockDto"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("api/Patient/LockUnlockLrReport")]
         public IHttpActionResult LockUnlockLabReport(LockandUnlockDto lockandUnlockDto)

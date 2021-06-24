@@ -10,14 +10,16 @@ import { Getdoctor } from '../Source/getdoctor';
 })
 export class ViewDoctorComponent implements OnInit {
   DoctorData:Getdoctor[]=[];
-  url:string='';
-  formData: FormGroup | undefined;
+  url:string='http://localhost:57071/api/Admin/ViewAllDoctors';
+  formData:any;
 
   constructor(private http :HttpClient) { }
 
   ngOnInit(): void {
 
-    this.formData = new FormGroup({name : new FormControl()});
+    this.formData = new FormGroup({
+      name    : new FormControl()
+  });
 
     this.http.get(this.url).subscribe(
       (data)=>{this.DoctorData= data as Getdoctor[]},

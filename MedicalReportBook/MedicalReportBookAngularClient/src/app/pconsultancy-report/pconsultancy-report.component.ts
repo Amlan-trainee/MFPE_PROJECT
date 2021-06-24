@@ -46,22 +46,4 @@ export class PconsultancyReportComponent implements OnInit {
 
     );
   }
-
-  // OnToggle(){
-  //   this.urll=this.urllt+this.ReportId;
-  //   // const body = { title: 'Angular PUT Request Example' };
-  //   this.http.put(`${this.urll}/${this.ReportId}`,true)
-  //       .subscribe({
-  //           next: data => {
-                
-  //               alert('Status Changed');
-  //           },
-  //           error: error => {
-  //               this.errorMessage = error.message;
-  //               console.error('There was an error!', error);
-  //               alert('Status Change Failed');
-  //           }
-  //       });
-
-  // }
 }

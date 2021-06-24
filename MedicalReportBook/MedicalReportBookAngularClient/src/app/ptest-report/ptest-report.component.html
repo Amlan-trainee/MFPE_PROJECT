@@ -16,8 +16,8 @@
                 <th>Lab Name</th>
                 <th>Test Name</th>
                 <th>Lab Report</th>
-                <th>Status</th>
-                <th>Toggle Permission</th>
+                <th>Doctor View</th>
+                <th>Change View</th>
                 <th>Delete</th>
         </tr>
         </thead>
@@ -31,7 +31,7 @@
                 <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
                 <td>
-                    <button [routerLink]="['/toggle-test-status',r.Lr_Id]">Status</button>
+                    <button [routerLink]="['/toggle-test-status',r.Lr_Id]">Toggle View</button>
                 </td>
                 <td>
                     <button [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</button>

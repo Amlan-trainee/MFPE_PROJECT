@@ -17,7 +17,7 @@ export class ToggleTestStatusComponent implements OnInit {
   constructor(private http: HttpClient,private actr:ActivatedRoute,private formBuilder:FormBuilder) {
     this.frmXReport=this.formBuilder.group({
       Report_Id:this.actr.snapshot.paramMap.get('R-Id'),
-      IsActive:new FormControl(false),
+      IsActive:new FormControl()
     });
     
   

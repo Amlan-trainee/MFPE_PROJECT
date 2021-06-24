@@ -23,7 +23,7 @@
             <!-- <a  class="btn btn-primary">Know more</a> -->
             <form #user="ngForm"  [formGroup]="frmXReport"  (ngSubmit)="OnSubmit()">
                 <label for="Status">Report Visible To Doctor</label>
-                    <select name="Status" id="cars" formControlName="Status" ngModel>
+                    <select name="Status" id="Status" formControlName="IsActive" ngModel>
                         <option value="true" >True</option>
                         <option value="false" >False</option>
                     </select>

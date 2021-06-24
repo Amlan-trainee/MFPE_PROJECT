@@ -12,7 +12,7 @@ export class DeleteDoctorComponent implements OnInit {
   UserId: number;
   EmailId: string;
   url:string="http://localhost:57071/api/Admin/RemoveDoctor/";
-  urlt: string='';
+  urlt:string='';
   
 
   constructor(private http: HttpClient,private router:Router,private actr:ActivatedRoute){
@@ -24,7 +24,7 @@ export class DeleteDoctorComponent implements OnInit {
   }
 
   OnSubmit(){
-    this.urlt=this.url+this.EmailId+'/'+this.UserId;
+    this.urlt = this.url+this.EmailId+'/'+this.UserId;
     this.http.delete(this.urlt)
         .subscribe({
             next: data => {

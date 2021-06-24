@@ -49,8 +49,8 @@
           <th>Clinic Name</th>
           <th>Disease Name</th>
           <th>Prescription</th>
-          <th>Status</th>
-          <th>Toggle Status</th>
+          <th>Doctor View</th>
+          <th>Change View</th>
           <th>Delete</th>
         </tr>
         </thead>
@@ -63,7 +63,7 @@
             <td><a href="{{r.Prescription}}">View/Download</a></td>
             <td>{{r.IsActive}}</td>
             <td>
-              <button [routerLink]="['/toggle-status',r.CR_Id]">Status</button>
+              <button [routerLink]="['/toggle-status',r.CR_Id]">Toggle View</button>
           </td>
             <td>
               <button [routerLink]="['/delete-consultancy-report',r.DiseaseName,r.CR_Id]">Delete</button>

@@ -99,9 +99,17 @@ namespace MedicalReportBookBLL
                 AppUser query = (from user in context.appUsers
                                  where user.EmailId == EmailId && user.UserType=="Doctor" && user.UserId==UserId
                                  select user).FirstOrDefault();
+                DoctorDetails doc = (from obj in context.DoctorDetails
+                                     where obj.DoctorId == UserId
+                                     select obj).FirstOrDefault();
                 context.appUsers.Remove(query);
+                context.DoctorDetails.Remove(doc);
                 int RowsAffected = context.SaveChanges();
-                return RowsAffected == 1;
+                if (RowsAffected == 2)
+                {
+                    return true;
+                }
+                return false;
             }
             catch (DbException e)
             {

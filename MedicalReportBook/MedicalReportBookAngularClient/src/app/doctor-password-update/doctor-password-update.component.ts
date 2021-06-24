@@ -15,7 +15,7 @@ export class DoctorPasswordUpdateComponent implements OnInit {
   constructor(private http:HttpClient,private formBuilder:FormBuilder) { 
     this.frmXReport=this.formBuilder.group({
       User_Id:localStorage.getItem('UId'),
-      OldPasssword:new FormControl(),
+      OldPassword:new FormControl(),
       NewPassword:new FormControl(),
       ConfirmPassword:new FormControl()
     })

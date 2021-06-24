@@ -28,9 +28,9 @@ export class ExtraDoctorDetailsComponent implements OnInit {
     let p:ExtraDoctorDetails=this.frmTReport.value as ExtraDoctorDetails;
     if(this.frmTReport.valid){
       this.http.post(this.url,p).subscribe(data=>{
-        alert('details saved');
+        alert('Details saved');
       },error=>{
-        alert('details not saved');
+        alert('You have already updated your details');
       })
     }
   }

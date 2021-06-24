@@ -1,16 +1,14 @@
-<h1>View Consultancy Report</h1>
+<h2>View Consultancy Report</h2>
 <div class="row">
     <div class="col-md-12">
-
-      <form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
-        <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
-        <input type="text" name="EmailId" placeholder="EmailId" ngModel required>
-
-        <input type="submit" value="Search">
-      </form>
+<form #user="ngForm" (ngSubmit)="onSubmit(user.value)">
+      <input type="text" name="DiseaseName" placeholder="DiseaseName" ngModel required>
+      <input type="text" name="EmailId" placeholder="EmailId" ngModel required>
+      <input type="submit" value="Search">
+</form>
 
       <div class="table-wrapper">
-        <table class="f1-table ">
+        <table class="fl-table ">
           <thead>
             <tr>
                 <!-- <th>Report Id</th> -->
@@ -20,6 +18,7 @@
                 <th>Disease Name</th>
                 <th>Prescription</th>
                 <th>Lock</th>
+                <th>Check</th>
 
             </tr>
             </thead>

@@ -33,9 +33,9 @@ export class ExtraUserDetailsComponent implements OnInit {
     let p:ExtraUserDetails=this.frmXReport.value as ExtraUserDetails;
     if(this.frmXReport.valid){
       this.http.post(this.url,p).subscribe(data=>{
-        alert('details saved');
+        alert('Details saved');
       },error=>{
-        alert('details not saved');
+        alert('You have already updated your details');
       })
     }
     

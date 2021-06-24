@@ -1,8 +1,10 @@
-﻿using MedicalReportBookAPI.Models;
+﻿using log4net;
+using MedicalReportBookAPI.Models;
 using MedicalReportBookBLL;
 using MedicalReportBookEntities.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -34,35 +36,51 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Admin/AddDrAdm")]
         public IHttpActionResult AddDoctorOrAdmin(AppUserDto obj)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var appUser = new AppUser();
-                appUser.FirstName = obj.FirstName;
-                appUser.MiddleName = obj.MiddleName;
-                appUser.LastName = obj.LastName;
-                appUser.Gender = obj.Gender;
-                appUser.PhoneNumber = obj.PhoneNumber;
-                appUser.Address = obj.Address;
-                appUser.EmailId = obj.EmailId;
-                appUser.UserType = obj.UserType;
-                appUser.Password = obj.Password;
-                
-                bool result = appUserService.AddUser(appUser);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok(HttpStatusCode.Created);
-
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("cannot add");
-                }
+                    var appUser = new AppUser();
+                    appUser.FirstName = obj.FirstName;
+                    appUser.MiddleName = obj.MiddleName;
+                    appUser.LastName = obj.LastName;
+                    appUser.Gender = obj.Gender;
+                    appUser.PhoneNumber = obj.PhoneNumber;
+                    appUser.Address = obj.Address;
+                    appUser.EmailId = obj.EmailId;
+                    appUser.UserType = obj.UserType;
+                    appUser.Password = obj.Password;
 
+                    bool result = appUserService.AddUser(appUser);
+                    if (result)
+                    {
+                        return Ok(HttpStatusCode.Created);
+
+                    }
+                    else
+                    {
+                        return BadRequest("cannot add");
+                    }
+
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in Add Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in Add Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
 
@@ -75,22 +93,40 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Admin/RemoveDoctor/{EmailId}/{UserId}")]
         public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId,[FromUri] int UserId)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-                bool result = appUserService.DeleteDoctor(EmailId,UserId);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    bool result = appUserService.DeleteDoctor(EmailId, UserId);
+                    if (result)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    }
                 }
             }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in Add Doctor");
+                log.Error(e.InnerException);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in Add Doctor");
+                log.Error(e.InnerException);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+
         }
         /// <summary>
         /// 
@@ -100,6 +136,7 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Admin/ViewAllDoctors")]
         public IHttpActionResult ViewAllDoctors()
         {
+
             if (ModelState.IsValid == false)
             {
                 return BadRequest();

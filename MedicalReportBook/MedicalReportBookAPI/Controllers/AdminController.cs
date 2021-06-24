@@ -91,42 +91,41 @@ namespace MedicalReportBookAPI.Controllers
          /// <returns></returns>
         [HttpDelete]
         [Route("api/Admin/RemoveDoctor/{EmailId}/{UserId}")]
-        public HttpResponseMessage DeleteDoctorbyEmail([FromUri]string EmailId,[FromUri] int UserId)
+        public IHttpActionResult DeleteDoctorbyEmail([FromUri]string EmailId,[FromUri] int UserId)
         {
             try
             {
                 if (ModelState.IsValid == false)
                 {
-                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    return BadRequest();
                 }
                 else
                 {
                     bool result = appUserService.DeleteDoctor(EmailId, UserId);
                     if (result)
                     {
-                        return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                        return Ok("Deleted Successfully");
                     }
                     else
                     {
-                        return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                        return InternalServerError();
                     }
                 }
             }
             catch (MedicalReportBookExceptions e)
             {
                 ILog log = LogManager.GetLogger(typeof(AdminController));
-                log.Info("Exception occured in Add Doctor");
+                log.Info("Exception occured in Remove Doctor");
                 log.Error(e.InnerException);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return InternalServerError();
             }
             catch (Exception e)
             {
                 ILog log = LogManager.GetLogger(typeof(AdminController));
-                log.Info("Exception occured in Add Doctor");
+                log.Info("Exception occured in Remove Doctor");
                 log.Error(e.InnerException);
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                return InternalServerError();
             }
-
         }
         /// <summary>
         /// 
@@ -136,30 +135,45 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Admin/ViewAllDoctors")]
         public IHttpActionResult ViewAllDoctors()
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest();
-            }
-            else
-            {
-                var objs = appUserService.ViewDoctor();
-                if (objs != null && objs.Count != 0)
-                {
-                    List<AppUserDto> dtos = new List<AppUserDto>();
-                    foreach (var obj in objs)
-                    {
-                        dtos.Add(new AppUserDto {UserId=obj.UserId, FirstName=obj.FirstName,MiddleName=obj.MiddleName,LastName=obj.LastName,PhoneNumber=obj.PhoneNumber,EmailId=obj.EmailId,UserType=obj.UserType });
-                    }
-                    return Ok(dtos);
-
-                }
-                else
+                if (ModelState.IsValid == false)
                 {
                     return BadRequest();
                 }
-            }
+                else
+                {
+                    var objs = appUserService.ViewDoctor();
+                    if (objs != null && objs.Count != 0)
+                    {
+                        List<AppUserDto> dtos = new List<AppUserDto>();
+                        foreach (var obj in objs)
+                        {
+                            dtos.Add(new AppUserDto { UserId = obj.UserId, FirstName = obj.FirstName, MiddleName = obj.MiddleName, LastName = obj.LastName, PhoneNumber = obj.PhoneNumber, EmailId = obj.EmailId, UserType = obj.UserType });
+                        }
+                        return Ok(dtos);
 
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in View Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AdminController));
+                log.Info("Exception occured in View Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
     }
 }

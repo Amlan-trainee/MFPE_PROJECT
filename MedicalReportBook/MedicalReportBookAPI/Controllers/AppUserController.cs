@@ -9,6 +9,7 @@ using MedicalReportBookBLL;
 using MedicalReportBookAPI.Models;
 using MedicalReportBookEntities;
 using MedicalReportBookEntities.Entities;
+using log4net;
 
 namespace MedicalReportBookAPI.Controllers
 {
@@ -36,37 +37,52 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/AppUser/Registration")]
         public IHttpActionResult Post(AppUserDto obj)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            { 
-                var appUser = new AppUser();
-                appUser.FirstName = obj.FirstName;
-                appUser.MiddleName = obj.MiddleName;
-                appUser.LastName = obj.LastName;
-                appUser.Gender = obj.Gender;
-                appUser.PhoneNumber = obj.PhoneNumber;
-                appUser.Address = obj.Address;
-                appUser.EmailId = obj.EmailId;
-                appUser.UserType = obj.UserType;
-                appUser.Password = obj.Password;
-                
-                bool result = appUserService.AddUser(appUser);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok(HttpStatusCode.Created);
-
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("cannot add");
+                    var appUser = new AppUser();
+                    appUser.FirstName = obj.FirstName;
+                    appUser.MiddleName = obj.MiddleName;
+                    appUser.LastName = obj.LastName;
+                    appUser.Gender = obj.Gender;
+                    appUser.PhoneNumber = obj.PhoneNumber;
+                    appUser.Address = obj.Address;
+                    appUser.EmailId = obj.EmailId;
+                    appUser.UserType = obj.UserType;
+                    appUser.Password = obj.Password;
+
+                    bool result = appUserService.AddUser(appUser);
+                    if (result)
+                    {
+                        return Ok(HttpStatusCode.Created);
+
+                    }
+                    else
+                    {
+                        return BadRequest("cannot add");
+                    }
+
                 }
-
             }
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AppUserController));
+                log.Info("Exception occured in Add User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AppUserController));
+                log.Info("Exception occured in Add User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
         /// <summary>
         /// Action method for checking credentials of user and logging him into his profile
@@ -77,30 +93,47 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/AppUser/Login")]
         public IHttpActionResult Login(UserLoginDto userLoginDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var appUser = new AppUser();
-                if (userLoginDto == null)
+                if (ModelState.IsValid == false)
                 {
-                    return BadRequest("Invalid email/password");
-                }
-                appUser.EmailId = userLoginDto.EmailId;
-                appUser.Password = userLoginDto.Password;
-                var result = appUserService.Login(appUser.EmailId,appUser.Password,out int id);
-                if (result!=null && result!="")
-                {
-                    return Ok(new {Result=result ,Id=id});
-
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("Login Failed,wrong EmailId or Password");
-                }
+                    var appUser = new AppUser();
+                    if (userLoginDto == null)
+                    {
+                        return BadRequest("Invalid email/password");
+                    }
+                    appUser.EmailId = userLoginDto.EmailId;
+                    appUser.Password = userLoginDto.Password;
+                    var result = appUserService.Login(appUser.EmailId, appUser.Password, out int id);
+                    if (result != null && result != "")
+                    {
+                        return Ok(new { Result = result, Id = id });
 
+                    }
+                    else
+                    {
+                        return BadRequest("Login Failed,wrong EmailId or Password");
+                    }
+
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AppUserController));
+                log.Info("Exception occured in Login");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(AppUserController));
+                log.Info("Exception occured in Login");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
 
         }

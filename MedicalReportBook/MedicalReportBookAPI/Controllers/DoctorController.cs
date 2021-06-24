@@ -1,4 +1,5 @@
-﻿using MedicalReportBookAPI.Models;
+﻿using log4net;
+using MedicalReportBookAPI.Models;
 using MedicalReportBookBLL;
 using MedicalReportBookEntities.Entities;
 using System;
@@ -36,35 +37,49 @@ namespace MedicalReportBookAPI.Controllers
 
         [HttpGet]
         [Route("api/Doctor/ViewConsultancyReportOfPatient/{EmailId}/{DiseaseName}")]
-        public HttpResponseMessage ViewConsultancyReportOfPatient([FromUri] string EmailId, [FromUri] string DiseaseName)
+        public IHttpActionResult ViewConsultancyReportOfPatient([FromUri] string EmailId, [FromUri] string DiseaseName)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-
-
-                var objs = doctorService.ViewConsultancyReportOfPatient(EmailId, DiseaseName);
-                if (objs != null && objs.Count!=0)
+                if (ModelState.IsValid == false)
                 {
-                    List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
-                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
-                    foreach (var obj in objs)
-                    {
-                        dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = baseurl+obj.Prescription, IsActive = obj.IsActive});
-                    }
-                    return Request.CreateResponse(HttpStatusCode.OK, dtos);
-
+                    return BadRequest();
                 }
+                else
+                {
 
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    var objs = doctorService.ViewConsultancyReportOfPatient(EmailId, DiseaseName);
+                    if (objs != null && objs.Count != 0)
+                    {
+                        List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+                        var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
+                        foreach (var obj in objs)
+                        {
+                            dtos.Add(new ConsultancyReportDto { ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });
+                        }
+                        return Ok(dtos);
+
+                    }
+
+
+                    return BadRequest();
+                }
             }
-
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in View Consultancy Report By Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in View Consultancy Report By Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
 
         /// <summary>
@@ -75,35 +90,49 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns>List of Counsultancy Report</returns>
         [HttpGet]
         [Route("api/Doctor/ViewLabReportOfPatient/{EmailId}/{TestName}")]
-        public HttpResponseMessage ViewLabReportOfPatient([FromUri] string EmailId, [FromUri] string TestName)
+        public IHttpActionResult ViewLabReportOfPatient([FromUri] string EmailId, [FromUri] string TestName)
         {
-          
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-
-
-                var objs = doctorService.ViewLabReportOfPatient(EmailId, TestName);
-                if (objs != null && objs.Count != 0)
+                if (ModelState.IsValid == false)
                 {
-                    List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
-                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
-                    foreach (var obj in objs)
-                    {
-                        dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl+obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
-                    }
-                    return Request.CreateResponse(HttpStatusCode.OK, dtos);
-
+                    return BadRequest();
                 }
+                else
+                {
 
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    var objs = doctorService.ViewLabReportOfPatient(EmailId, TestName);
+                    if (objs != null && objs.Count != 0)
+                    {
+                        List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
+                        var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
+                        foreach (var obj in objs)
+                        {
+                            dtos.Add(new LabReportEntityDto { TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });//Not retoring UserId as output
+                        }
+                        return Ok(dtos);
+
+                    }
+
+
+                    return BadRequest();
+                }
             }
-
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in View Lab Report By Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in View Lab Report By Doctor");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
         /// <summary>
         /// 
@@ -113,36 +142,49 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("api/Doctor/ChangePassword")]
-        public HttpResponseMessage ChangePassword([FromBody] ChangePassowrdDto changePassowrdDto)
+        public IHttpActionResult ChangePassword([FromBody] ChangePassowrdDto changePassowrdDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-                var User_Id = changePassowrdDto.User_Id;
-                var OldPassword = changePassowrdDto.OldPassword;
-                var NewPassword = changePassowrdDto.NewPassword;
-                var ConfirmPassword = changePassowrdDto.ConfirmPassword;
-                if (NewPassword == ConfirmPassword)
+                if (ModelState.IsValid == false)
                 {
-                    var obj = doctorService.ChangePassword(User_Id, OldPassword, NewPassword);
-                    if (obj)
-                    {
-                        return Request.CreateResponse(HttpStatusCode.OK);
-                    }
-                    else
-                    {
-                        return Request.CreateResponse(HttpStatusCode.BadRequest);
-                    }
+                    return BadRequest();
                 }
-
-
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-
+                else
+                {
+                    var User_Id = changePassowrdDto.User_Id;
+                    var OldPassword = changePassowrdDto.OldPassword;
+                    var NewPassword = changePassowrdDto.NewPassword;
+                    var ConfirmPassword = changePassowrdDto.ConfirmPassword;
+                    if (NewPassword == ConfirmPassword)
+                    {
+                        var obj = doctorService.ChangePassword(User_Id, OldPassword, NewPassword);
+                        if (obj)
+                        {
+                            return Ok();
+                        }
+                        else
+                        {
+                            return BadRequest();
+                        }
+                    }
+                    return BadRequest();
+                }
             }
-            
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in Change Password");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in Change Password");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
 
         /// <summary>
@@ -154,28 +196,44 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Doctor/DoctorDetails")]
         public IHttpActionResult Post(DoctorDetailsDto obj)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var doctorDetails = new DoctorDetails();
-                doctorDetails.DoctorId = obj.DoctorId;
-                doctorDetails.Specialization = obj.Specialization;
-                doctorDetails.Qualification = obj.Qualification;
-                bool result = doctorService.AddDoctorDetails(doctorDetails);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok(HttpStatusCode.Created);
-
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("cannot add");
-                }
+                    var doctorDetails = new DoctorDetails();
+                    doctorDetails.DoctorId = obj.DoctorId;
+                    doctorDetails.Specialization = obj.Specialization;
+                    doctorDetails.Qualification = obj.Qualification;
+                    bool result = doctorService.AddDoctorDetails(doctorDetails);
+                    if (result)
+                    {
+                        return Ok();
 
+                    }
+                    else
+                    {
+                        return BadRequest("cannot add");
+                    }
+
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in Update Doctor Details");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(DoctorController));
+                log.Info("Exception occured in Update Doctor Details");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
 
         }

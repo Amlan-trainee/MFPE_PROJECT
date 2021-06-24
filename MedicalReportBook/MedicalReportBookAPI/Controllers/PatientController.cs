@@ -1,4 +1,5 @@
-﻿using MedicalReportBookAPI.Models;
+﻿using log4net;
+using MedicalReportBookAPI.Models;
 using MedicalReportBookBLL;
 using MedicalReportBookEntities.Entities;
 using System;
@@ -36,31 +37,46 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/AppUser/UserDetails")]
         public IHttpActionResult Post(UserDetailsDto obj)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var userDetails = new UserDetails();
-                userDetails.User_Id = obj.User_Id;
-                userDetails.Weight = obj.Weight;
-                userDetails.Height = obj.Height;
-                userDetails.BloodGroup = obj.BloodGroup;
-                bool result = patientService.AddUserDetails(userDetails);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok(HttpStatusCode.Created);
-
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("cannot add");
+                    var userDetails = new UserDetails();
+                    userDetails.User_Id = obj.User_Id;
+                    userDetails.Weight = obj.Weight;
+                    userDetails.Height = obj.Height;
+                    userDetails.BloodGroup = obj.BloodGroup;
+                    bool result = patientService.AddUserDetails(userDetails);
+                    if (result)
+                    {
+                        return Ok(HttpStatusCode.Created);
+
+                    }
+                    else
+                    {
+                        return BadRequest("cannot add");
+                    }
+
                 }
-
             }
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in User Registration");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in User Registration");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
         /// <summary>
         /// Method to add the Consultancy Report
@@ -71,33 +87,50 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/AddConsultancyReport")]
         public IHttpActionResult AddConsultancyReport(ConsultancyReportDto consultancyReportDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var consultancyReport = new ConsultancyReport();
-                consultancyReport.ClinicName = consultancyReportDto.ClinicName;
-                consultancyReport.DoctorName = consultancyReportDto.DoctorName;
-                consultancyReport.DateofConsultancy = consultancyReportDto.DateofConsultancy.Date;
-                consultancyReport.DiseaseName = consultancyReportDto.DiseaseName;
-                consultancyReport.Prescription = consultancyReportDto.Prescription;
-                consultancyReport.IsActive = consultancyReportDto.IsActive;
-                consultancyReport.UId = consultancyReportDto.UId;
-                var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
-                consultancyReportDto.File.SaveAs(uploadedImagePath + consultancyReportDto.Prescription);
-
-                var result = patientService.AddConsultancyReport(consultancyReport);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("Adding Prescription Failed");
-                }
+                    var consultancyReport = new ConsultancyReport();
+                    consultancyReport.ClinicName = consultancyReportDto.ClinicName;
+                    consultancyReport.DoctorName = consultancyReportDto.DoctorName;
+                    consultancyReport.DateofConsultancy = consultancyReportDto.DateofConsultancy.Date;
+                    consultancyReport.DiseaseName = consultancyReportDto.DiseaseName;
+                    consultancyReport.Prescription = consultancyReportDto.Prescription;
+                    consultancyReport.IsActive = consultancyReportDto.IsActive;
+                    consultancyReport.UId = consultancyReportDto.UId;
+                    var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
+                    consultancyReportDto.File.SaveAs(uploadedImagePath + consultancyReportDto.Prescription);
 
+                    var result = patientService.AddConsultancyReport(consultancyReport);
+                    if (result)
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest("Adding Prescription Failed");
+                    }
+
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Add Consultancy");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Add Consultancy");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
 
@@ -109,35 +142,49 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns>List of Counsultancy Report</returns>
         [HttpGet]
         [Route("api/Patient/ViewConsultancyReport/{id}/{DiseaseName}")]
-        public HttpResponseMessage ViewConsultancyReportByDiseaseName([FromUri] int id, [FromUri] string DiseaseName)
+        public IHttpActionResult ViewConsultancyReportByDiseaseName([FromUri] int id, [FromUri] string DiseaseName)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-
-
-                var objs = patientService.ViewConsultancyReportByDiseaseName(id, DiseaseName);
-                if (objs != null && objs.Count != 0)
+                if (ModelState.IsValid == false)
                 {
-                    List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
-                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
-                    foreach (var obj in objs)
-                    {
-                        dtos.Add(new ConsultancyReportDto {CR_Id=obj.CR_Id, ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });
-                    }
-                    return Request.CreateResponse(HttpStatusCode.OK, dtos);
-
+                    return BadRequest();
                 }
+                else
+                {
 
 
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                    var objs = patientService.ViewConsultancyReportByDiseaseName(id, DiseaseName);
+                    if (objs != null && objs.Count != 0)
+                    {
+                        List<ConsultancyReportDto> dtos = new List<ConsultancyReportDto>();
+                        var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
+                        foreach (var obj in objs)
+                        {
+                            dtos.Add(new ConsultancyReportDto { CR_Id = obj.CR_Id, ClinicName = obj.ClinicName, DoctorName = obj.DoctorName, DateofConsultancy = obj.DateofConsultancy.Date, DiseaseName = obj.DiseaseName, Prescription = baseurl + obj.Prescription, IsActive = obj.IsActive });
+                        }
+                        return Ok(dtos);
+
+                    }
+
+
+                    return BadRequest();
+                }
             }
-
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in View Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in View Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
 
 
@@ -151,33 +198,50 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/AddTestReport")]
         public IHttpActionResult AddTestReport(LabReportEntityDto labReportEntityDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var labReportEntity = new LabReportEntity();
-                labReportEntity.LabName = labReportEntityDto.LabName;
-                labReportEntity.DoctorName = labReportEntityDto.DoctorName;
-                labReportEntity.DateofTest = labReportEntityDto.DateofTest.Date;
-                labReportEntity.TestName = labReportEntityDto.TestName;
-                labReportEntity.LabReport = labReportEntityDto.LabReport;
-                labReportEntity.IsActive = labReportEntityDto.IsActive;
-                labReportEntity.UID = labReportEntityDto.UID;
-                var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
-                labReportEntityDto.File.SaveAs(uploadedImagePath + labReportEntityDto.LabReport);
-
-                var result = patientService.AddLabReport(labReportEntity);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
                 else
                 {
-                    return BadRequest("Adding LabReport Failed");
-                }
+                    var labReportEntity = new LabReportEntity();
+                    labReportEntity.LabName = labReportEntityDto.LabName;
+                    labReportEntity.DoctorName = labReportEntityDto.DoctorName;
+                    labReportEntity.DateofTest = labReportEntityDto.DateofTest.Date;
+                    labReportEntity.TestName = labReportEntityDto.TestName;
+                    labReportEntity.LabReport = labReportEntityDto.LabReport;
+                    labReportEntity.IsActive = labReportEntityDto.IsActive;
+                    labReportEntity.UID = labReportEntityDto.UID;
+                    var uploadedImagePath = HttpContext.Current.Server.MapPath("~/Images/");
+                    labReportEntityDto.File.SaveAs(uploadedImagePath + labReportEntityDto.LabReport);
 
+                    var result = patientService.AddLabReport(labReportEntity);
+                    if (result)
+                    {
+                        return Ok();
+                    }
+                    else
+                    {
+                        return BadRequest("Adding LabReport Failed");
+                    }
+
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Add Test Report");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Add Test Report");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
 
@@ -189,35 +253,49 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns>List of Lab Report</returns>
         [HttpGet]
         [Route("api/Patient/ViewLabReport/{id}/{TestName}")]
-        public HttpResponseMessage ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)
+        public IHttpActionResult ViewLabReportByTestName([FromUri] int id, [FromUri] string TestName)
         {
-
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-
-
-                var objs = patientService.ViewLabReportByTestName(id, TestName);
-                var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
-                if (objs != null && objs.Count != 0)
+                if (ModelState.IsValid == false)
                 {
-                    List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
-                    foreach (var obj in objs)
+                    return BadRequest();
+                }
+                else
+                {
+
+
+                    var objs = patientService.ViewLabReportByTestName(id, TestName);
+                    var baseurl = $"{Request.RequestUri.Scheme}://{Request.RequestUri.Host}:{Request.RequestUri.Port}/Images/";
+                    if (objs != null && objs.Count != 0)
                     {
-                        dtos.Add(new LabReportEntityDto { Lr_Id=obj.Lr_Id, TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });
+                        List<LabReportEntityDto> dtos = new List<LabReportEntityDto>();
+                        foreach (var obj in objs)
+                        {
+                            dtos.Add(new LabReportEntityDto { Lr_Id = obj.Lr_Id, TestName = obj.TestName, DoctorName = obj.DoctorName, DateofTest = obj.DateofTest.Date, LabName = obj.LabName, LabReport = baseurl + obj.LabReport, IsActive = obj.IsActive });
+                        }
+                        return Ok(dtos);
+
                     }
-                    return Request.CreateResponse(HttpStatusCode.OK, dtos);
+                    return BadRequest();
+
 
                 }
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-
-
             }
-
-
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in View Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in View Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
         }
 
        /// <summary>
@@ -229,23 +307,40 @@ namespace MedicalReportBookAPI.Controllers
        /// <returns></returns>
         [HttpDelete]
         [Route("api/Patient/DeleteLabReport/{id}/{TestName}/{Lr_Id}")]
-        public HttpResponseMessage DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName, [FromUri] int Lr_Id)
+        public IHttpActionResult DeleteLabReportByTestName([FromUri] int id, [FromUri] string TestName, [FromUri] int Lr_Id)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-                var objs = patientService.DeleteLabReportByTestName(id, TestName, Lr_Id);
-                if (objs)
+                if (ModelState.IsValid == false)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                    return BadRequest();
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    var objs = patientService.DeleteLabReportByTestName(id, TestName, Lr_Id);
+                    if (objs)
+                    {
+                        return Ok("Deleted Successfully");
+                    }
+                    else
+                    {
+                        return InternalServerError();
+                    }
                 }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Delete Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Delete Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
 
@@ -258,23 +353,40 @@ namespace MedicalReportBookAPI.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("api/Patient/DeleteConsultancyReport/{id}/{DiseaseName}/{CR_Id}")] 
-        public HttpResponseMessage DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName, [FromUri] int CR_Id)
+        public IHttpActionResult DeleteConsultancyReportByTestName([FromUri] int id, [FromUri] string DiseaseName, [FromUri] int CR_Id)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-            else
-            {
-                var objs = patientService.DeleteConsultancyReportByDiseaseName(id, DiseaseName,CR_Id);
-                if (objs)
+                if (ModelState.IsValid == false)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "Deleted Successfully");
+                    return BadRequest();
                 }
                 else
                 {
-                    return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                    var objs = patientService.DeleteConsultancyReportByDiseaseName(id, DiseaseName, CR_Id);
+                    if (objs)
+                    {
+                        return Ok("Deleted Successfully");
+                    }
+                    else
+                    {
+                        return InternalServerError();
+                    }
                 }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Delete Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Delete Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
         /// <summary>
@@ -286,18 +398,35 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/LockUnlockCrReport")]
         public IHttpActionResult LockUnlockConsultancyReport(LockandUnlockDto lockandUnlockDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var result = patientService.AccessPermissionForConsultancyReport(lockandUnlockDto.Report_Id, lockandUnlockDto.IsActive);
-                if(result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
-                return BadRequest();
+                else
+                {
+                    var result = patientService.AccessPermissionForConsultancyReport(lockandUnlockDto.Report_Id, lockandUnlockDto.IsActive);
+                    if (result)
+                    {
+                        return Ok();
+                    }
+                    return BadRequest();
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Lock/Unlock Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Lock/Unlock Consultancy Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
 
@@ -310,20 +439,36 @@ namespace MedicalReportBookAPI.Controllers
         [Route("api/Patient/LockUnlockLrReport")]
         public IHttpActionResult LockUnlockLabReport(LockandUnlockDto lockandUnlockDto)
         {
-            if (ModelState.IsValid == false)
+            try
             {
-                return BadRequest(ModelState);
-            }
-            else
-            {
-                var result = patientService.AccessPermissionForLabReport(lockandUnlockDto.Report_Id,lockandUnlockDto.IsActive);
-                if (result)
+                if (ModelState.IsValid == false)
                 {
-                    return Ok();
+                    return BadRequest(ModelState);
                 }
-                return BadRequest();
+                else
+                {
+                    var result = patientService.AccessPermissionForLabReport(lockandUnlockDto.Report_Id, lockandUnlockDto.IsActive);
+                    if (result)
+                    {
+                        return Ok();
+                    }
+                    return BadRequest();
+                }
+            }
+            catch (MedicalReportBookExceptions e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Lock/Unlock Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
+            }
+            catch (Exception e)
+            {
+                ILog log = LogManager.GetLogger(typeof(PatientController));
+                log.Info("Exception occured in Lock/Unlock Lab Report By User");
+                log.Error(e.InnerException);
+                return InternalServerError();
             }
         }
-
     }
 }

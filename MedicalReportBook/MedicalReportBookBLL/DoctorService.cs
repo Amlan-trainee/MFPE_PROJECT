@@ -12,7 +12,7 @@ namespace MedicalReportBookBLL
     /// <summary>
     /// MedicalReportService to interact with MedicalReportBookModel database and do CRUD operation
     /// </summary>
-    public class DoctorService
+    public class DoctorService:IDisposable
     {
         private readonly MedicalReportBookContext context;
 
@@ -52,18 +52,16 @@ namespace MedicalReportBookBLL
                 else
                 {
                     return null;
-
                 }
-
-               
             }
-
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Not Found", e);
-
+                throw new MedicalReportBookExceptions("Counsultancy Report Error", e);
             }
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while getting consultancy report", e);
+            }
 
         }
         /// <summary>
@@ -98,10 +96,12 @@ namespace MedicalReportBookBLL
 
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("not found", e);
-
+                throw new MedicalReportBookExceptions("Lab Report Error", e);
             }
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while getting lab report", e);
+            }
         }
         public bool ChangePassword(int ID,string OldPassword,string NewPassword)
         {
@@ -124,13 +124,14 @@ namespace MedicalReportBookBLL
 
                 }
                 return false;
-
             }
-
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("not found", e);
-
+                throw new MedicalReportBookExceptions("Error in Changing Password", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Changing Password", e);
             }
         }
 
@@ -154,8 +155,11 @@ namespace MedicalReportBookBLL
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Adding Details... failed", e);
-
+                throw new MedicalReportBookExceptions("Adding Doctor Details... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Adding Doctor", e);
             }
         }
     }

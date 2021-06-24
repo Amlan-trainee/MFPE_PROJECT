@@ -16,7 +16,7 @@ namespace MedicalReportBookBLL
     /// <summary>
   /// PatientService to interact with MedicalReportBookModel database and do CRUD operation
   /// </summary>
-    public class PatientService
+    public class PatientService:IDisposable
     {
         private readonly MedicalReportBookContext context;
 
@@ -44,7 +44,11 @@ namespace MedicalReportBookBLL
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Adding Details... failed", e);
+                throw new MedicalReportBookExceptions("Adding User Details... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while adding user details", e);
             }
         }
         /// <summary>
@@ -65,9 +69,11 @@ namespace MedicalReportBookBLL
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Uploading prescription... failed", e);
-
             }
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while adding consultancy report", e);
+            }
         }
         /// <summary>
         /// ViewConsultancyReportByDiseaseName -method to view the consultancy  report of a particular user based on disease name
@@ -89,11 +95,12 @@ namespace MedicalReportBookBLL
 
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Not Found", e);
-
+                throw new MedicalReportBookExceptions("Viewing prescription... failed", e);
             }
-
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while getting consultancy report", e);
+            }
         }
         /// <summary>
         /// AddLabReport -method to add prescriptions to the database along with the required feilds
@@ -113,7 +120,10 @@ namespace MedicalReportBookBLL
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Uploading labreport... failed", e);
-
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while adding lab report", e);
             }
 
         }
@@ -137,11 +147,12 @@ namespace MedicalReportBookBLL
 
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("not found", e);
-
+                throw new MedicalReportBookExceptions("Viewing LabReport... failed", e);
             }
-
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while getting lab report", e);
+            }
         }
 
         /// <summary>
@@ -163,8 +174,11 @@ namespace MedicalReportBookBLL
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Deleting prescription... failed", e);
-
+                throw new MedicalReportBookExceptions("Deleting LabReport... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Deleting labreport", e);
             }
         }
 
@@ -188,53 +202,58 @@ namespace MedicalReportBookBLL
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Deleting prescription... failed", e);
-
             }
-        }
-        public bool AccessPermissionForConsultancyReport(int CR_Id)
-        {
-            var item = context.ConsultancyReports.Find(CR_Id);
-            if (item == null)
-                return false;
-            else {
-                if (item.IsActive == true)
-                {
-                    item.IsActive = false;
-                    context.SaveChanges();
-                    return true;
-                }
-                  
-                else
-                {
-                    item.IsActive = true;
-                    context.SaveChanges();
-                    return true;
-                }
-            }
-            
-        }
-        public bool AccessPermissionForLabReport(int Lr_Id)
-        {
-            var item = context.LabReportEntities.Find(Lr_Id);
-            if (item == null)
-                return false;
-            else 
+            catch (Exception e)
             {
-                if (item.IsActive == true)
-                { item.IsActive = false;
-                    context.SaveChanges();
-                    return true;
-                }
-
+                throw new MedicalReportBookExceptions("Unknown error while Deleting consultancy report", e);
+            }
+        }
+        public bool AccessPermissionForConsultancyReport(int CR_Id,bool IsActive)
+        {
+            try
+            {
+                var item = context.ConsultancyReports.Find(CR_Id);
+                if (item == null)
+                    return false;
                 else
                 {
-                    item.IsActive = true;
+                    item.IsActive = IsActive;
                     context.SaveChanges();
                     return true;
                 }
-                   
             }
-         
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Lock/Unlock prescription... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Lock/Unlock consultancy report", e);
+            }
+
+        }
+        public bool AccessPermissionForLabReport(int Lr_Id,bool IsActive)
+        {
+            try
+            {
+                var item = context.LabReportEntities.Find(Lr_Id);
+                if (item == null)
+                    return false;
+                else
+                {
+                    item.IsActive = IsActive;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (DbException e)
+            {
+                throw new MedicalReportBookExceptions("Lock/Unlock labreport... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Lock/Unlock labreport", e);
+            }
         }
     }
 }

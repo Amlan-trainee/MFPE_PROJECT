@@ -33,7 +33,8 @@ namespace MedicalReportBookBLL
         /// <returns>true if the user details is added to database else returns false</returns>
         public bool AddUser(AppUser appUser)
         {
-            try {
+            try 
+            {
                 
                 context.appUsers.Add(appUser);
                 int RowsAffected = context.SaveChanges();
@@ -44,9 +45,11 @@ namespace MedicalReportBookBLL
             catch(DbException e)
             {
                 throw new MedicalReportBookExceptions("Registration failed",e);
-
             }
-            
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Uploading Registration Details", e);
+            }
         }
         /// <summary>
         /// Login method to check the required credentials of user and if true logging them into their account
@@ -82,7 +85,10 @@ namespace MedicalReportBookBLL
                 throw new MedicalReportBookExceptions("Login Error", e);
 
             }
-
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Login", e);
+            }
         }
 
        /// <summary>
@@ -105,7 +111,10 @@ namespace MedicalReportBookBLL
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Deleting Doctor... failed", e);
-
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while Deleting Doctor", e);
             }
         }
 
@@ -123,8 +132,11 @@ namespace MedicalReportBookBLL
             }
             catch (DbException e)
             {
-                throw new MedicalReportBookExceptions("Deleting Doctor... failed", e);
-
+                throw new MedicalReportBookExceptions("Viewing Doctor... failed", e);
+            }
+            catch (Exception e)
+            {
+                throw new MedicalReportBookExceptions("Unknown error while getting doctors detail", e);
             }
         }
     }

@@ -278,8 +278,8 @@ namespace MedicalReportBookAPI.Controllers
             }
         }
         [HttpPut]
-        [Route("api/Patient/LockUnlockCrReport/{CR_Id}")]
-        public IHttpActionResult LockUnlockConsultancyReport(int CR_Id)
+        [Route("api/Patient/LockUnlockCrReport")]
+        public IHttpActionResult LockUnlockConsultancyReport(LockandUnlockDto lockandUnlockDto)
         {
             if (ModelState.IsValid == false)
             {
@@ -287,7 +287,7 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                var result = patientService.AccessPermissionForConsultancyReport(CR_Id);
+                var result = patientService.AccessPermissionForConsultancyReport(lockandUnlockDto.Report_Id, lockandUnlockDto.IsActive);
                 if(result)
                 {
                     return Ok();
@@ -295,9 +295,11 @@ namespace MedicalReportBookAPI.Controllers
                 return BadRequest();
             }
         }
+
+
         [HttpPut]
-        [Route("api/Patient/LockUnlockLrReport/{Lr_Id}")]
-        public IHttpActionResult LockUnlockLabReport(int Lr_Id)
+        [Route("api/Patient/LockUnlockLrReport")]
+        public IHttpActionResult LockUnlockLabReport(LockandUnlockDto lockandUnlockDto)
         {
             if (ModelState.IsValid == false)
             {
@@ -305,7 +307,7 @@ namespace MedicalReportBookAPI.Controllers
             }
             else
             {
-                var result = patientService.AccessPermissionForLabReport(Lr_Id);
+                var result = patientService.AccessPermissionForLabReport(lockandUnlockDto.Report_Id,lockandUnlockDto.IsActive);
                 if (result)
                 {
                     return Ok();

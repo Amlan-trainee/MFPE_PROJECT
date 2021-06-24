@@ -1,28 +1,82 @@
-<h1>
-  Add-User-Details
-</h1>
-<div id="container">
-<form novalidate [formGroup]="frmXReport" (ngSubmit) ="SaveReport()">
-  <!-- <div>
-    <label>Enter User Id</label><br/>
-    <input type="number" name="userid" formControlName="User_id"><br/>
-    </div> -->
 
-    <div>
-      <label>Enter Blood Group</label><br/>
-      <input type="string" name="bloodgroup" formControlName="BloodGroup"><br/>
-      </div>
 
-      <div>
-        <label>Enter Height</label><br/>
-        <input type="number" name="height" formControlName="Height"><br/>
+
+
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
+
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Add test report</title>
+
+
+        <!--Bootsrap 4 CDN-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+          <!--Fontawesome CDN-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!--Custom styles-->
+
+      </head>
+      <body>
+      <div class="container">
+        <div class="d-flex justify-content-center h-100">
+          <div class="card">
+            <div class="card-header">
+              <h3>Add User Details</h3>
+
+            </div>
+            <div class="card-body">
+              <form novalidate [formGroup]="frmXReport" (ngSubmit) ="SaveReport()">
+               <!-- <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input type="string" name="cr_id" class="form-control" placeholder="enter test report id" formControlName="CR_Id">
+                </div>-->
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="enter user id" name="user id"  formControlName="User_id">
+                </div><div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="Add Blood Group" name="blood group" formControlName="BloodGroup">
+                </div>
+                <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="number" class="form-control" name="height" placeholder="enter height"  formControlName="Height">
+                </div>
+
+          <div class="input-group form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  </div>
+                  <input type="text" class="form-control" name="weight" placeholder="enter weight"  formControlName="Weight">
+                </div>
+
+
+
+
+
+                <div class="form-group">
+                  <button [disabled]="!frmXReport.valid" type="submit" class="btn btn-primary px-4">Add</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
         </div>
-        <div>
-          <label>Enter Weight</label><br/>
-          <input type="number" name="weight" formControlName="Weight"><br/>
-          </div>
-          <div>
-            <input type="submit"  value="save user details">
-          </div>
-          </form>
-          </div>
+      </div>
+      </body>
+      </html>
+
+

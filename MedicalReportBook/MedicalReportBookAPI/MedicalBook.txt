@@ -1,0 +1,4 @@
+2021-06-24 17:42:26,251 INFO  MedicalReportBookAPI.Controllers.AdminController - Exception occured in Add Doctor
+2021-06-24 17:42:26,272 ERROR MedicalReportBookAPI.Controllers.AdminController - 
+2021-06-24 17:43:00,404 INFO  MedicalReportBookAPI.Controllers.AdminController - Exception occured in Add Doctor
+2021-06-24 17:43:00,404 ERROR MedicalReportBookAPI.Controllers.AdminController - 

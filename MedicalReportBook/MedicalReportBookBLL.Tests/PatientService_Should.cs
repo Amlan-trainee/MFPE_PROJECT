@@ -89,7 +89,7 @@ namespace MedicalReportBookBLL.Tests
         }
 
         /// <summary>
-        /// 
+        /// Test method for DeleteLabReportByTestName of PatientService.
         /// </summary>
         [Test]
         public void DeleteLabReportByTestName()
@@ -102,9 +102,9 @@ namespace MedicalReportBookBLL.Tests
             Assert.That(expected, Is.EqualTo(actual));
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
+        /// <summary>
+        /// Test method for DeleteConsultancyReportByDiseasetName of PatientService.
+        /// </summary>
         [Test]
         public void DeleteConsultancyReportByDiseasetName()
         {
@@ -116,27 +116,32 @@ namespace MedicalReportBookBLL.Tests
             Assert.That(expected, Is.EqualTo(actual));
         }
         /// <summary>
-        /// 
+        /// Test method for AccessPermissionForConsultancyRepoort of PatientService.
         /// </summary>
         [Test]
-        public void AccessPermissionForConsultancyRepoort()
+        public void AccessPermissionForConsultancyReport()
         {
             var CR_Id = 7;
-            var actual = service.AccessPermissionForConsultancyReport(CR_Id);
+            var IsActive = true;
+            var actual = service.AccessPermissionForConsultancyReport(CR_Id, IsActive);
             var expected = true;
             Assert.AreEqual(expected, actual);
         }
         /// <summary>
-        /// 
+        /// Test method for AccessPermissionForLabReport of PatientService.
         /// </summary>
         [Test]
-        public void AccessPermissionForLabRepoort()
+        public void AccessPermissionForLabReport()
         {
             var Lr_Id = 1;
-            var actual = service.AccessPermissionForLabReport(Lr_Id);
+            var IsActive = true;
+            var actual = service.AccessPermissionForLabReport(Lr_Id, IsActive);
             var expected = true;
             Assert.AreEqual(expected, actual);
         }
+        /// <summary>
+        /// Test method for AddUserDetails of PatientService.
+        /// </summary>
         [Test]
         public void AddUserDetails()
         {

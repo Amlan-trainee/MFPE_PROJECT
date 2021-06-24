@@ -5,6 +5,9 @@ using System.Web;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// Dto class for changing password .
+    /// </summary>
     public class ChangePassowrdDto
     {
         public int User_Id { get; set; }

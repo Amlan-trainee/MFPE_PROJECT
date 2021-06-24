@@ -5,6 +5,9 @@ using System.Web;
 
 namespace MedicalReportBookAPI.Models
 {
+    /// <summary>
+    /// Dro class for UserDetails class.
+    /// </summary>
     public class UserDetailsDto
     {
         public int User_Id { get; set; }

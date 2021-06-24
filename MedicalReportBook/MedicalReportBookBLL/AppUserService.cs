@@ -75,15 +75,10 @@ namespace MedicalReportBookBLL
                     id = 0;
                     return null;
                 }
-                
-                // var obj= context.appUsers.Any(user => user.EmailId.Equals(EmailId) && user.Password.Equals(Password));
-               // return obj;
-
             }
             catch (DbException e)
             {
                 throw new MedicalReportBookExceptions("Login Error", e);
-
             }
             catch (Exception e)
             {
@@ -92,11 +87,11 @@ namespace MedicalReportBookBLL
         }
 
        /// <summary>
-       /// 
+       /// This method allows the admin to delete doctor from database
        /// </summary>
        /// <param name="EmailId"></param>
        /// <param name="userType"></param>
-       /// <returns></returns>
+       /// <returns>true on sucessful deletion else returns false</returns>
         public bool DeleteDoctor(string EmailId,int UserId)
         {
             try
@@ -117,7 +112,10 @@ namespace MedicalReportBookBLL
                 throw new MedicalReportBookExceptions("Unknown error while Deleting Doctor", e);
             }
         }
-
+        /// <summary>
+        /// This method allows admin to view all doctors present in the database.
+        /// </summary>
+        /// <returns>List of doctors on sucessful execution else returns null</returns>
        public List<AppUser> ViewDoctor()
         {
             try

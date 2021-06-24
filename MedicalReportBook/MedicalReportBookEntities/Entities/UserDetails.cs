@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookEntities.Entities
 {
+    /// <summary>
+/// Class to create a table for user details.
+/// </summary>
    public class UserDetails
     {
         [Key]

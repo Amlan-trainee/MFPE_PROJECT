@@ -50,7 +50,9 @@ namespace MedicalReportBookBLL.Tests
             var result = service.ViewLabReportOfPatient(EmilId, DiseaseName);
             CollectionAssert.IsNotEmpty(result);
         }
-
+        /// <summary>
+        /// Test method for ChangePassword method of DoctorService
+        /// </summary>
         [Test]
         public void ChangePassword()
         {
@@ -64,7 +66,9 @@ namespace MedicalReportBookBLL.Tests
             var expexted = true;
             Assert.AreEqual(expexted, result);
         }
-
+        /// <summary>
+        /// Test method for AddDoctorDetails method of DoctorService
+        /// </summary>
         [Test]
         public void UpdateDoctorDetails()
         {

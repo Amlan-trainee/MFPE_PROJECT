@@ -65,7 +65,7 @@ namespace MedicalReportBookBLL.Tests
         }
 
         /// <summary>
-        /// 
+        /// Test method for testing DeleteDoctor method of AppUserService.
         /// </summary>
         [Test]
         public void DeleteDoctor()
@@ -76,7 +76,15 @@ namespace MedicalReportBookBLL.Tests
             var expected = true;
             Assert.That(expected, Is.EqualTo(actual));
         }
-
+        /// <summary>
+        /// Test Method for ViewDoctor method of AppUserService.
+        /// </summary>
+        [Test]
+        public void ViewDoctor()
+        {
+            var result = service.ViewDoctor();
+            CollectionAssert.IsNotEmpty(result);
+        }
        
     }
 }

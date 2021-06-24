@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MedicalReportBookBLL
 {
+    /// <summary>
+    /// This class creates the custom exception.
+    /// </summary>
     public class MedicalReportBookExceptions:Exception
     {
         public MedicalReportBookExceptions() : base() { }

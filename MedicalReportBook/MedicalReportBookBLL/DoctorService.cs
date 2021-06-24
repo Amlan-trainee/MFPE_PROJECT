@@ -156,7 +156,11 @@ namespace MedicalReportBookBLL
                 {
                     context.DoctorDetails.Add(doctorDetails);
                     int RowsAffected = context.SaveChanges();
-                    return RowsAffected == 1;
+                    if(RowsAffected==1)
+                    {
+                        return true;
+                    }
+                    return false;
                 }
                 return false;
             }

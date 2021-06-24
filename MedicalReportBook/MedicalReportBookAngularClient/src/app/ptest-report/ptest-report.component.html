@@ -31,7 +31,7 @@
                 <td><a href="{{r.LabReport}}">View/Download</a></td>
                 <td>{{r.IsActive}}</td>
                 <td>
-                    <button [routerLink]="['/toggle-status',r.Lr_Id]">Status</button>
+                    <button [routerLink]="['/toggle-test-status',r.Lr_Id]">Status</button>
                 </td>
                 <td>
                     <button [routerLink]="['/delete-test-report',r.TestName,r.Lr_Id]">Delete</button>

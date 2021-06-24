@@ -5,19 +5,19 @@ import { ActivatedRoute } from '@angular/router';
 import { StatusToggle } from '../Source/status-toggle';
 
 @Component({
-  selector: 'app-toggle-status',
-  templateUrl: './toggle-status.component.html',
-  styleUrls: ['./toggle-status.component.css']
+  selector: 'app-toggle-test-status',
+  templateUrl: './toggle-test-status.component.html',
+  styleUrls: ['./toggle-test-status.component.css']
 })
-export class ToggleStatusComponent implements OnInit {
+export class ToggleTestStatusComponent implements OnInit {
   frmXReport:FormGroup;
-  url:string="http://localhost:57071/api/Patient/LockUnlockCrReport";
+  url:string="http://localhost:57071/api/Patient/LockUnlockLrReport";
 
 
   constructor(private http: HttpClient,private actr:ActivatedRoute,private formBuilder:FormBuilder) {
     this.frmXReport=this.formBuilder.group({
       Report_Id:this.actr.snapshot.paramMap.get('R-Id'),
-      IsActive:new FormControl()
+      IsActive:new FormControl(false),
     });
     
   
@@ -41,6 +41,6 @@ export class ToggleStatusComponent implements OnInit {
     }
 
   }
+
+  
 }
-
-

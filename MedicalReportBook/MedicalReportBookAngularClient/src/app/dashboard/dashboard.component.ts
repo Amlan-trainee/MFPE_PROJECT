@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AdminAuthService } from '../Services/admin-auth.service';
 import { AuthService } from '../Services/auth.service';
@@ -16,7 +17,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
   adminLoggedIn: boolean = false;
   dsubs: Subscription = new Subscription;
   doctorLoggedIn: boolean = false;
-  constructor(private as:AuthService,private ass:AdminAuthService,private das:DoctorAuthService) { }
+  constructor(private as:AuthService,private ass:AdminAuthService,private das:DoctorAuthService,private router:Router) { }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -37,6 +38,7 @@ export class DashboardComponent implements OnInit , OnDestroy {
     this.as.doLogin(false);
     this.ass.doAdminLogin(false);
     this.das.doDoctorLogin(false);
+    this.router.navigateByUrl("/");
   }
 
 }

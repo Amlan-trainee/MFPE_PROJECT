@@ -11,7 +11,7 @@ import { StatusToggle } from '../Source/status-toggle';
 })
 export class ToggleStatusComponent implements OnInit {
   frmXReport:FormGroup;
-  url:string="http://localhost:57071/api/Patient/LockUnlockCrReport/";
+  url:string="http://localhost:57071/api/Patient/LockUnlockCrReport";
   ReportId: number;
 
   constructor(private http: HttpClient,private actr:ActivatedRoute,private formBuilder:FormBuilder) {

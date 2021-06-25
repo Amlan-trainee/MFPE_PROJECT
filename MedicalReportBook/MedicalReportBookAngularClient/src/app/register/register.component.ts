@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
       alert('User Registered');
-      this.router.navigateByUrl("/");
+      this.router.navigateByUrl("/login");
     }),
     error=>{
       alert('User Registration Failed');

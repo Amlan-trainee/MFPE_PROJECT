@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { Register } from '../register';
 
@@ -14,7 +15,7 @@ export class DregisterComponent implements OnInit {
   massage: string = "";
   // userSubmitted: boolean = false;
 
-  constructor(private formbulider: FormBuilder,private loginService:LoginService,private formBuilder:FormBuilder) { }
+  constructor(private formbulider: FormBuilder,private loginService:LoginService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit() {
     this.UserForm = this.formbulider.group({
@@ -49,6 +50,7 @@ export class DregisterComponent implements OnInit {
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
       alert('Doctor Registered');
+      this.router.navigateByUrl("/");
     }),
     error=>{
       alert('Doctor Registeration Failed');

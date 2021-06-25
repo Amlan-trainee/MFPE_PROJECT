@@ -29,6 +29,7 @@ export class DeleteDoctorComponent implements OnInit {
         .subscribe({
             next: data => {
                 alert('Doctor Deleted');
+                this.router.navigateByUrl("/view-doctor");
             },
             error: error => {
                 alert('Doctor deletion failed');

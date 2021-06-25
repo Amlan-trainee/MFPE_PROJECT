@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl,FormGroup,FormBuilder,Validator,NgForm, Validators } from '@angular/forms';
 import { ExtraDoctorDetails } from '../Source/extradoctordetails';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-extra-doctor-details',
   templateUrl: './extra-doctor-details.component.html',
@@ -10,7 +11,7 @@ import { ExtraDoctorDetails } from '../Source/extradoctordetails';
 export class ExtraDoctorDetailsComponent implements OnInit {
   frmTReport:FormGroup;
   url:string='http://localhost:57071/api/Doctor/DoctorDetails';
-  constructor(private http:HttpClient,private formBuilder:FormBuilder) {
+  constructor(private http:HttpClient,private formBuilder:FormBuilder,private router:Router) {
     this.frmTReport=this.formBuilder.group({
       DoctorId:localStorage.getItem('UId'),
       Specialization:new FormControl('',[Validators.required,Validators.minLength(3)]),
@@ -29,6 +30,7 @@ export class ExtraDoctorDetailsComponent implements OnInit {
     if(this.frmTReport.valid){
       this.http.post(this.url,p).subscribe(data=>{
         alert('Details saved');
+        this.router.navigateByUrl("/");
       },error=>{
         alert('You have already updated your details');
       })

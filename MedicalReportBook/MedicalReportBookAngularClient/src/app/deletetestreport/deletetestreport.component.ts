@@ -34,6 +34,7 @@ export class DeletetestreportComponent implements OnInit {
             next: data => {
               alert('Doctor Deleted');
               this.status = 'Delete successful';
+              this.router.navigateByUrl("/test-report");
                
             },
             error: error => {

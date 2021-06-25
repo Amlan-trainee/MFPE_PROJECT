@@ -6,6 +6,7 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angula
 import{FormsModule} from '@angular/forms'
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,11 +30,14 @@ export class RegisterComponent implements OnInit {
       PhoneNumber: ['', [Validators.required,Validators.maxLength(10)]],
       Address: ['', [Validators.required]],
       UserType:'User',
-      Password: ['', [Validators.required,Validators.minLength(8)]],
+      Password: ['',[Validators.required,Validators.minLength(8)]],
+     
       ConfirmPassword:['', [Validators.required,Validators.minLength(8)]],
       EmailId: ['', [Validators.required,Validators.email]],
 
-    });
+    },
+   
+    );
   }
   // passwordMatchValidator(frm: FormGroup) {
   //   return frm.controls['Password'].value === frm.controls['ConfirmPassword'].value ? null : {'mismatch': true};
@@ -44,6 +48,12 @@ export class RegisterComponent implements OnInit {
     const user = this.UserForm.value;
     this.Createemployee(user);
   }
+
+  get f(){
+    return this.UserForm.controls;
+  }
+
+
   Createemployee(register:Register)
   { this.loginService.CreateUser(register).subscribe(
     (data=>

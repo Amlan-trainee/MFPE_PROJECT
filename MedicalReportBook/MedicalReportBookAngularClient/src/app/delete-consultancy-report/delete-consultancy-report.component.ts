@@ -30,6 +30,7 @@ export class DeleteConsultancyReportComponent implements OnInit {
             next: data => {
                 this.status = 'Delete successful';
                 alert('Prescription Deleted');
+                this.router.navigateByUrl("/consultancy-report");
             },
             error: error => {
                 this.errorMessage = error.message;

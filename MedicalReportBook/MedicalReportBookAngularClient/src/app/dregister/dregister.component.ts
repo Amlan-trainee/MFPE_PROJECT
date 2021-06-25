@@ -42,6 +42,13 @@ export class DregisterComponent implements OnInit {
     const user = this.UserForm.value;
     this.Createemployee(user);
   }
+
+  get f(){
+    return this.UserForm.controls;
+  }
+
+
+
   Createemployee(register:Register)
   { this.loginService.CreateUser(register).subscribe(
     (data=>

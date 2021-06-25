@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UpdatePassword } from '../Source/update-password';
 
 @Component({
@@ -12,7 +13,7 @@ export class DoctorPasswordUpdateComponent implements OnInit {
   frmXReport:FormGroup;
   url:string='http://localhost:57071/api/Doctor/ChangePassword';
 
-  constructor(private http:HttpClient,private formBuilder:FormBuilder) { 
+  constructor(private http:HttpClient,private formBuilder:FormBuilder,private router:Router) { 
     this.frmXReport=this.formBuilder.group({
       User_Id:localStorage.getItem('UId'),
       OldPassword:new FormControl(),
@@ -33,6 +34,7 @@ export class DoctorPasswordUpdateComponent implements OnInit {
     if(this.frmXReport.valid){
       this.http.put(this.url,p).subscribe(data=>{
         alert('Password Updated');
+        this.router.navigateByUrl("/");
       },error=>{
         alert('Update Unsuccessful');
       })

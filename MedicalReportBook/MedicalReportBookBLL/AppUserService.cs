@@ -102,10 +102,12 @@ namespace MedicalReportBookBLL
                 DoctorDetails doc = (from obj in context.DoctorDetails
                                      where obj.DoctorId == UserId
                                      select obj).FirstOrDefault();
+                
                 context.appUsers.Remove(query);
+                if(doc!=null)
                 context.DoctorDetails.Remove(doc);
                 int RowsAffected = context.SaveChanges();
-                if (RowsAffected == 2)
+                if (RowsAffected == 2||RowsAffected==1)
                 {
                     return true;
                 }

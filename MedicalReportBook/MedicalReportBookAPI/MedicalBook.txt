@@ -434,3 +434,9 @@ The statement has been terminated.
    at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
    at System.Data.Entity.DbContext.SaveChanges()
    at MedicalReportBookBLL.AppUserService.DeleteDoctor(String EmailId, Int32 UserId) in C:\FinalProject\MFPE_PROJECT\MedicalReportBook\MedicalReportBookBLL\AppUserService.cs:line 103
+2021-06-25 12:26:29,320 INFO  MedicalReportBookAPI.Controllers.AdminController - Exception occured in Remove Doctor
+2021-06-25 12:26:29,331 ERROR MedicalReportBookAPI.Controllers.AdminController - System.ArgumentNullException: Value cannot be null.
+Parameter name: entity
+   at System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   at System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   at MedicalReportBookBLL.AppUserService.DeleteDoctor(String EmailId, Int32 UserId) in C:\FinalProject\MFPE_PROJECT\MedicalReportBook\MedicalReportBookBLL\AppUserService.cs:line 106

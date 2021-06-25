@@ -4,6 +4,7 @@ import {Register} from '../register';
 import {Observable} from 'rxjs';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import{FormsModule} from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
   massage: string = "";
   // userSubmitted: boolean = false;
 
-  constructor(private formbulider: FormBuilder,private loginService:LoginService,private formBuilder:FormBuilder) { }
+  constructor(private formbulider: FormBuilder,private loginService:LoginService,private formBuilder:FormBuilder,private router:Router) { }
 
   ngOnInit() {
     this.UserForm = this.formbulider.group({
@@ -51,6 +52,7 @@ export class RegisterComponent implements OnInit {
       this.massage = 'Data saved Successfully';
       this.UserForm.reset();
       alert('User Registered');
+      this.router.navigateByUrl("/");
     }),
     error=>{
       alert('User Registration Failed');
